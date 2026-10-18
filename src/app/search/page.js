@@ -1,20 +1,20 @@
 import { Suspense } from "react";
-import { Cinzel, Josefin_Sans } from "next/font/google";
+import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
 import Footer from "../components/Footer";
 import PropertyList from "./components/PropertyList";
 import MobileStickyCTA from "../components/MobileStickyCTA";
 
-const cinzel = Cinzel({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  variable: "--font-cinzel",
+  weight: ["400", "500", "600"],
+  variable: "--font-fraunces",
   display: "swap",
 });
 
-const josefinSans = Josefin_Sans({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-josefin",
+  variable: "--font-jakarta",
   display: "swap",
 });
 
@@ -34,13 +34,13 @@ export const metadata = {
 
 function SearchFallback() {
   return (
-    <div className="flex justify-center items-center min-h-screen">
+    <div className="flex justify-center items-center min-h-screen bg-[#F7F4EC]">
       <div className="flex flex-col items-center space-y-4">
-        <div className="relative w-20 h-20">
-          <div className="absolute top-0 left-0 w-full h-full border-4 border-[#1F6B4C]/20 rounded-full"></div>
-          <div className="absolute top-0 left-0 w-full h-full border-4 border-[#1F6B4C] rounded-full animate-spin border-t-transparent"></div>
+        <div className="relative w-16 h-16">
+          <div className="absolute inset-0 border-4 border-[#1F6B4C]/20 rounded-full"></div>
+          <div className="absolute inset-0 border-4 border-[#1F6B4C] rounded-full animate-spin border-t-transparent"></div>
         </div>
-        <p className="text-gray-500 font-medium tracking-wide" style={{ fontFamily: 'var(--font-josefin)' }}>Loading search results...</p>
+        <p className="text-[#15241D]/50 font-medium" style={{ fontFamily: 'var(--font-jakarta)' }}>Loading search results...</p>
       </div>
     </div>
   );
@@ -48,7 +48,7 @@ function SearchFallback() {
 
 export default function Search() {
   return (
-    <div className={`${cinzel.variable} ${josefinSans.variable} min-h-screen bg-gray-50 pb-20 lg:pb-0`}>
+    <div className={`${fraunces.variable} ${jakarta.variable} min-h-screen bg-[#F7F4EC] pb-20 lg:pb-0`}>
       <MobileStickyCTA />
       <Suspense fallback={<SearchFallback />}>
         <PropertyList/>

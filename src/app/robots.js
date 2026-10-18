@@ -10,7 +10,7 @@ export default function robots() {
           '/admin/',
           '/user/',
           '/agent/',
-          '/builder/',
+          '/list-property/',
           '/api/',
         ],
       },

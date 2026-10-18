@@ -6,23 +6,15 @@ import {
   Building2,
   Plus,
   Search,
-  Filter,
   Download,
   Upload,
-  ExternalLink,
   Edit3,
   Trash2,
   CheckCircle2,
-  XCircle,
-  Clock,
   MapPin,
-  IndianRupee,
   FileSpreadsheet,
   AlertCircle,
   X,
-  Sparkles,
-  Layers,
-  ChevronRight,
   Eye
 } from 'lucide-react';
 import EditPropertyModal from '@/app/components/EditPropertyModal';
@@ -50,7 +42,6 @@ export default function AdminProperties() {
   const [exporting, setExporting] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
   const [importResults, setImportResults] = useState(null);
-  const [statusFilter, setStatusFilter] = useState('all'); // all, pending, approved, rejected
 
   useEffect(() => {
     fetchProperties();
@@ -127,65 +118,6 @@ export default function AdminProperties() {
     setEditingProperty(null);
   };
 
-  const handleApprove = async (propertyId) => {
-    setError('');
-    try {
-      const token = localStorage.getItem('token');
-      const response = await fetch(`/api/properties/${propertyId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          ...(token && { 'Authorization': `Bearer ${token}` })
-        },
-        body: JSON.stringify({ status: 'approved' })
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setSuccess('Property approved and published live');
-        setProperties(prev => prev.map(p =>
-          p._id === propertyId ? { ...p, status: 'approved' } : p
-        ));
-        updatePropertyStore(propertyId, { status: 'approved' });
-        invalidateDashboard();
-      } else {
-        setError(data.message || 'Failed to approve property');
-      }
-    } catch (err) {
-      setError('Error approving property');
-    }
-  };
-
-  const handleReject = async (propertyId) => {
-    setError('');
-    try {
-      const token = localStorage.getItem('token');
-      const response = await fetch(`/api/properties/${propertyId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          ...(token && { 'Authorization': `Bearer ${token}` })
-        },
-        body: JSON.stringify({ status: 'rejected' })
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setSuccess('Property marked as rejected');
-        setProperties(prev => prev.map(p =>
-          p._id === propertyId ? { ...p, status: 'rejected' } : p
-        ));
-        updatePropertyStore(propertyId, { status: 'rejected' });
-        invalidateDashboard();
-      } else {
-        setError(data.message || 'Failed to reject property');
-      }
-    } catch (err) {
-      setError('Error rejecting property');
-    }
-  };
 
   const handleExport = async () => {
     setExporting(true);
@@ -261,32 +193,11 @@ export default function AdminProperties() {
     }
   };
 
-  const filteredProperties = properties.filter((property) => {
-    const matchesStatus =
-      statusFilter === 'all' ? true : property.status === statusFilter;
-    const matchesSearch =
-      !searchTerm ||
-      property.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      property.location?.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesStatus && matchesSearch;
-  });
-
-  const pendingCount = properties.filter(p => p.status === 'pending').length;
-  const approvedCount = properties.filter(p => p.status === 'approved' || !p.status).length;
-  const rejectedCount = properties.filter(p => p.status === 'rejected').length;
-
-  const getStatusBadge = (status) => {
-    switch (status) {
-      case 'approved':
-        return 'bg-emerald-50 text-emerald-700 border-emerald-200/80';
-      case 'pending':
-        return 'bg-amber-50 text-amber-700 border-amber-200/80';
-      case 'rejected':
-        return 'bg-rose-50 text-rose-700 border-rose-200/80';
-      default:
-        return 'bg-slate-100 text-slate-700 border-slate-200';
-    }
-  };
+  const filteredProperties = properties.filter((property) =>
+    !searchTerm ||
+    property.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    property.location?.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   if (loading) {
     return (
@@ -384,55 +295,8 @@ export default function AdminProperties() {
         </div>
       )}
 
-      {/* Status Filter Tabs & Search Bar */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
-        {/* Status Pills */}
-        <div className="flex items-center space-x-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
-          <button
-            onClick={() => setStatusFilter('all')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
-              statusFilter === 'all'
-                ? 'bg-slate-900 text-white shadow-xs'
-                : 'bg-slate-100 text-slate-600 hover:text-slate-900 hover:bg-slate-200/80'
-            }`}
-          >
-            All Listings ({properties.length})
-          </button>
-          <button
-            onClick={() => setStatusFilter('pending')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
-              statusFilter === 'pending'
-                ? 'bg-amber-500 text-white shadow-xs'
-                : 'bg-amber-50 text-amber-700 hover:bg-amber-100'
-            }`}
-          >
-            Pending Approval ({pendingCount})
-          </button>
-          <button
-            onClick={() => setStatusFilter('approved')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
-              statusFilter === 'approved'
-                ? 'bg-emerald-600 text-white shadow-xs'
-                : 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100'
-            }`}
-          >
-            Approved &amp; Live ({approvedCount})
-          </button>
-          {rejectedCount > 0 && (
-            <button
-              onClick={() => setStatusFilter('rejected')}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
-                statusFilter === 'rejected'
-                  ? 'bg-rose-600 text-white shadow-xs'
-                  : 'bg-rose-50 text-rose-700 hover:bg-rose-100'
-              }`}
-            >
-              Rejected ({rejectedCount})
-            </button>
-          )}
-        </div>
-
-        {/* Search Bar */}
+      {/* Search Bar */}
+      <div className="bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4 flex justify-end">
         <div className="relative w-full md:w-72">
           <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
@@ -474,7 +338,6 @@ export default function AdminProperties() {
                   <th className="py-3.5 px-4">Location</th>
                   <th className="py-3.5 px-4">Price / Rent</th>
                   <th className="py-3.5 px-4">Type / Mode</th>
-                  <th className="py-3.5 px-4">Status</th>
                   <th className="py-3.5 px-4">Listed Date</th>
                   <th className="py-3.5 px-5 text-right">Portfolio Actions</th>
                 </tr>
@@ -559,13 +422,6 @@ export default function AdminProperties() {
                       </div>
                     </td>
 
-                    {/* Status Badge */}
-                    <td className="py-3.5 px-4 whitespace-nowrap">
-                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold border capitalize ${getStatusBadge(property.status || 'approved')}`}>
-                        {property.status || 'approved'}
-                      </span>
-                    </td>
-
                     {/* Created Date */}
                     <td className="py-3.5 px-4 whitespace-nowrap text-slate-600">
                       {new Date(property.createdAt).toLocaleDateString('en-IN', {
@@ -586,25 +442,6 @@ export default function AdminProperties() {
                         >
                           <Eye className="w-3.5 h-3.5" />
                         </Link>
-
-                        {property.status === 'pending' && (
-                          <>
-                            <button
-                              onClick={() => handleApprove(property._id)}
-                              title="Approve Property"
-                              className="p-1.5 text-emerald-600 hover:text-white bg-emerald-50 hover:bg-emerald-600 rounded-lg transition-colors"
-                            >
-                              <CheckCircle2 className="w-3.5 h-3.5" />
-                            </button>
-                            <button
-                              onClick={() => handleReject(property._id)}
-                              title="Reject Property"
-                              className="p-1.5 text-rose-600 hover:text-white bg-rose-50 hover:bg-rose-600 rounded-lg transition-colors"
-                            >
-                              <XCircle className="w-3.5 h-3.5" />
-                            </button>
-                          </>
-                        )}
 
                         <button
                           onClick={() => handleEdit(property)}

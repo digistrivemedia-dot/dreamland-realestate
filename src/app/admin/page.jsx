@@ -15,7 +15,6 @@ import {
   Clock,
   Sparkles,
   Search,
-  Map,
   BarChart3,
   CheckCircle2,
   AlertCircle,
@@ -92,16 +91,6 @@ export default function AdminDashboard() {
       accent: 'from-blue-600 to-indigo-700',
       bgTint: 'group-hover:border-blue-500/40 hover:shadow-blue-500/5',
     },
-    // Hidden module (re-enable by uncommenting): Geospatial Map Analytics
-    // {
-    //   title: 'Geospatial Map Analytics',
-    //   description: 'Visual map distribution of active properties & geographic density',
-    //   href: '/admin/map',
-    //   tag: 'Spatial Intel',
-    //   icon: Map,
-    //   accent: 'from-emerald-600 to-teal-700',
-    //   bgTint: 'group-hover:border-emerald-500/40 hover:shadow-emerald-500/5',
-    // },
     {
       title: 'Business Analytics',
       description: 'Review lead velocity, agent closing rates & channel conversion',

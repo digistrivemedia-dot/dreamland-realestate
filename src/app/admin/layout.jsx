@@ -9,7 +9,6 @@ import {
   Search,
   Sparkles,
   Users,
-  Map,
   Newspaper,
   BarChart3,
   UserCog,
@@ -76,7 +75,7 @@ export default function AdminLayout({ children }) {
       href: '/admin/properties',
       icon: Building2,
     },
-    // Hidden modules (re-enable by uncommenting): Property Search, AI Advisor, Geospatial Map
+    // Hidden modules (re-enable by uncommenting): Property Search, AI Advisor
     // {
     //   name: 'Property Search',
     //   href: '/admin/property-search',
@@ -88,11 +87,6 @@ export default function AdminLayout({ children }) {
     //   badge: 'Beta',
     //   badgeColor: 'bg-violet-500/20 text-violet-300 border border-violet-500/30',
     //   icon: Sparkles,
-    // },
-    // {
-    //   name: 'Geospatial Map',
-    //   href: '/admin/map',
-    //   icon: Map,
     // },
     {
       name: 'Editorial & Blogs',
@@ -348,7 +342,6 @@ function SidebarContent({
             pathname === item.href ||
             (item.href === '/admin/crm/leads' && pathname.startsWith('/admin/crm')) ||
             (item.href === '/admin/property-search' && pathname.startsWith('/admin/property-search')) ||
-            (item.href === '/admin/map' && pathname.startsWith('/admin/map')) ||
             (item.href === '/ai-assistant' && pathname.startsWith('/ai-assistant')) ||
             (item.href === '/admin/blogs' && pathname.startsWith('/admin/blogs'));
 

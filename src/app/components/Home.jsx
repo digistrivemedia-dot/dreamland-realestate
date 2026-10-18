@@ -1,8 +1,9 @@
 'use client';
 /* app/page.tsx */
 import Link from "next/link";
-import Image from "next/image";
+import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
 import { useState, useEffect } from "react";
+import { LayoutGrid, List as ListIcon, MapPin, ChevronRight, ImageIcon } from "lucide-react";
 import Footer from "./Footer";
 import LeadCaptureModal from "./LeadCaptureModal";
 import Banner from "./Banner";
@@ -11,12 +12,39 @@ import { formatPrice } from '../../utils/formatPrice';
 import { generatePropertyUrl } from '@/utils/slugify';
 import { usePropertyStore, useCRMStore, useDashboardStore } from '@/stores';
 
+const fraunces = Fraunces({
+    subsets: ["latin"],
+    weight: ["400", "500", "600"],
+    style: ["normal", "italic"],
+    variable: "--font-fraunces",
+    display: "swap",
+});
+
+const jakarta = Plus_Jakarta_Sans({
+    subsets: ["latin"],
+    weight: ["300", "400", "500", "600", "700"],
+    variable: "--font-jakarta",
+    display: "swap",
+});
+
+const TOP_CITIES = ["Bangalore", "Mumbai", "Pune", "Hyderabad", "Chennai", "Delhi NCR"];
+const POPULAR_LOCALITIES = [
+    "Whitefield, Bengaluru",
+    "Baner, Pune",
+    "Andheri, Mumbai",
+    "Gachibowli, Hyderabad",
+    "Noida Sector 150",
+    "Velachery, Chennai",
+];
+const QUICK_FILTERS = ["Ready to move", "Under construction", "Verified only", "No brokerage"];
+
 export default function Home({ initialProperties = null }) {
     const [showLeadModal, setShowLeadModal] = useState(false);
     const [hasSubmittedLead, setHasSubmittedLead] = useState(false);
     const [visibleProperties, setVisibleProperties] = useState(30);
     const [showLeadSuccessModal, setShowLeadSuccessModal] = useState(false);
     const [activeTab, setActiveTab] = useState('buy');
+    const [viewMode, setViewMode] = useState('card');
 
     // Zustand persistent store to prevent re-fetching on repeat visits
     const storeProperties = usePropertyStore((state) => state.properties);
@@ -101,194 +129,172 @@ export default function Home({ initialProperties = null }) {
         setVisibleProperties(prev => prev + 30);
     };
 
+    const visibleList = properties.slice(0, visibleProperties);
+    const [featured, ...rest] = visibleList;
 
     return (
-        <main className="min-h-screen bg-white text-gray-900 pb-20 lg:pb-0">
+        <main className={`${fraunces.variable} ${jakarta.variable} min-h-screen bg-[#F7F4EC] text-[#15241D] pb-20 lg:pb-0`} style={{ fontFamily: 'var(--font-jakarta)' }}>
             {/* Mobile Sticky CTA */}
             <MobileStickyCTA />
 
             {/* Banner Section */}
             <Banner banners={banners} />
 
-            {/* Hero with segmented search */}
-            <section className="relative bg-white">
-                {/* Decorative background elements */}
-                <div className="absolute inset-0 overflow-hidden">
-                    <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#1F6B4C]/5 rounded-full"></div>
-                    <div className="absolute top-32 -left-16 w-64 h-64 bg-[#1F6B4C]/3 rounded-full"></div>
-                </div>
-
-                <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-16">
-                    <div className="max-w-4xl text-center mx-auto">
-                        <h1 className="text-4xl sm:text-6xl font-extrabold text-gray-900 leading-tight">
-                            Your Trusted Partner in
-                            <span className="text-[#1F6B4C]"> Verified Real Estate</span>
-                        </h1>
-                        <p className="mt-4 text-gray-600 text-lg sm:text-xl max-w-2xl mx-auto">
-                            Handpicked listings, zero-brokerage direct builder offers, and complete transparency.
-                        </p>
-
-                        {/* Trust Signals */}
-                        <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm font-semibold text-gray-500">
-                            <div className="flex items-center gap-2">
-                                <svg className="w-5 h-5 text-[#1F6B4C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                100% Verified Listings
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <svg className="w-5 h-5 text-[#1F6B4C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                Best Market Price
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <svg className="w-5 h-5 text-[#1F6B4C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                                5,000+ Happy Families
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Search Card */}
-                    <div className="mt-12 bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden max-w-5xl mx-auto relative z-10">
-                        {/* Tabs */}
-                        <div className="flex border-b border-gray-100 bg-gray-50/50">
-                            {[
-                                { key: "buy", label: "Buy", icon: "🏠" },
-                                { key: "rent", label: "Rent", icon: "🔑" },
-                                { key: "new", label: "New Projects", icon: "🏗️" },
-                            ].map((t) => (
-                                <button
-                                    key={t.key}
-                                    type="button"
-                                    onClick={() => setActiveTab(t.key)}
-                                    className={`flex-1 flex items-center justify-center gap-2 py-4 text-sm font-bold transition-all duration-300 ${activeTab === t.key
-                                        ? "bg-white text-[#1F6B4C] border-b-2 border-[#1F6B4C]"
-                                        : "text-gray-500 hover:text-gray-900 hover:bg-gray-100/50"
-                                        }`}
-                                >
-                                    <span>{t.icon}</span>
-                                    {t.label}
-                                </button>
-                            ))}
-                        </div>
-
-                        {/* Search row */}
-                        <form
-                            action="/search"
-                            className="p-4 sm:p-6 flex flex-col md:flex-row gap-3"
-                        >
-                            <input type="hidden" name="tab" value={activeTab} />
-
-                            {/* Location/Project */}
-                            <div className="flex-[2] relative">
-                                <label htmlFor="q" className="sr-only">Search</label>
-                                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#1F6B4C]">
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                                </div>
-                                <input
-                                    id="q"
-                                    name="q"
-                                    type="text"
-                                    placeholder="Enter City, Locality or Project Name"
-                                    className="w-full h-14 pl-12 pr-4 rounded-2xl bg-gray-50 border border-transparent focus:bg-white focus:border-[#1F6B4C] focus:ring-4 focus:ring-[#1F6B4C]/10 transition-all outline-none text-gray-900 font-medium placeholder-gray-400"
-                                />
-                            </div>
-
-                            {/* Property Type */}
-                            <div className="flex-1 relative">
-                                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
-                                </div>
-                                <select
-                                    id="type"
-                                    name="type"
-                                    className="w-full h-14 pl-12 pr-4 rounded-2xl bg-gray-50 border border-transparent focus:bg-white focus:border-[#1F6B4C] focus:ring-4 focus:ring-[#1F6B4C]/10 transition-all outline-none text-gray-900 font-medium appearance-none cursor-pointer"
-                                    defaultValue=""
-                                >
-                                    <option value="" disabled>Property Type</option>
-                                    <option value="flat">Apartments</option>
-                                    <option value="house">Villa / House</option>
-                                    <option value="land">Plots / Land</option>
-                                    <option value="office">Commercial</option>
-                                </select>
-                                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-                                </div>
-                            </div>
-
-                            {/* Budget */}
-                            <div className="flex-1 relative">
-                                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                </div>
-                                <select
-                                    id="max"
-                                    name="max"
-                                    className="w-full h-14 pl-12 pr-4 rounded-2xl bg-gray-50 border border-transparent focus:bg-white focus:border-[#1F6B4C] focus:ring-4 focus:ring-[#1F6B4C]/10 transition-all outline-none text-gray-900 font-medium appearance-none cursor-pointer"
-                                    defaultValue=""
-                                >
-                                    <option value="" disabled>Max Budget</option>
-                                    <option value="5000000">₹50 Lacs</option>
-                                    <option value="10000000">₹1 Crore</option>
-                                    <option value="20000000">₹2 Crore</option>
-                                    <option value="50000000">₹5 Crore+</option>
-                                </select>
-                                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-                                </div>
-                            </div>
-
-                            <button
-                                type="submit"
-                                className="h-14 px-10 rounded-2xl bg-[#1F6B4C] text-white font-bold text-lg hover:bg-[#1F6B4C]/90 shadow-xl shadow-red-600/20 transition-all active:scale-95"
+            {/* Hero */}
+            <section className="relative overflow-hidden">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-16">
+                    <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+                        {/* Copy */}
+                        <div className="lg:pt-6">
+                            <h1
+                                className="text-4xl sm:text-5xl lg:text-[3.3rem] leading-[1.08] text-[#15241D]"
+                                style={{ fontFamily: 'var(--font-fraunces)' }}
                             >
-                                Search
-                            </button>
-                        </form>
+                                A home search built on what&apos;s actually true about the property.
+                            </h1>
+                            <p className="mt-5 text-base sm:text-lg text-[#15241D]/70 max-w-md">
+                                Every listing on Dreamland is site-verified before it goes live, and every builder deal comes direct — no brokerage layered on top.
+                            </p>
 
-                        {/* Quick filters row */}
-                        <div className="px-6 pb-6 flex items-center gap-3 overflow-x-auto no-scrollbar">
-                            <span className="text-xs font-bold text-gray-400 uppercase tracking-widest whitespace-nowrap">Quick Picks:</span>
-                            {["Ready to Move", "Under Construction", "Verified Only", "No Brokerage"].map(
-                                (chip) => (
-                                    <Link
-                                        key={chip}
-                                        href={`/search?tab=${activeTab}&q=${encodeURIComponent(chip)}`}
-                                        className="px-4 py-2 rounded-xl text-sm font-semibold border border-gray-100 bg-gray-50 hover:bg-[#1F6B4C] hover:text-white hover:border-[#1F6B4C] transition-all whitespace-nowrap shadow-sm"
-                                    >
-                                        {chip}
-                                    </Link>
-                                )
-                            )}
-                        </div>
-                    </div>
+                            {/* Search card */}
+                            <div className="mt-8 bg-white rounded-2xl border border-[#E1D9C8] overflow-hidden">
+                                <div className="flex border-b border-[#E1D9C8]">
+                                    {[
+                                        { key: "buy", label: "Buy" },
+                                        { key: "rent", label: "Rent" },
+                                        { key: "new", label: "New" },
+                                    ].map((t) => (
+                                        <button
+                                            key={t.key}
+                                            type="button"
+                                            onClick={() => setActiveTab(t.key)}
+                                            className={`flex-1 py-3.5 text-sm font-semibold transition-colors cursor-pointer ${activeTab === t.key
+                                                ? "text-[#1F6B4C] border-b-2 border-[#1F6B4C] bg-[#1F6B4C]/5"
+                                                : "text-[#15241D]/50 hover:text-[#15241D] border-b-2 border-transparent"
+                                                }`}
+                                        >
+                                            {t.label}
+                                        </button>
+                                    ))}
+                                </div>
 
-                    {/* Popular cities */}
-                    <div className="mt-8 text-center">
-                        <div className="text-gray-600 text-sm mb-6 font-medium">Popular cities</div>
-                        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4 max-w-6xl mx-auto">
-                            {[
-                                { name: "Mumbai", image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/40/ce/c3/mumbai-marine-drive-along.jpg?w=2000&h=-1&s=1" },
-                                { name: "Delhi NCR", image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=300&h=300&fit=crop&crop=center" },
-                                { name: "Bangalore", image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=300&h=300&fit=crop&crop=center" },
-                                { name: "Pune", image: "https://images.unsplash.com/photo-1595658658481-d53d3f999875?w=300&h=300&fit=crop&crop=center" },
-                                { name: "Hyderabad", image: "https://lp-cms-production.imgix.net/2019-06/GettyImages-171676147_full.jpg?fit=crop&ar=1%3A1&w=1200&auto=format&q=75" },
-                                { name: "Chennai", image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=300&h=300&fit=crop&crop=center" },
-                                { name: "Kolkata", image: "https://media.assettype.com/outlooktraveller%2F2024-04%2F4b6c5c58-610a-4294-82f2-7ed6b16fc1c0%2Fkolkata7.jpg" },
-                                { name: "Ahmedabad", image: "https://images.unsplash.com/photo-1566552881560-0be862a7c445?w=300&h=300&fit=crop&crop=center" }
-                            ].map((city) => (
-                                <Link
-                                    key={city.name}
-                                    href={`/search?tab=buy&q=${encodeURIComponent(city.name)}`}
-                                    className="group flex flex-col items-center space-y-2 hover:scale-105 transition-all duration-200"
-                                >
-                                    <div className="w-20 h-20 rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow duration-200 ring-2 ring-gray-100 group-hover:ring-[#1F6B4C]/20">
-                                        <img
-                                            src={city.image}
-                                            alt={city.name}
-                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                                <form action="/search" className="p-4 space-y-3">
+                                    <input type="hidden" name="tab" value={activeTab} />
+
+                                    <div className="relative">
+                                        <label htmlFor="q" className="sr-only">Search</label>
+                                        <input
+                                            id="q"
+                                            name="q"
+                                            type="text"
+                                            placeholder="City, locality or project name"
+                                            className="w-full h-12 px-4 rounded-xl bg-[#F7F4EC] border border-transparent focus:bg-white focus:border-[#1F6B4C] focus:ring-2 focus:ring-[#1F6B4C]/15 transition-colors outline-none text-[#15241D] placeholder-[#15241D]/40"
                                         />
                                     </div>
-                                    <span className="text-sm font-medium text-gray-700 group-hover:text-[#1F6B4C] transition-colors duration-200">
-                                        {city.name}
-                                    </span>
+
+                                    <div className="grid grid-cols-2 gap-3">
+                                        <select
+                                            id="type"
+                                            name="type"
+                                            className="h-12 px-4 rounded-xl bg-[#F7F4EC] border border-transparent focus:bg-white focus:border-[#1F6B4C] focus:ring-2 focus:ring-[#1F6B4C]/15 transition-colors outline-none text-[#15241D] cursor-pointer"
+                                            defaultValue=""
+                                        >
+                                            <option value="" disabled>Property type</option>
+                                            <option value="flat">Apartment</option>
+                                            <option value="house">Villa / house</option>
+                                            <option value="land">Plot / land</option>
+                                            <option value="office">Commercial</option>
+                                        </select>
+
+                                        <select
+                                            id="max"
+                                            name="max"
+                                            className="h-12 px-4 rounded-xl bg-[#F7F4EC] border border-transparent focus:bg-white focus:border-[#1F6B4C] focus:ring-2 focus:ring-[#1F6B4C]/15 transition-colors outline-none text-[#15241D] cursor-pointer"
+                                            defaultValue=""
+                                        >
+                                            <option value="" disabled>Budget</option>
+                                            <option value="5000000">Up to ₹50 lacs</option>
+                                            <option value="10000000">Up to ₹1 crore</option>
+                                            <option value="20000000">Up to ₹2 crore</option>
+                                            <option value="50000000">₹5 crore+</option>
+                                        </select>
+                                    </div>
+
+                                    <button
+                                        type="submit"
+                                        className="w-full h-12 rounded-xl bg-[#1F6B4C] text-white font-semibold hover:bg-[#123B29] transition-colors cursor-pointer"
+                                    >
+                                        Search properties
+                                    </button>
+                                </form>
+
+                                <div className="px-4 pb-4 flex items-center gap-2 overflow-x-auto no-scrollbar">
+                                    <span className="text-sm text-[#15241D]/45 whitespace-nowrap">Try:</span>
+                                    {QUICK_FILTERS.map((chip) => (
+                                        <Link
+                                            key={chip}
+                                            href={`/search?tab=${activeTab}&q=${encodeURIComponent(chip)}`}
+                                            className="px-3 py-1.5 rounded-lg text-sm font-medium border border-[#E1D9C8] text-[#15241D]/70 hover:border-[#1F6B4C] hover:text-[#1F6B4C] transition-colors whitespace-nowrap"
+                                        >
+                                            {chip}
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Photo */}
+                        <div className="relative hidden lg:block">
+                            <div className="aspect-[4/5] rounded-2xl overflow-hidden">
+                                <img
+                                    src="https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=900&h=1125&fit=crop&crop=center"
+                                    alt="Bangalore skyline, one of the cities Dreamland lists properties in"
+                                    className="w-full h-full object-cover"
+                                    loading="eager"
+                                />
+                            </div>
+                            <div className="absolute -bottom-6 -left-8 right-10 bg-[#15241D] text-[#F7F4EC] rounded-2xl px-6 py-5">
+                                <p className="text-sm text-[#F7F4EC]/70">Across six cities, right now</p>
+                                <p className="mt-1 text-2xl" style={{ fontFamily: 'var(--font-fraunces)' }}>
+                                    {properties.length > 0 ? `${properties.length}+ open listings` : 'New listings added weekly'}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p className="mt-16 max-w-2xl text-[#15241D]/60 text-base leading-relaxed">
+                        We&apos;ve guided more than five thousand families to a home they didn&apos;t have to second-guess, with every listing checked against the title and the site before it&apos;s published.
+                    </p>
+                </div>
+            </section>
+
+            {/* Search by location */}
+            <section className="border-t border-[#E1D9C8] py-10">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-6">
+                    <div>
+                        <span className="text-sm text-[#15241D]/50">Top cities</span>
+                        <div className="mt-3 flex flex-wrap gap-2">
+                            {TOP_CITIES.map((city) => (
+                                <Link
+                                    key={city}
+                                    href={`/search?tab=buy&q=${encodeURIComponent(city)}`}
+                                    className="px-4 py-2 rounded-full border border-[#E1D9C8] bg-white text-sm font-medium text-[#15241D]/80 hover:border-[#1F6B4C] hover:text-[#1F6B4C] transition-colors"
+                                >
+                                    {city}
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                    <div>
+                        <span className="text-sm text-[#15241D]/50">Popular localities</span>
+                        <div className="mt-3 flex flex-wrap gap-2">
+                            {POPULAR_LOCALITIES.map((loc) => (
+                                <Link
+                                    key={loc}
+                                    href={`/search?tab=buy&q=${encodeURIComponent(loc)}`}
+                                    className="px-4 py-2 rounded-full border border-[#E1D9C8] bg-white text-sm font-medium text-[#15241D]/80 hover:border-[#1F6B4C] hover:text-[#1F6B4C] transition-colors"
+                                >
+                                    {loc}
                                 </Link>
                             ))}
                         </div>
@@ -297,111 +303,221 @@ export default function Home({ initialProperties = null }) {
             </section>
 
             {/* Featured Properties */}
-            <section className="py-10 sm:py-12">
+            <section className="py-12 sm:py-14 border-t border-[#E1D9C8]">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="flex items-baseline justify-between">
-                        <h2 className="text-xl font-semibold">Featured Properties</h2>
-                        <Link href="/search" className="text-[#1F6B4C] text-sm hover:underline">
-                            View all
-                        </Link>
+                    <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+                        <h2 className="text-2xl sm:text-3xl" style={{ fontFamily: 'var(--font-fraunces)' }}>
+                            Handpicked for you
+                        </h2>
+                        <div className="flex items-center gap-4">
+                            <div className="flex items-center rounded-lg border border-[#E1D9C8] bg-white p-1">
+                                <button
+                                    type="button"
+                                    onClick={() => setViewMode('card')}
+                                    aria-label="Card view"
+                                    className={`flex items-center justify-center w-8 h-8 rounded-md transition-colors cursor-pointer ${viewMode === 'card' ? 'bg-[#1F6B4C] text-white' : 'text-[#15241D]/50 hover:text-[#15241D]'}`}
+                                >
+                                    <LayoutGrid className="w-4 h-4" />
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => setViewMode('list')}
+                                    aria-label="List view"
+                                    className={`flex items-center justify-center w-8 h-8 rounded-md transition-colors cursor-pointer ${viewMode === 'list' ? 'bg-[#1F6B4C] text-white' : 'text-[#15241D]/50 hover:text-[#15241D]'}`}
+                                >
+                                    <ListIcon className="w-4 h-4" />
+                                </button>
+                            </div>
+                            <Link href="/search" className="text-[#1F6B4C] text-sm font-semibold hover:text-[#123B29] whitespace-nowrap">
+                                View all listings
+                            </Link>
+                        </div>
                     </div>
 
                     {loading && properties.length === 0 ? (
-                        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                            {[1, 2, 3].map((i) => (
-                                <div key={i} className="overflow-hidden rounded-xl border border-gray-200 animate-pulse">
-                                    <div className="h-48 bg-gray-300"></div>
-                                    <div className="p-4 space-y-3">
-                                        <div className="h-4 bg-gray-300 rounded w-3/4"></div>
-                                        <div className="h-3 bg-gray-300 rounded w-1/2"></div>
-                                        <div className="h-4 bg-gray-300 rounded w-1/3"></div>
-                                        <div className="flex gap-2">
-                                            <div className="h-6 bg-gray-300 rounded w-16"></div>
-                                            <div className="h-6 bg-gray-300 rounded w-16"></div>
+                        viewMode === 'card' ? (
+                            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                                {[1, 2, 3, 4, 5, 6].map((i) => (
+                                    <div key={i} className="border border-[#E1D9C8] rounded-2xl overflow-hidden animate-pulse">
+                                        <div className="aspect-[4/3] bg-[#E1D9C8]"></div>
+                                        <div className="p-5 space-y-3">
+                                            <div className="h-4 bg-[#E1D9C8] rounded w-2/3"></div>
+                                            <div className="h-3 bg-[#E1D9C8] rounded w-1/3"></div>
+                                            <div className="h-4 bg-[#E1D9C8] rounded w-1/4"></div>
                                         </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="space-y-6">
+                                {[1, 2, 3].map((i) => (
+                                    <div key={i} className="flex gap-5 border border-[#E1D9C8] rounded-2xl p-4 animate-pulse">
+                                        <div className="w-40 h-32 bg-[#E1D9C8] rounded-xl shrink-0"></div>
+                                        <div className="flex-1 space-y-3 py-1">
+                                            <div className="h-4 bg-[#E1D9C8] rounded w-2/3"></div>
+                                            <div className="h-3 bg-[#E1D9C8] rounded w-1/3"></div>
+                                            <div className="h-4 bg-[#E1D9C8] rounded w-1/4"></div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )
+                    ) : properties.length === 0 ? (
+                        <div className="text-center py-14 border border-dashed border-[#E1D9C8] rounded-2xl">
+                            <p className="text-[#15241D]/60">No properties yet. New listings will appear here as soon as they&apos;re added.</p>
                         </div>
-                    ) : (
+                    ) : viewMode === 'card' ? (
                         <>
-                            <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                                {properties.slice(0, visibleProperties).map((property) => (
-                                    <div
+                            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                                {visibleList.map((property) => (
+                                    <Link
                                         key={property._id}
-                                        className="group overflow-hidden rounded-xl border border-gray-200 hover:shadow-2xl transition-all duration-300 bg-white"
+                                        href={generatePropertyUrl(property)}
+                                        className="group block rounded-2xl border border-[#E1D9C8] bg-white overflow-hidden hover:shadow-[0_16px_40px_-16px_rgba(21,36,29,0.22)] hover:-translate-y-1 transition-all duration-300"
                                     >
-                                        <Link href={generatePropertyUrl(property)} className="relative block h-56 overflow-hidden">
+                                        <div className="relative aspect-[4/3] overflow-hidden">
                                             <img
                                                 src={property.gallery?.[0] || 'https://via.placeholder.com/400x300?text=No+Image'}
                                                 alt={property.title}
-                                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                                loading="lazy"
                                             />
-                                            <div className="absolute left-3 top-3 flex gap-2">
-                                                <span className="inline-flex items-center px-2 py-1 text-xs font-bold rounded bg-white/95 text-gray-900 shadow-sm uppercase">
+                                            <div className="absolute top-3 left-3 flex gap-2">
+                                                <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-white/90 backdrop-blur-sm text-[#15241D]">
                                                     For {property.mode}
                                                 </span>
                                                 {property.status === 'Ready to Move' && (
-                                                    <span className="inline-flex items-center px-2 py-1 text-xs font-bold rounded bg-[#1F6B4C] text-white shadow-sm uppercase">
+                                                    <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-[#1F6B4C] text-white">
                                                         Ready
                                                     </span>
                                                 )}
                                             </div>
-                                        </Link>
+                                            {property.gallery?.length > 1 && (
+                                                <span className="absolute top-3 right-3 inline-flex items-center gap-1 px-2 py-1 rounded-full text-[11px] font-semibold bg-black/55 text-white backdrop-blur-sm">
+                                                    <ImageIcon className="w-3 h-3" />
+                                                    {property.gallery.length}
+                                                </span>
+                                            )}
+                                        </div>
                                         <div className="p-5">
-                                            <Link href={generatePropertyUrl(property)}>
-                                                <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#1F6B4C] transition-colors line-clamp-1">{property.title}</h3>
-                                                <p className="text-sm text-gray-600 flex items-center gap-1 mt-1">
-                                                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                                                    {property.location}
+                                            <h3 className="text-base font-semibold text-[#15241D] group-hover:text-[#1F6B4C] transition-colors line-clamp-1">
+                                                {property.title}
+                                            </h3>
+                                            <p className="mt-1 text-sm text-[#15241D]/55 flex items-center gap-1">
+                                                <MapPin className="w-3.5 h-3.5 shrink-0" />
+                                                <span className="line-clamp-1">{property.location}</span>
+                                            </p>
+                                            <div className="mt-3 flex items-center justify-between">
+                                                <p className="text-lg font-semibold text-[#15241D] tabular-nums">
+                                                    {property.price ? formatPrice(property.price) : 'Price on request'}
                                                 </p>
-                                                <div className="mt-4 flex items-center justify-between">
-                                                    <p className="text-xl font-extrabold text-[#1F6B4C]">
-                                                        {property.price ? formatPrice(property.price) : 'Price on Request'}
-                                                    </p>
-                                                    <div className="flex gap-2">
-                                                        <span className="px-2 py-1 text-[11px] font-bold uppercase rounded bg-green-50 text-green-700 border border-green-100">
-                                                            Verified
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </Link>
-                                            
-                                            <div className="mt-5 grid grid-cols-2 gap-3">
-                                                <Link 
-                                                    href={generatePropertyUrl(property)}
-                                                    className="flex items-center justify-center py-2.5 px-4 rounded-lg bg-gray-900 text-white text-sm font-bold hover:bg-gray-800 transition-colors"
-                                                >
-                                                    View Details
-                                                </Link>
-                                                <a 
-                                                    href={`https://wa.me/91XXXXXXXXXX?text=Hi, I am interested in ${property.title} (${property.location})`}
-                                                    className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-[#25D366] text-white text-sm font-bold hover:bg-[#128C7E] transition-colors"
-                                                >
-                                                    <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                                                    WhatsApp
-                                                </a>
+                                                <span className="text-xs font-semibold text-[#1F6B4C] inline-flex items-center gap-0.5">
+                                                    Details
+                                                    <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                                                </span>
                                             </div>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+
+                            {properties.length > visibleProperties && (
+                                <div className="mt-10 text-center">
+                                    <button
+                                        onClick={handleSeeMore}
+                                        className="px-6 py-3 rounded-xl border border-[#1F6B4C] text-[#1F6B4C] font-semibold hover:bg-[#1F6B4C] hover:text-white transition-colors cursor-pointer"
+                                    >
+                                        Show {Math.min(30, properties.length - visibleProperties)} more
+                                    </button>
+                                </div>
+                            )}
+                        </>
+                    ) : (
+                        <>
+                            {featured && (
+                                <Link
+                                    href={generatePropertyUrl(featured)}
+                                    className="group grid sm:grid-cols-2 gap-0 border border-[#E1D9C8] rounded-2xl overflow-hidden mb-8"
+                                >
+                                    <div className="h-64 sm:h-full overflow-hidden">
+                                        <img
+                                            src={featured.gallery?.[0] || 'https://via.placeholder.com/800x600?text=No+Image'}
+                                            alt={featured.title}
+                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                    <div className="p-6 sm:p-8 flex flex-col">
+                                        <span className="text-sm font-semibold text-[#1F6B4C]">
+                                            For {featured.mode}{featured.status === 'Ready to Move' ? ' · Ready to move' : ''}
+                                        </span>
+                                        <h3 className="mt-2 text-xl sm:text-2xl group-hover:text-[#1F6B4C] transition-colors" style={{ fontFamily: 'var(--font-fraunces)' }}>
+                                            {featured.title}
+                                        </h3>
+                                        <p className="mt-2 text-[#15241D]/60">{featured.location}</p>
+                                        <p className="mt-4 text-2xl font-semibold text-[#15241D] tabular-nums">
+                                            {featured.price ? formatPrice(featured.price) : 'Price on request'}
+                                        </p>
+                                        <span className="mt-auto pt-6 text-sm font-semibold text-[#1F6B4C] inline-flex items-center gap-1.5">
+                                            View details
+                                            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                        </span>
+                                    </div>
+                                </Link>
+                            )}
+
+                            <div className="divide-y divide-[#E1D9C8] border-t border-[#E1D9C8]">
+                                {rest.map((property) => (
+                                    <div key={property._id} className="group flex flex-col sm:flex-row gap-5 py-6">
+                                        <Link href={generatePropertyUrl(property)} className="block w-full sm:w-44 h-40 sm:h-32 shrink-0 overflow-hidden rounded-xl">
+                                            <img
+                                                src={property.gallery?.[0] || 'https://via.placeholder.com/400x300?text=No+Image'}
+                                                alt={property.title}
+                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                                loading="lazy"
+                                            />
+                                        </Link>
+                                        <div className="flex-1 min-w-0">
+                                            <Link href={generatePropertyUrl(property)}>
+                                                <span className="text-xs font-semibold text-[#1F6B4C]">
+                                                    For {property.mode}
+                                                </span>
+                                                <h3 className="mt-1 text-lg font-semibold text-[#15241D] group-hover:text-[#1F6B4C] transition-colors line-clamp-1">
+                                                    {property.title}
+                                                </h3>
+                                                <p className="text-sm text-[#15241D]/55 mt-0.5">{property.location}</p>
+                                                <p className="mt-2 text-lg font-semibold text-[#15241D] tabular-nums">
+                                                    {property.price ? formatPrice(property.price) : 'Price on request'}
+                                                </p>
+                                            </Link>
+                                        </div>
+                                        <div className="flex sm:flex-col gap-2 sm:w-36 shrink-0">
+                                            <Link
+                                                href={generatePropertyUrl(property)}
+                                                className="flex-1 flex items-center justify-center py-2.5 px-4 rounded-lg border border-[#E1D9C8] text-sm font-semibold text-[#15241D] hover:border-[#1F6B4C] hover:text-[#1F6B4C] transition-colors"
+                                            >
+                                                Details
+                                            </Link>
+                                            <a
+                                                href={`https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(`Hi, I am interested in ${property.title} (${property.location})`)}`}
+                                                className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-lg bg-[#25D366] text-white text-sm font-semibold hover:bg-[#128C7E] transition-colors"
+                                            >
+                                                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                                Chat
+                                            </a>
                                         </div>
                                     </div>
                                 ))}
                             </div>
 
-                            {/* See More Button */}
                             {properties.length > visibleProperties && (
-                                <div className="mt-8 text-center">
+                                <div className="mt-10 text-center">
                                     <button
                                         onClick={handleSeeMore}
-                                        className="px-6 py-3 bg-[#1F6B4C] text-white font-medium rounded-lg hover:bg-[#1F6B4C]/90 transition-colors"
+                                        className="px-6 py-3 rounded-xl border border-[#1F6B4C] text-[#1F6B4C] font-semibold hover:bg-[#1F6B4C] hover:text-white transition-colors cursor-pointer"
                                     >
-                                        See More Properties ({properties.length - visibleProperties} more)
+                                        Show {Math.min(30, properties.length - visibleProperties)} more
                                     </button>
-                                </div>
-                            )}
-
-                            {properties.length === 0 && (
-                                <div className="mt-6 text-center py-12 bg-gray-50 rounded-xl">
-                                    <p className="text-gray-600">No properties found. Properties will appear here once they are added.</p>
                                 </div>
                             )}
                         </>
@@ -409,71 +525,47 @@ export default function Home({ initialProperties = null }) {
                 </div>
             </section>
 
-            {/* Neighborhood chips */}
-            <section className="py-8 bg-gray-50 border-y border-gray-100">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <h2 className="text-lg font-semibold">Explore by locality</h2>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                        {[
-                            "Baner, Pune",
-                            "Whitefield, Bengaluru",
-                            "Andheri, Mumbai",
-                            "Gachibowli, Hyderabad",
-                            "Noida Sector 150",
-                            "Velachery, Chennai",
-                        ].map((loc) => (
-                            <Link
-                                key={loc}
-                                href={`/search?tab=buy&q=${encodeURIComponent(loc)}`}
-                                className="px-3 py-1.5 rounded-full border border-gray-200 bg-white hover:border-gray-300 text-sm"
-                            >
-                                {loc}
-                            </Link>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
             {/* Lead-gen band */}
             <section className="py-16">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="relative overflow-hidden rounded-3xl bg-gray-900 px-6 py-12 sm:px-12 sm:py-16 shadow-2xl">
-                        {/* Decorative background */}
-                        <div className="absolute top-0 right-0 -translate-y-12 translate-x-12 w-64 h-64 bg-[#1F6B4C]/20 rounded-full blur-3xl"></div>
-                        <div className="absolute bottom-0 left-0 translate-y-12 -translate-x-12 w-64 h-64 bg-[#1F6B4C]/10 rounded-full blur-3xl"></div>
-
+                    <div
+                        className="relative overflow-hidden rounded-2xl bg-[#123B29] px-6 py-12 sm:px-14 sm:py-16"
+                        style={{
+                            backgroundImage: `repeating-linear-gradient(0deg, rgba(247,244,236,0.05) 0px, rgba(247,244,236,0.05) 1px, transparent 1px, transparent 48px), repeating-linear-gradient(90deg, rgba(247,244,236,0.05) 0px, rgba(247,244,236,0.05) 1px, transparent 1px, transparent 48px)`
+                        }}
+                    >
                         <div className="relative flex flex-col lg:flex-row items-center justify-between gap-10">
                             <div className="max-w-xl text-center lg:text-left">
-                                <h3 className="text-3xl sm:text-4xl font-extrabold text-white">
-                                    Looking for <span className="text-[#1F6B4C]">Expert Guidance?</span>
+                                <h3 className="text-3xl sm:text-4xl text-[#F7F4EC]" style={{ fontFamily: 'var(--font-fraunces)' }}>
+                                    Talk to someone who knows the street, not just the listing.
                                 </h3>
-                                <p className="mt-4 text-gray-300 text-lg">
-                                    Our property experts will help you find the perfect home at the best price. Get a free consultation today.
+                                <p className="mt-4 text-[#F7F4EC]/70 text-lg">
+                                    Leave your number and one of our advisors will call you back with options that fit your budget and timeline.
                                 </p>
                             </div>
                             <div className="w-full lg:w-auto">
                                 <form
                                     action="/lead"
-                                    className="flex flex-col sm:flex-row gap-3 p-2 bg-white/5 rounded-2xl backdrop-blur-sm border border-white/10"
+                                    className="flex flex-col sm:flex-row gap-3"
                                 >
                                     <label htmlFor="phone-band" className="sr-only">Phone</label>
                                     <input
                                         id="phone-band"
                                         name="phone"
                                         type="tel"
-                                        placeholder="Enter phone number"
-                                        className="h-14 w-full sm:w-72 px-6 rounded-xl bg-white text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-[#1F6B4C] outline-none"
+                                        placeholder="Your phone number"
+                                        className="h-14 w-full sm:w-72 px-5 rounded-xl bg-[#F7F4EC] text-[#15241D] placeholder-[#15241D]/40 focus:ring-2 focus:ring-[#F7F4EC]/40 outline-none"
                                         required
                                     />
                                     <button
                                         type="submit"
-                                        className="h-14 px-8 rounded-xl bg-[#1F6B4C] text-white font-bold text-lg hover:bg-[#1F6B4C]/90 transition-all shadow-lg hover:shadow-red-900/20"
+                                        className="h-14 px-7 rounded-xl bg-[#F7F4EC] text-[#123B29] font-semibold hover:bg-white transition-colors cursor-pointer"
                                     >
-                                        Get Call Back
+                                        Get a call back
                                     </button>
                                 </form>
-                                <p className="mt-3 text-center lg:text-left text-xs text-gray-500">
-                                    * We value your privacy. No spam, only property updates.
+                                <p className="mt-3 text-center lg:text-left text-xs text-[#F7F4EC]/50">
+                                    We&apos;ll only call about properties — no spam.
                                 </p>
                             </div>
                         </div>
@@ -497,18 +589,18 @@ export default function Home({ initialProperties = null }) {
                 <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4" id="successmodalhomepage">
                     <div className="absolute inset-0 bg-black bg-opacity-50" onClick={handleCloseLeadSuccessModal}></div>
                     <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 sm:p-8 text-center mx-4">
-                        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div className="w-16 h-16 bg-[#1F6B4C]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg className="w-8 h-8 text-[#1F6B4C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
                         </div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">Thank You!</h3>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">Thank you!</h3>
                         <p className="text-gray-600 mb-6" id="successmodalhomepageparagraph">
-                            We have received your inquiry successfully. Our team will contact you soon with property details and assistance.
+                            We&apos;ve received your inquiry. Our team will reach out shortly with property details and next steps.
                         </p>
                         <button
                             onClick={handleCloseLeadSuccessModal}
-                            className="w-full px-6 py-3 bg-[#1F6B4C] text-white font-semibold rounded-lg hover:bg-[#1F6B4C]/90 transition-colors"
+                            className="w-full px-6 py-3 bg-[#1F6B4C] text-white font-semibold rounded-lg hover:bg-[#123B29] transition-colors cursor-pointer"
                         >
                             Close
                         </button>

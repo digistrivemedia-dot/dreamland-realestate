@@ -67,8 +67,6 @@ export default function Login() {
         router.push('/admin');
       } else if (data.user.role === 'agent') {
         router.push('/agent/dashboard');
-      } else if (data.user.role === 'builder') {
-        router.push('/builder');
       } else {
         window.location.reload();
         window.location.href = '/';

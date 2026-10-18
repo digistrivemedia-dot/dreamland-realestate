@@ -33,26 +33,19 @@ export async function GET(request) {
     const type = searchParams.get('type');
     const bhk = searchParams.get('bhk');
     const price = searchParams.get('price');
-    const myProperties = searchParams.get('myProperties'); // New parameter for user's own properties
 
     // Build filter object
     const filter = {};
     const andConditions = [];
 
-    // If myProperties=true, show only the logged-in user's properties (all statuses)
-    if (myProperties === 'true' && decoded) {
-      filter.user = decoded.id;
-    } else {
-      // Only show approved properties to non-admin users
-      // Admins and builders can see all properties (for admin panel)
-      if (!decoded || (decoded.role !== 'admin' && decoded.role !== 'builder')) {
-        andConditions.push({
-          $or: [
-            { status: 'approved' },
-            { status: { $exists: false } }  // Include old properties without status field
-          ]
-        });
-      }
+    // Only show approved properties to non-admin users; admins see all (for admin panel)
+    if (!decoded || decoded.role !== 'admin') {
+      andConditions.push({
+        $or: [
+          { status: 'approved' },
+          { status: { $exists: false } }  // Include old properties without status field
+        ]
+      });
     }
 
     if (location) {
@@ -126,8 +119,15 @@ export async function POST(request) {
 
     if (!decoded) {
       return NextResponse.json(
-        { success: false, message: 'Not authorized, please login to list properties' },
+        { success: false, message: 'Not authorized, please login' },
         { status: 401 }
+      );
+    }
+
+    if (decoded.role !== 'admin') {
+      return NextResponse.json(
+        { success: false, message: 'Only admins can add properties' },
+        { status: 403 }
       );
     }
 
@@ -135,10 +135,7 @@ export async function POST(request) {
 
     // Add user ID to property data
     data.user = decoded.id;
-
-    // Set status based on user role
-    // Admin properties are auto-approved, all other users need approval
-    data.status = decoded.role === 'admin' ? 'approved' : 'pending';
+    data.status = 'approved';
 
     // Create property
     const property = await Property.create(data);
