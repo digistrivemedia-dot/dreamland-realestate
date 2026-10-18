@@ -7,7 +7,6 @@ import {
   Building2,
   Phone,
   Mail,
-  MapPin,
   ShieldCheck,
   CheckCircle2,
   AlertCircle,
@@ -32,13 +31,13 @@ export default function AdminSettings() {
 
   // Settings State
   const [settings, setSettings] = useState({
-    companyName: 'A4 Realty',
-    tagline: 'New projects, verified listings, and trusted agents across India',
-    phone: '+91 9002981353',
-    whatsapp: '+91 6289038527',
-    email: 'a4realtyinfo@gmail.com',
-    reraNumber: 'PRM/KA/RERA/1251/309/AG/250915/006180',
-    address: 'No.184, A4 Realty, Hennur Cross, 3rd Cross, Narayanappa Road, Kalyan Nagar Post, Bengaluru, 560043',
+    companyName: 'Dreamland',
+    tagline: '',
+    phone: '',
+    whatsapp: '',
+    email: '',
+    reraNumber: '',
+    address: '',
     autoAssignLeads: true,
     skipInactiveAgents: true,
     duplicateThresholdDays: '30',
@@ -54,7 +53,7 @@ export default function AdminSettings() {
         return;
       }
 
-      const storedSettings = localStorage.getItem('a4_admin_settings');
+      const storedSettings = localStorage.getItem('dreamland_admin_settings');
       if (storedSettings) {
         try {
           setSettings(prev => ({ ...prev, ...JSON.parse(storedSettings) }));
@@ -71,7 +70,7 @@ export default function AdminSettings() {
 
   const handleSave = (e) => {
     e.preventDefault();
-    localStorage.setItem('a4_admin_settings', JSON.stringify(settings));
+    localStorage.setItem('dreamland_admin_settings', JSON.stringify(settings));
     setSavedSuccess(true);
     setTimeout(() => setSavedSuccess(false), 3000);
   };
@@ -85,7 +84,7 @@ export default function AdminSettings() {
             <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight font-serif">
               System Settings &amp; Governance
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#D7242A]/10 text-[#D7242A] border border-[#D7242A]/20">
+            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#1F6B4C]/10 text-[#1F6B4C] border border-[#1F6B4C]/20">
               Admin Console
             </span>
           </div>
@@ -96,7 +95,7 @@ export default function AdminSettings() {
 
         <button
           onClick={handleSave}
-          className="inline-flex items-center space-x-1.5 px-5 py-2.5 bg-[#D7242A] hover:bg-[#b81d22] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-xs self-start md:self-auto cursor-pointer"
+          className="inline-flex items-center space-x-1.5 px-5 py-2.5 bg-[#1F6B4C] hover:bg-[#18593F] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-xs self-start md:self-auto cursor-pointer"
         >
           <Save className="w-4 h-4" />
           <span>Save Preferences</span>
@@ -117,7 +116,7 @@ export default function AdminSettings() {
           onClick={() => setActiveTab('general')}
           className={`px-4 py-2.5 text-xs font-bold rounded-t-xl transition-all border-b-2 flex items-center space-x-2 ${
             activeTab === 'general'
-              ? 'border-[#D7242A] text-[#D7242A] bg-white shadow-2xs'
+              ? 'border-[#1F6B4C] text-[#1F6B4C] bg-white shadow-2xs'
               : 'border-transparent text-slate-500 hover:text-slate-800 hover:bg-slate-100/50'
           }`}
         >
@@ -129,7 +128,7 @@ export default function AdminSettings() {
           onClick={() => setActiveTab('automation')}
           className={`px-4 py-2.5 text-xs font-bold rounded-t-xl transition-all border-b-2 flex items-center space-x-2 ${
             activeTab === 'automation'
-              ? 'border-[#D7242A] text-[#D7242A] bg-white shadow-2xs'
+              ? 'border-[#1F6B4C] text-[#1F6B4C] bg-white shadow-2xs'
               : 'border-transparent text-slate-500 hover:text-slate-800 hover:bg-slate-100/50'
           }`}
         >
@@ -141,7 +140,7 @@ export default function AdminSettings() {
           onClick={() => setActiveTab('tools')}
           className={`px-4 py-2.5 text-xs font-bold rounded-t-xl transition-all border-b-2 flex items-center space-x-2 ${
             activeTab === 'tools'
-              ? 'border-[#D7242A] text-[#D7242A] bg-white shadow-2xs'
+              ? 'border-[#1F6B4C] text-[#1F6B4C] bg-white shadow-2xs'
               : 'border-transparent text-slate-500 hover:text-slate-800 hover:bg-slate-100/50'
           }`}
         >
@@ -153,7 +152,7 @@ export default function AdminSettings() {
           onClick={() => setActiveTab('security')}
           className={`px-4 py-2.5 text-xs font-bold rounded-t-xl transition-all border-b-2 flex items-center space-x-2 ${
             activeTab === 'security'
-              ? 'border-[#D7242A] text-[#D7242A] bg-white shadow-2xs'
+              ? 'border-[#1F6B4C] text-[#1F6B4C] bg-white shadow-2xs'
               : 'border-transparent text-slate-500 hover:text-slate-800 hover:bg-slate-100/50'
           }`}
         >
@@ -181,7 +180,7 @@ export default function AdminSettings() {
                 type="text"
                 value={settings.companyName}
                 onChange={(e) => handleChange('companyName', e.target.value)}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-semibold text-slate-900 outline-none focus:border-[#D7242A] focus:bg-white"
+                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-semibold text-slate-900 outline-none focus:border-[#1F6B4C] focus:bg-white"
               />
             </div>
 
@@ -193,7 +192,7 @@ export default function AdminSettings() {
                 type="text"
                 value={settings.reraNumber}
                 onChange={(e) => handleChange('reraNumber', e.target.value)}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-semibold text-slate-900 outline-none focus:border-[#D7242A] focus:bg-white"
+                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-semibold text-slate-900 outline-none focus:border-[#1F6B4C] focus:bg-white"
               />
             </div>
 
@@ -205,7 +204,7 @@ export default function AdminSettings() {
                 type="text"
                 value={settings.phone}
                 onChange={(e) => handleChange('phone', e.target.value)}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-semibold text-slate-900 outline-none focus:border-[#D7242A] focus:bg-white"
+                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-semibold text-slate-900 outline-none focus:border-[#1F6B4C] focus:bg-white"
               />
             </div>
 
@@ -217,7 +216,7 @@ export default function AdminSettings() {
                 type="text"
                 value={settings.whatsapp}
                 onChange={(e) => handleChange('whatsapp', e.target.value)}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-semibold text-slate-900 outline-none focus:border-[#D7242A] focus:bg-white"
+                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-semibold text-slate-900 outline-none focus:border-[#1F6B4C] focus:bg-white"
               />
             </div>
 
@@ -229,7 +228,7 @@ export default function AdminSettings() {
                 type="email"
                 value={settings.email}
                 onChange={(e) => handleChange('email', e.target.value)}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-semibold text-slate-900 outline-none focus:border-[#D7242A] focus:bg-white"
+                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-semibold text-slate-900 outline-none focus:border-[#1F6B4C] focus:bg-white"
               />
             </div>
 
@@ -241,7 +240,7 @@ export default function AdminSettings() {
                 rows={2}
                 value={settings.address}
                 onChange={(e) => handleChange('address', e.target.value)}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-medium text-slate-900 outline-none focus:border-[#D7242A] focus:bg-white resize-none"
+                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-medium text-slate-900 outline-none focus:border-[#1F6B4C] focus:bg-white resize-none"
               />
             </div>
           </div>
@@ -280,7 +279,7 @@ export default function AdminSettings() {
                 type="checkbox"
                 checked={settings.autoAssignLeads}
                 onChange={(e) => handleChange('autoAssignLeads', e.target.checked)}
-                className="w-5 h-5 text-[#D7242A] rounded focus:ring-[#D7242A] accent-[#D7242A] cursor-pointer"
+                className="w-5 h-5 text-[#1F6B4C] rounded focus:ring-[#1F6B4C] accent-[#1F6B4C] cursor-pointer"
               />
             </div>
 
@@ -296,7 +295,7 @@ export default function AdminSettings() {
                 type="checkbox"
                 checked={settings.skipInactiveAgents}
                 onChange={(e) => handleChange('skipInactiveAgents', e.target.checked)}
-                className="w-5 h-5 text-[#D7242A] rounded focus:ring-[#D7242A] accent-[#D7242A] cursor-pointer"
+                className="w-5 h-5 text-[#1F6B4C] rounded focus:ring-[#1F6B4C] accent-[#1F6B4C] cursor-pointer"
               />
             </div>
 
@@ -311,7 +310,7 @@ export default function AdminSettings() {
               <select
                 value={settings.slaFollowUpHours}
                 onChange={(e) => handleChange('slaFollowUpHours', e.target.value)}
-                className="px-3 py-1.5 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-900 outline-none focus:border-[#D7242A]"
+                className="px-3 py-1.5 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-900 outline-none focus:border-[#1F6B4C]"
               >
                 <option value="4">4 Hours (Aggressive)</option>
                 <option value="12">12 Hours (Standard)</option>
@@ -336,26 +335,6 @@ export default function AdminSettings() {
       {activeTab === 'tools' && (
         <div className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Master Sheet Link */}
-            <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs flex flex-col justify-between space-y-4">
-              <div className="space-y-1">
-                <div className="w-10 h-10 rounded-xl bg-[#D7242A]/10 text-[#D7242A] flex items-center justify-center">
-                  <Database className="w-5 h-5" />
-                </div>
-                <h3 className="text-sm font-bold text-slate-900 pt-2">Master Property Sheet Upload</h3>
-                <p className="text-xs text-slate-500">
-                  Upload CSV records to synchronize developer project catalogs and pricing sheets.
-                </p>
-              </div>
-              <Link
-                href="/admin/property-sheet"
-                className="inline-flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-bold text-slate-800 bg-slate-100 hover:bg-slate-200 transition-colors"
-              >
-                <span>Open Property Sheet Console</span>
-                <ChevronRight className="w-4 h-4" />
-              </Link>
-            </div>
-
             {/* Duplicate Checker Link */}
             <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs flex flex-col justify-between space-y-4">
               <div className="space-y-1">
@@ -392,26 +371,6 @@ export default function AdminSettings() {
                 className="inline-flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-bold text-slate-800 bg-slate-100 hover:bg-slate-200 transition-colors"
               >
                 <span>Access Lead Sanitizer</span>
-                <ChevronRight className="w-4 h-4" />
-              </Link>
-            </div>
-
-            {/* Geospatial Map Tool */}
-            <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs flex flex-col justify-between space-y-4">
-              <div className="space-y-1">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
-                  <MapPin className="w-5 h-5" />
-                </div>
-                <h3 className="text-sm font-bold text-slate-900 pt-2">Interactive Geographic Map</h3>
-                <p className="text-xs text-slate-500">
-                  View property density coordinates and extract missing latitude/longitude markers.
-                </p>
-              </div>
-              <Link
-                href="/admin/map"
-                className="inline-flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-bold text-slate-800 bg-slate-100 hover:bg-slate-200 transition-colors"
-              >
-                <span>Open Property Map</span>
                 <ChevronRight className="w-4 h-4" />
               </Link>
             </div>

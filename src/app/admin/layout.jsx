@@ -68,7 +68,7 @@ export default function AdminLayout({ children }) {
       name: 'Sales CRM',
       href: '/admin/crm/leads',
       badge: 'Core',
-      badgeColor: 'bg-[#D7242A]/20 text-[#ff6b70] border border-[#D7242A]/40',
+      badgeColor: 'bg-[#1F6B4C]/20 text-[#6EE7A1] border border-[#1F6B4C]/40',
       icon: Users,
     },
     {
@@ -76,23 +76,24 @@ export default function AdminLayout({ children }) {
       href: '/admin/properties',
       icon: Building2,
     },
-    {
-      name: 'Property Search',
-      href: '/admin/property-search',
-      icon: Search,
-    },
-    {
-      name: 'AI Advisor',
-      href: '/ai-assistant',
-      badge: 'Beta',
-      badgeColor: 'bg-violet-500/20 text-violet-300 border border-violet-500/30',
-      icon: Sparkles,
-    },
-    {
-      name: 'Geospatial Map',
-      href: '/admin/map',
-      icon: Map,
-    },
+    // Hidden modules (re-enable by uncommenting): Property Search, AI Advisor, Geospatial Map
+    // {
+    //   name: 'Property Search',
+    //   href: '/admin/property-search',
+    //   icon: Search,
+    // },
+    // {
+    //   name: 'AI Advisor',
+    //   href: '/ai-assistant',
+    //   badge: 'Beta',
+    //   badgeColor: 'bg-violet-500/20 text-violet-300 border border-violet-500/30',
+    //   icon: Sparkles,
+    // },
+    // {
+    //   name: 'Geospatial Map',
+    //   href: '/admin/map',
+    //   icon: Map,
+    // },
     {
       name: 'Editorial & Blogs',
       href: '/admin/blogs',
@@ -120,8 +121,8 @@ export default function AdminLayout({ children }) {
       <div className="min-h-screen bg-[#0B0F19] flex items-center justify-center">
         <div className="text-center">
           <div className="relative w-16 h-16 mx-auto mb-4">
-            <div className="absolute inset-0 rounded-full border-2 border-[#D7242A]/20"></div>
-            <div className="absolute inset-0 rounded-full border-2 border-t-[#D7242A] animate-spin"></div>
+            <div className="absolute inset-0 rounded-full border-2 border-[#1F6B4C]/20"></div>
+            <div className="absolute inset-0 rounded-full border-2 border-t-[#1F6B4C] animate-spin"></div>
           </div>
           <p className="text-sm font-medium tracking-wider uppercase text-slate-400">Authenticating Executive Session...</p>
         </div>
@@ -134,7 +135,7 @@ export default function AdminLayout({ children }) {
   }
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] flex flex-col antialiased selection:bg-[#D7242A] selection:text-white">
+    <div className="min-h-screen bg-[#F8FAFC] flex flex-col antialiased selection:bg-[#1F6B4C] selection:text-white">
       {/* Mobile Header */}
       <div className="md:hidden bg-[#0B0F19] text-white border-b border-slate-800 px-4 py-3 sticky top-0 z-40 flex items-center justify-between">
         <div className="flex items-center space-x-3">
@@ -147,12 +148,12 @@ export default function AdminLayout({ children }) {
             <Menu className="w-6 h-6" />
           </button>
           <div className="flex items-center space-x-2.5">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#D7242A] to-[#99151A] flex items-center justify-center text-white font-bold text-sm shadow-md shadow-[#D7242A]/30">
-              A4
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#1F6B4C] to-[#0E3B29] flex items-center justify-center text-white font-bold text-sm shadow-md shadow-[#1F6B4C]/30">
+              D
             </div>
             <div>
-              <h2 className="text-sm font-bold tracking-tight text-white">A4 REALTY</h2>
-              <p className="text-[10px] uppercase tracking-widest text-[#D7242A] font-semibold">CRM Suite</p>
+              <h2 className="text-sm font-bold tracking-tight text-white">DREAMLAND</h2>
+              <p className="text-[10px] uppercase tracking-widest text-[#1F6B4C] font-semibold">CRM Suite</p>
             </div>
           </div>
         </div>
@@ -235,7 +236,7 @@ export default function AdminLayout({ children }) {
             <div className="flex items-center space-x-2 text-xs font-medium text-slate-500">
               <span className="text-slate-400">Workspace</span>
               <span>/</span>
-              <span className="text-[#D7242A] font-semibold">
+              <span className="text-[#1F6B4C] font-semibold">
                 {pathname === '/admin'
                   ? 'Overview'
                   : pathname.startsWith('/admin/crm')
@@ -263,7 +264,7 @@ export default function AdminLayout({ children }) {
 
             <Link
               href="/admin/crm/leads"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-white bg-gradient-to-r from-[#D7242A] to-[#B01A20] hover:from-[#c21e24] hover:to-[#99151A] shadow-sm shadow-[#D7242A]/20 transition-all hover:shadow"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-white bg-gradient-to-r from-[#1F6B4C] to-[#18593F] hover:from-[#226B4A] hover:to-[#0E3B29] shadow-sm shadow-[#1F6B4C]/20 transition-all hover:shadow"
             >
               <Users className="w-3.5 h-3.5" />
               <span>Open CRM</span>
@@ -298,15 +299,15 @@ function SidebarContent({
       >
         {!collapsed ? (
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#D7242A] via-[#B81B20] to-[#7A0E12] p-0.5 shadow-lg shadow-[#D7242A]/30 flex items-center justify-center flex-shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#1F6B4C] via-[#18593F] to-[#0E3B29] p-0.5 shadow-lg shadow-[#1F6B4C]/30 flex items-center justify-center flex-shrink-0">
               <div className="w-full h-full rounded-[10px] bg-[#0B0F19]/30 flex items-center justify-center text-white font-black text-base tracking-tighter">
-                A4
+                D
               </div>
             </div>
             <div className="overflow-hidden">
               <div className="flex items-center gap-1.5">
-                <h1 className="text-sm font-black tracking-wider text-white">A4 REALTY</h1>
-                <ShieldCheck className="w-3.5 h-3.5 text-[#D7242A]" />
+                <h1 className="text-sm font-black tracking-wider text-white">DREAMLAND</h1>
+                <ShieldCheck className="w-3.5 h-3.5 text-[#1F6B4C]" />
               </div>
               <p className="text-[10px] font-semibold tracking-widest text-slate-400 uppercase">
                 Executive Suite
@@ -314,8 +315,8 @@ function SidebarContent({
             </div>
           </div>
         ) : (
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#D7242A] via-[#B81B20] to-[#7A0E12] flex items-center justify-center text-white font-black text-sm shadow-lg shadow-[#D7242A]/30">
-            A4
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#1F6B4C] via-[#18593F] to-[#0E3B29] flex items-center justify-center text-white font-black text-sm shadow-lg shadow-[#1F6B4C]/30">
+            D
           </div>
         )}
 
@@ -358,7 +359,7 @@ function SidebarContent({
               onClick={onItemClick}
               className={`group relative flex items-center rounded-xl px-3 py-2.5 text-xs font-semibold transition-all duration-150 ${
                 isActive
-                  ? 'bg-gradient-to-r from-[#D7242A] to-[#B01A20] text-white shadow-md shadow-[#D7242A]/25'
+                  ? 'bg-gradient-to-r from-[#1F6B4C] to-[#18593F] text-white shadow-md shadow-[#1F6B4C]/25'
                   : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
               } ${collapsed ? 'justify-center px-2' : ''}`}
               title={collapsed ? item.name : ''}
@@ -422,7 +423,7 @@ function SidebarContent({
           <div className="flex items-center justify-between p-2 rounded-xl bg-slate-900/60 border border-slate-800/60">
             <div className="flex items-center space-x-2.5 min-w-0">
               <div className="relative flex-shrink-0">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#D7242A]/80 to-slate-800 flex items-center justify-center font-bold text-white text-xs border border-slate-700/60 shadow-inner">
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#1F6B4C]/80 to-slate-800 flex items-center justify-center font-bold text-white text-xs border border-slate-700/60 shadow-inner">
                   {user?.name?.charAt(0)?.toUpperCase() || 'A'}
                 </div>
                 <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-500 border-2 border-[#0B0F19] rounded-full"></span>
@@ -430,7 +431,7 @@ function SidebarContent({
               <div className="min-w-0 flex-1">
                 <p className="text-xs font-bold text-white truncate">{user?.name || 'Executive Admin'}</p>
                 <div className="flex items-center gap-1 mt-0.5">
-                  <span className="px-1.5 py-0.2 rounded text-[9px] font-bold uppercase tracking-wider bg-[#D7242A]/20 text-[#ff7d82]">
+                  <span className="px-1.5 py-0.2 rounded text-[9px] font-bold uppercase tracking-wider bg-[#1F6B4C]/20 text-[#6EE7A1]">
                     Superadmin
                   </span>
                 </div>

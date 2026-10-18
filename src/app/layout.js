@@ -17,12 +17,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "A4Realty - Premium Property Solutions",
-  description: "Discover premium properties, new projects, and verified listings with A4Realty. Your trusted partner for buying, selling, and renting properties across India.",
-  keywords: "real estate, property, buy property, rent property, new projects, verified listings, A4Realty, premium properties, India",
-  authors: [{ name: "A4Realty" }],
-  creator: "A4Realty",
-  publisher: "A4Realty",
+  title: "Dreamland - Premium Property Solutions",
+  description: "Discover premium properties, new projects, and verified listings with Dreamland. Your trusted partner for buying, selling, and renting properties across India.",
+  keywords: "real estate, property, buy property, rent property, new projects, verified listings, Dreamland, premium properties, India",
+  authors: [{ name: "Dreamland" }],
+  creator: "Dreamland",
+  publisher: "Dreamland",
   formatDetection: {
     email: false,
     address: false,
@@ -30,24 +30,24 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: "/finalLogo.jpeg", type: "image/jpeg" },
-      { url: "/serachLogo.png" },
+      { url: "/dreamlandlogo.jpeg", type: "image/jpeg" },
+      { url: "/dreamlandlogo.jpeg" },
     ],
-    apple: "/finalLogo.jpeg",
+    apple: "/dreamlandlogo.jpeg",
   },
   openGraph: {
-    title: "A4Realty - Premium Property Solutions | Built on Trust",
-    description: "Discover premium properties, new projects, and verified listings with A4Realty. Your trusted partner for buying, selling, and renting properties across India.",
-    url: "https://a4realty.vercel.app",
-    siteName: "A4Realty",
+    title: "Dreamland - Premium Property Solutions | Built on Trust",
+    description: "Discover premium properties, new projects, and verified listings with Dreamland. Your trusted partner for buying, selling, and renting properties across India.",
+    url: "https://dreamland.com",
+    siteName: "Dreamland",
     images: [
       {
-        url: "/serachLogo.png",
-        // url: "/finalLogo.jpeg",
+        url: "/dreamlandlogo.jpeg",
+        // url: "/dreamlandlogo.jpeg",
 
         width: 1200,
         height: 600,
-        alt: "A4Realty - Built on Trust",
+        alt: "Dreamland - Built on Trust",
       },
     ],
     locale: "en_IN",
@@ -55,10 +55,10 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "A4Realty - Premium Property Solutions",
-    description: "Discover premium properties, new projects, and verified listings with A4Realty. Your trusted partner for buying, selling, and renting properties across India.",
-    images: ["/serachLogo.png"],
-    // images: ["/finalLogo.jpeg"],
+    title: "Dreamland - Premium Property Solutions",
+    description: "Discover premium properties, new projects, and verified listings with Dreamland. Your trusted partner for buying, selling, and renting properties across India.",
+    images: ["/dreamlandlogo.jpeg"],
+    // images: ["/dreamlandlogo.jpeg"],
 
   },
   robots: {
@@ -107,17 +107,17 @@ export default function RootLayout({ children }) {
           src="https://t.contentsquare.net/uxa/78bbf96b8c928.js"
           strategy="afterInteractive"
         />
-        <link rel="icon" href="/finalLogo.jpeg" type="image/jpeg" />
-        <link rel="apple-touch-icon" href="/finalLogo.jpeg" />
-        <meta name="theme-color" content="#D7242A" />
-        <meta name="msapplication-TileColor" content="#D7242A" />
-        <meta name="msapplication-TileImage" content="/finalLogo.jpeg" />
-        <meta property="og:image" content="/serachLogo.png" />
+        <link rel="icon" href="/dreamlandlogo.jpeg" type="image/jpeg" />
+        <link rel="apple-touch-icon" href="/dreamlandlogo.jpeg" />
+        <meta name="theme-color" content="#1F6B4C" />
+        <meta name="msapplication-TileColor" content="#1F6B4C" />
+        <meta name="msapplication-TileImage" content="/dreamlandlogo.jpeg" />
+        <meta property="og:image" content="/dreamlandlogo.jpeg" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="600" />
-        <meta name="twitter:image" content="/serachLogo.png" />
-        <link rel="shortcut icon" href="/finalLogo.jpeg" />
+        <meta name="twitter:image" content="/dreamlandlogo.jpeg" />
+        <link rel="shortcut icon" href="/dreamlandlogo.jpeg" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body
@@ -132,7 +132,7 @@ export default function RootLayout({ children }) {
             style={{ display: 'none', visibility: 'hidden' }}
           ></iframe>
         </noscript>
-        {/* Organization + WebSite Structured Data — helps Google & AI assistants understand A4Realty */}
+        {/* Organization + WebSite Structured Data — helps Google & AI assistants understand Dreamland */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -141,61 +141,55 @@ export default function RootLayout({ children }) {
               "@graph": [
                 {
                   "@type": "RealEstateAgent",
-                  "@id": "https://www.a4realty.in/#organization",
-                  "name": "A4 Realty",
-                  "alternateName": "A4Realty",
-                  "url": "https://www.a4realty.in",
+                  "@id": "https://www.dreamland.com/#organization",
+                  "name": "Dreamland",
+                  "alternateName": "Dreamland",
+                  "url": "https://www.dreamland.com",
                   "logo": {
                     "@type": "ImageObject",
-                    "url": "https://www.a4realty.in/finalLogo.jpeg",
+                    "url": "https://www.dreamland.com/dreamlandlogo.jpeg",
                     "width": 200,
                     "height": 60
                   },
-                  "image": "https://www.a4realty.in/serachLogo.png",
-                  "description": "A4 Realty is a premium real estate agency in Bangalore offering verified property listings, new residential projects, and expert guidance for buying, selling, and renting properties across India.",
+                  "image": "https://www.dreamland.com/dreamlandlogo.jpeg",
+                  "description": "Dreamland is a premium real estate agency offering verified property listings, new residential projects, and expert guidance for buying, selling, and renting properties across India.",
                   "address": {
                     "@type": "PostalAddress",
-                    "streetAddress": "No.184, A4 Realty, Hennur Cross, 3rd Cross, Narayanappa Road, Kalyan Nagar Post",
-                    "addressLocality": "Bengaluru",
-                    "addressRegion": "Karnataka",
-                    "postalCode": "560043",
+                    "streetAddress": "TBD",
+                    "addressLocality": "TBD",
+                    "addressRegion": "TBD",
+                    "postalCode": "000000",
                     "addressCountry": "IN"
                   },
-                  "telephone": "+91-9002981353",
+                  "telephone": "TBD",
                   "contactPoint": [
                     {
                       "@type": "ContactPoint",
-                      "telephone": "+91-9002981353",
+                      "telephone": "TBD",
                       "contactType": "sales",
                       "areaServed": "IN",
                       "availableLanguage": ["English", "Hindi"]
                     }
                   ],
-                  "areaServed": {
-                    "@type": "City",
-                    "name": "Bengaluru"
-                  },
                   "knowsAbout": ["Real Estate", "Property Investment", "Residential Properties", "New Projects", "Apartments", "Villas", "Plots"],
                   "slogan": "Built on Trust",
-                  "foundingDate": "2020",
-                  "numberOfEmployees": { "@type": "QuantitativeValue", "value": 50 },
                   "sameAs": [
-                    "https://www.a4realty.in"
+                    "https://www.dreamland.com"
                   ]
                 },
                 {
                   "@type": "WebSite",
-                  "@id": "https://www.a4realty.in/#website",
-                  "url": "https://www.a4realty.in",
-                  "name": "A4Realty",
+                  "@id": "https://www.dreamland.com/#website",
+                  "url": "https://www.dreamland.com",
+                  "name": "Dreamland",
                   "description": "Premium Property Solutions — Buy, Sell & Rent Verified Properties in India",
-                  "publisher": { "@id": "https://www.a4realty.in/#organization" },
+                  "publisher": { "@id": "https://www.dreamland.com/#organization" },
                   "inLanguage": "en-IN",
                   "potentialAction": {
                     "@type": "SearchAction",
                     "target": {
                       "@type": "EntryPoint",
-                      "urlTemplate": "https://www.a4realty.in/search?q={search_term_string}"
+                      "urlTemplate": "https://www.dreamland.com/search?q={search_term_string}"
                     },
                     "query-input": "required name=search_term_string"
                   }

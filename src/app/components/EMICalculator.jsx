@@ -56,7 +56,7 @@ function PieChartVisual({ principalPercent, interestPercent, totalAmount }) {
                     cy="96"
                     r={radius}
                     fill="none"
-                    stroke="#D7242A"
+                    stroke="#1F6B4C"
                     strokeWidth="28"
                     strokeDasharray={`${interestDash} ${circumference}`}
                     strokeDashoffset={-principalDash}
@@ -181,13 +181,13 @@ function CustomSlider({ value, onChange, min, max, step = 1, formatValue }) {
             >
                 {/* Progress bar */}
                 <div
-                    className="absolute h-2 bg-gradient-to-r from-[#D7242A] to-[#ff4444] rounded-full transition-all duration-200"
+                    className="absolute h-2 bg-gradient-to-r from-[#1F6B4C] to-[#6EE7A1] rounded-full transition-all duration-200"
                     style={{ width: `${safePercentage}%` }}
                 />
 
                 {/* Draggable thumb */}
                 <div
-                    className={`absolute top-1/2 -translate-y-1/2 w-5 h-5 bg-white border-3 border-[#D7242A] rounded-full shadow-lg transition-all duration-200 pointer-events-none ${
+                    className={`absolute top-1/2 -translate-y-1/2 w-5 h-5 bg-white border-3 border-[#1F6B4C] rounded-full shadow-lg transition-all duration-200 pointer-events-none ${
                         isDragging ? 'scale-110' : ''
                     }`}
                     style={{ left: `calc(${safePercentage}% - 10px)` }}
@@ -270,7 +270,7 @@ export default function EMICalculator({
         <div className={`${embedded ? '' : 'bg-white'} rounded-2xl ${embedded ? '' : 'shadow-xl'} overflow-hidden`}>
             {/* Header */}
             {!embedded && (
-                <div className="bg-gradient-to-r from-[#D7242A] to-[#ff4444] px-6 py-8 text-white">
+                <div className="bg-gradient-to-r from-[#1F6B4C] to-[#6EE7A1] px-6 py-8 text-white">
                     <div className="flex items-center gap-3 mb-2">
                         <Calculator className="w-8 h-8" />
                         <h2 className="text-3xl font-bold">EMI Calculator</h2>
@@ -311,7 +311,7 @@ export default function EMICalculator({
                                         }}
                                         min={minPrice}
                                         max={maxPrice}
-                                        className="w-full pl-8 pr-4 py-2.5 border-2 border-gray-300 rounded-lg focus:border-[#D7242A] focus:outline-none text-base font-semibold transition-colors"
+                                        className="w-full pl-8 pr-4 py-2.5 border-2 border-gray-300 rounded-lg focus:border-[#1F6B4C] focus:outline-none text-base font-semibold transition-colors"
                                         placeholder={`₹${minPrice.toLocaleString('en-IN')} - ₹${maxPrice.toLocaleString('en-IN')}`}
                                     />
                                 </div>
@@ -335,7 +335,7 @@ export default function EMICalculator({
                                 <label className="text-sm font-semibold text-gray-700">
                                     Down Payment (%)
                                 </label>
-                                <span className="text-sm font-bold text-[#D7242A]">
+                                <span className="text-sm font-bold text-[#1F6B4C]">
                                     {formatCurrency((propertyPrice * downPaymentPercent) / 100)}
                                 </span>
                             </div>
@@ -355,7 +355,7 @@ export default function EMICalculator({
                                         min={0}
                                         max={50}
                                         step={1}
-                                        className="w-full px-4 py-2.5 border-2 border-gray-300 rounded-lg focus:border-[#D7242A] focus:outline-none text-base font-semibold transition-colors"
+                                        className="w-full px-4 py-2.5 border-2 border-gray-300 rounded-lg focus:border-[#1F6B4C] focus:outline-none text-base font-semibold transition-colors"
                                         placeholder="0-50%"
                                     />
                                     <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 font-medium">%</span>
@@ -392,7 +392,7 @@ export default function EMICalculator({
                                         min={6.5}
                                         max={15}
                                         step={0.1}
-                                        className="w-full px-4 py-2.5 border-2 border-gray-300 rounded-lg focus:border-[#D7242A] focus:outline-none text-base font-semibold transition-colors"
+                                        className="w-full px-4 py-2.5 border-2 border-gray-300 rounded-lg focus:border-[#1F6B4C] focus:outline-none text-base font-semibold transition-colors"
                                         placeholder="6.5-15%"
                                     />
                                     <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 font-medium">%</span>
@@ -429,7 +429,7 @@ export default function EMICalculator({
                                         min={1}
                                         max={30}
                                         step={1}
-                                        className="w-full px-4 py-2.5 border-2 border-gray-300 rounded-lg focus:border-[#D7242A] focus:outline-none text-base font-semibold transition-colors"
+                                        className="w-full px-4 py-2.5 border-2 border-gray-300 rounded-lg focus:border-[#1F6B4C] focus:outline-none text-base font-semibold transition-colors"
                                         placeholder="1-30 years"
                                     />
                                     <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 font-medium">Years</span>
@@ -459,7 +459,7 @@ export default function EMICalculator({
                     {/* Results Section */}
                     <div className="space-y-6">
                         {/* Monthly EMI - Primary Result */}
-                        <div className="bg-gradient-to-br from-[#D7242A] to-[#ff4444] rounded-2xl p-6 text-white shadow-lg">
+                        <div className="bg-gradient-to-br from-[#1F6B4C] to-[#6EE7A1] rounded-2xl p-6 text-white shadow-lg">
                             <div className="flex items-center gap-2 mb-2">
                                 <DollarSign className="w-5 h-5" />
                                 <p className="text-sm font-medium opacity-90">Monthly EMI</p>
@@ -530,7 +530,7 @@ export default function EMICalculator({
 
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center gap-2">
-                                                <div className="w-4 h-4 bg-[#D7242A] rounded-full"></div>
+                                                <div className="w-4 h-4 bg-[#1F6B4C] rounded-full"></div>
                                                 <span className="text-sm text-gray-700">Interest</span>
                                             </div>
                                             <span className="text-sm font-semibold text-gray-900">

@@ -59,7 +59,7 @@ function SearchableSelect({ value, onChange, options = [], placeholder, label })
     <div ref={wrapperRef} className="relative">
       <div
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full px-3 py-2 bg-slate-50 hover:bg-slate-100/60 border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#D7242A]/15 focus:border-[#D7242A] cursor-pointer text-xs font-semibold flex justify-between items-center transition-colors"
+        className="w-full px-3 py-2 bg-slate-50 hover:bg-slate-100/60 border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#1F6B4C]/15 focus:border-[#1F6B4C] cursor-pointer text-xs font-semibold flex justify-between items-center transition-colors"
       >
         <span className={value ? 'text-slate-900 font-bold' : 'text-slate-500 font-medium truncate'}>
           {displayValue}
@@ -77,7 +77,7 @@ function SearchableSelect({ value, onChange, options = [], placeholder, label })
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder={`Search ${label.toLowerCase()}...`}
-              className="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#D7242A]"
+              className="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#1F6B4C]"
               onClick={(e) => e.stopPropagation()}
               autoFocus
             />
@@ -94,8 +94,8 @@ function SearchableSelect({ value, onChange, options = [], placeholder, label })
                 <div
                   key={option}
                   onClick={() => handleSelect(option)}
-                  className={`px-3 py-2 hover:bg-rose-50 hover:text-[#D7242A] cursor-pointer text-xs transition-colors ${
-                    value === option ? 'bg-[#D7242A]/10 text-[#D7242A] font-bold' : 'text-slate-800 font-medium'
+                  className={`px-3 py-2 hover:bg-rose-50 hover:text-[#1F6B4C] cursor-pointer text-xs transition-colors ${
+                    value === option ? 'bg-[#1F6B4C]/10 text-[#1F6B4C] font-bold' : 'text-slate-800 font-medium'
                   }`}
                 >
                   {option}
@@ -222,7 +222,7 @@ export default function AdminPropertySearch() {
             <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight font-serif">
               Master Property Terminal
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#D7242A]/10 text-[#D7242A] border border-[#D7242A]/20">
+            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#1F6B4C]/10 text-[#1F6B4C] border border-[#1F6B4C]/20">
               Executive Search
             </span>
           </div>
@@ -256,7 +256,7 @@ export default function AdminPropertySearch() {
               onChange={(e) => handleFilterChange('search', e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
               placeholder="Search by project name, builder, micromarket, or amenities..."
-              className="w-full pl-10 pr-10 py-2.5 bg-slate-50 hover:bg-slate-100/60 focus:bg-white text-slate-900 placeholder:text-slate-400 text-sm font-medium rounded-xl border border-slate-200 focus:border-[#D7242A] focus:ring-2 focus:ring-[#D7242A]/15 transition-all outline-none"
+              className="w-full pl-10 pr-10 py-2.5 bg-slate-50 hover:bg-slate-100/60 focus:bg-white text-slate-900 placeholder:text-slate-400 text-sm font-medium rounded-xl border border-slate-200 focus:border-[#1F6B4C] focus:ring-2 focus:ring-[#1F6B4C]/15 transition-all outline-none"
             />
             {filters.search && (
               <button
@@ -272,7 +272,7 @@ export default function AdminPropertySearch() {
           </div>
           <button
             onClick={handleSearch}
-            className="px-6 py-2.5 bg-[#D7242A] hover:bg-[#b81d22] text-white rounded-xl text-xs font-bold tracking-wider uppercase transition-all shadow-xs flex items-center justify-center space-x-1.5 cursor-pointer"
+            className="px-6 py-2.5 bg-[#1F6B4C] hover:bg-[#18593F] text-white rounded-xl text-xs font-bold tracking-wider uppercase transition-all shadow-xs flex items-center justify-center space-x-1.5 cursor-pointer"
           >
             <Search className="w-3.5 h-3.5" />
             <span>Search</span>
@@ -281,8 +281,8 @@ export default function AdminPropertySearch() {
 
         {/* Collapsible Advanced Filters */}
         <details className="group">
-          <summary className="flex items-center space-x-2 text-xs font-bold text-slate-700 hover:text-[#D7242A] cursor-pointer select-none py-1">
-            <SlidersHorizontal className="w-3.5 h-3.5 text-[#D7242A]" />
+          <summary className="flex items-center space-x-2 text-xs font-bold text-slate-700 hover:text-[#1F6B4C] cursor-pointer select-none py-1">
+            <SlidersHorizontal className="w-3.5 h-3.5 text-[#1F6B4C]" />
             <span>Advanced Search Filters (Developer, Location, Budget, BHK)</span>
             <ChevronDown className="w-3.5 h-3.5 group-open:rotate-180 transition-transform text-slate-400" />
           </summary>
@@ -349,7 +349,7 @@ export default function AdminPropertySearch() {
                 value={filters.minPrice}
                 onChange={(e) => handleFilterChange('minPrice', e.target.value)}
                 placeholder="e.g. 50"
-                className="w-full px-3 py-2 bg-slate-50 text-slate-800 text-xs font-semibold rounded-xl border border-slate-200 focus:border-[#D7242A] focus:bg-white outline-none transition-colors"
+                className="w-full px-3 py-2 bg-slate-50 text-slate-800 text-xs font-semibold rounded-xl border border-slate-200 focus:border-[#1F6B4C] focus:bg-white outline-none transition-colors"
               />
             </div>
 
@@ -362,7 +362,7 @@ export default function AdminPropertySearch() {
                 value={filters.maxPrice}
                 onChange={(e) => handleFilterChange('maxPrice', e.target.value)}
                 placeholder="e.g. 400"
-                className="w-full px-3 py-2 bg-slate-50 text-slate-800 text-xs font-semibold rounded-xl border border-slate-200 focus:border-[#D7242A] focus:bg-white outline-none transition-colors"
+                className="w-full px-3 py-2 bg-slate-50 text-slate-800 text-xs font-semibold rounded-xl border border-slate-200 focus:border-[#1F6B4C] focus:bg-white outline-none transition-colors"
               />
             </div>
 
@@ -375,7 +375,7 @@ export default function AdminPropertySearch() {
                 value={filters.possessionDate}
                 onChange={(e) => handleFilterChange('possessionDate', e.target.value)}
                 placeholder="e.g. Dec 2026, Ready"
-                className="w-full px-3 py-2 bg-slate-50 text-slate-800 text-xs font-semibold rounded-xl border border-slate-200 focus:border-[#D7242A] focus:bg-white outline-none transition-colors"
+                className="w-full px-3 py-2 bg-slate-50 text-slate-800 text-xs font-semibold rounded-xl border border-slate-200 focus:border-[#1F6B4C] focus:bg-white outline-none transition-colors"
               />
             </div>
 
@@ -388,7 +388,7 @@ export default function AdminPropertySearch() {
                 value={filters.amenities}
                 onChange={(e) => handleFilterChange('amenities', e.target.value)}
                 placeholder="e.g. Clubhouse, Pool"
-                className="w-full px-3 py-2 bg-slate-50 text-slate-800 text-xs font-semibold rounded-xl border border-slate-200 focus:border-[#D7242A] focus:bg-white outline-none transition-colors"
+                className="w-full px-3 py-2 bg-slate-50 text-slate-800 text-xs font-semibold rounded-xl border border-slate-200 focus:border-[#1F6B4C] focus:bg-white outline-none transition-colors"
               />
             </div>
           </div>
@@ -413,7 +413,7 @@ export default function AdminPropertySearch() {
       {/* Results Section */}
       {loading ? (
         <div className="bg-white rounded-2xl border border-slate-200/80 p-16 text-center">
-          <div className="w-10 h-10 rounded-2xl border-2 border-t-[#D7242A] border-r-transparent border-b-[#D7242A] border-l-transparent animate-spin mx-auto mb-3"></div>
+          <div className="w-10 h-10 rounded-2xl border-2 border-t-[#1F6B4C] border-r-transparent border-b-[#1F6B4C] border-l-transparent animate-spin mx-auto mb-3"></div>
           <p className="text-xs font-bold text-slate-700">Executing Master Search Query...</p>
         </div>
       ) : properties.length > 0 ? (
@@ -433,15 +433,15 @@ export default function AdminPropertySearch() {
             {properties.map((property) => (
               <div
                 key={property._id}
-                className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs hover:shadow-md hover:border-[#D7242A]/30 transition-all flex flex-col justify-between"
+                className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs hover:shadow-md hover:border-[#1F6B4C]/30 transition-all flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-start justify-between gap-3 mb-2">
                     <div>
-                      <div className="text-base font-bold text-slate-900 hover:text-[#D7242A] transition-colors">
+                      <div className="text-base font-bold text-slate-900 hover:text-[#1F6B4C] transition-colors">
                         {property.projectName}
                       </div>
-                      <div className="text-xs font-semibold text-[#D7242A] flex items-center space-x-1 mt-0.5">
+                      <div className="text-xs font-semibold text-[#1F6B4C] flex items-center space-x-1 mt-0.5">
                         <Building2 className="w-3 h-3" />
                         <span>{property.builderName}</span>
                       </div>
@@ -506,7 +506,7 @@ export default function AdminPropertySearch() {
                     )}
                     <button
                       onClick={() => setSelectedProperty(property)}
-                      className="px-3.5 py-1.5 rounded-xl text-xs font-bold text-white bg-slate-900 hover:bg-[#D7242A] transition-colors shadow-2xs"
+                      className="px-3.5 py-1.5 rounded-xl text-xs font-bold text-white bg-slate-900 hover:bg-[#1F6B4C] transition-colors shadow-2xs"
                     >
                       View Specs
                     </button>
@@ -565,7 +565,7 @@ export default function AdminPropertySearch() {
             <div className="sticky top-0 bg-[#0B0F19] text-white p-6 rounded-t-3xl flex justify-between items-start z-10 border-b border-slate-800">
               <div className="space-y-1">
                 <div className="flex items-center space-x-2">
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#D7242A] text-white uppercase tracking-wider">
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#1F6B4C] text-white uppercase tracking-wider">
                     Verified Sheet
                   </span>
                   <span className="text-xs text-slate-400 font-semibold">{selectedProperty.builderName}</span>
@@ -574,7 +574,7 @@ export default function AdminPropertySearch() {
                   {selectedProperty.projectName}
                 </h2>
                 <p className="text-xs text-slate-400 flex items-center space-x-1">
-                  <MapPin className="w-3.5 h-3.5 text-[#D7242A]" />
+                  <MapPin className="w-3.5 h-3.5 text-[#1F6B4C]" />
                   <span>{selectedProperty.location}</span>
                 </p>
               </div>
@@ -617,7 +617,7 @@ export default function AdminPropertySearch() {
               {/* USPs & Highlights */}
               {selectedProperty.uspsHighlights && (
                 <div className="p-4 bg-rose-50/60 border border-rose-100 rounded-2xl space-y-1.5">
-                  <div className="text-xs font-bold text-[#D7242A] flex items-center space-x-1.5">
+                  <div className="text-xs font-bold text-[#1F6B4C] flex items-center space-x-1.5">
                     <Sparkles className="w-3.5 h-3.5" />
                     <span>Project USPs &amp; Key Highlights</span>
                   </div>

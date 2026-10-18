@@ -81,9 +81,9 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-gradient-to-br from-[#070A11] via-[#0D1322] to-[#161F33] text-white selection:bg-[#D7242A] selection:text-white relative overflow-hidden">
+    <div className="min-h-screen flex flex-col justify-between bg-gradient-to-br from-[#070A11] via-[#0D1322] to-[#161F33] text-white selection:bg-[#1F6B4C] selection:text-white relative overflow-hidden">
       {/* Ambient background glows */}
-      <div className="absolute top-0 right-1/4 -mt-24 w-96 h-96 bg-gradient-to-br from-[#D7242A]/20 via-[#D7242A]/5 to-transparent rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-1/4 -mt-24 w-96 h-96 bg-gradient-to-br from-[#1F6B4C]/20 via-[#1F6B4C]/5 to-transparent rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-1/2 right-10 w-72 h-72 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -109,14 +109,14 @@ export default function Login() {
           {/* Card Container */}
           <div className="bg-slate-900/85 backdrop-blur-2xl rounded-3xl p-6 sm:p-10 border border-slate-800 shadow-2xl relative overflow-hidden">
             {/* Top red accent highlight bar */}
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#D7242A] to-transparent" />
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#1F6B4C] to-transparent" />
 
             {/* Brand Header */}
             <div className="text-center space-y-3 mb-8">
               <div className="inline-flex items-center justify-center p-2 rounded-2xl bg-white/10 border border-white/15 backdrop-blur-md shadow-inner mb-2">
                 <Image
-                  src="/finalLogo.jpeg"
-                  alt="A4Realty Logo"
+                  src="/dreamlandlogo.jpeg"
+                  alt="Dreamland Logo"
                   width={110}
                   height={38}
                   className="rounded-lg object-contain"
@@ -125,7 +125,7 @@ export default function Login() {
               </div>
 
               <div>
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#D7242A]/15 border border-[#D7242A]/30 text-[#ff4d53] text-[11px] font-bold tracking-wide uppercase mb-2">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#1F6B4C]/15 border border-[#1F6B4C]/30 text-[#6EE7A1] text-[11px] font-bold tracking-wide uppercase mb-2">
                   <Sparkles className="w-3 h-3" />
                   <span>Executive &amp; Client Portal</span>
                 </div>
@@ -166,8 +166,8 @@ export default function Login() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full bg-slate-950/70 border border-slate-700/80 rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#D7242A] focus:border-transparent transition-all shadow-inner"
-                    placeholder="advisor@a4realty.com"
+                    className="w-full bg-slate-950/70 border border-slate-700/80 rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#1F6B4C] focus:border-transparent transition-all shadow-inner"
+                    placeholder="advisor@dreamland.com"
                     autoComplete="email"
                     required
                   />
@@ -191,7 +191,7 @@ export default function Login() {
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
-                    className="w-full bg-slate-950/70 border border-slate-700/80 rounded-xl pl-10 pr-11 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#D7242A] focus:border-transparent transition-all shadow-inner"
+                    className="w-full bg-slate-950/70 border border-slate-700/80 rounded-xl pl-10 pr-11 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#1F6B4C] focus:border-transparent transition-all shadow-inner"
                     placeholder="Enter your security password"
                     autoComplete="current-password"
                     required
@@ -215,7 +215,7 @@ export default function Login() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full mt-2 py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#D7242A] to-[#B01A20] hover:from-[#e0292f] hover:to-[#99151A] text-white text-sm font-bold shadow-lg shadow-[#D7242A]/30 transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full mt-2 py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#1F6B4C] to-[#18593F] hover:from-[#1F6B4C] hover:to-[#0E3B29] text-white text-sm font-bold shadow-lg shadow-[#1F6B4C]/30 transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer"
               >
                 {loading ? (
                   <>
@@ -258,7 +258,7 @@ export default function Login() {
                 Don&apos;t have an account yet?{' '}
                 <Link
                   href="/register"
-                  className="font-bold text-[#ff4d53] hover:text-white transition-colors underline underline-offset-4"
+                  className="font-bold text-[#6EE7A1] hover:text-white transition-colors underline underline-offset-4"
                 >
                   Create new account
                 </Link>
@@ -270,7 +270,7 @@ export default function Login() {
 
       {/* Footer Info */}
       <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 text-center text-xs text-slate-500">
-        &copy; {new Date().getFullYear()} A4 Realty Tech Pvt Ltd. All rights reserved. Enterprise Real Estate Intelligence.
+        &copy; {new Date().getFullYear()} Dreamland Tech Pvt Ltd. All rights reserved. Enterprise Real Estate Intelligence.
       </div>
     </div>
   );

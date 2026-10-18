@@ -16,28 +16,17 @@ import {
   User,
   CalendarCheck,
   Edit3,
-  ExternalLink,
   Layers,
   Sparkles,
-  Share2,
-  CheckCircle2,
   UserCheck,
-  Building2,
-  Compass,
-  Search,
   X,
-  RotateCcw,
   Check,
   FileText,
-  SlidersHorizontal,
-  AlertCircle,
-  Filter
+  AlertCircle
 } from 'lucide-react';
-import PropertyCard from '@/components/PropertyCard';
 import AssignmentHistory from '@/components/AssignmentHistory';
-import { getLocationDisplayName, getNearbyLocations, normalizeLocationName } from '@/utils/locations';
-import { formatPrice } from '@/utils/formatPrice';
-import { useCRMStore, useDashboardStore, useAgentStore, usePropertyStore, usePropertySearchStore } from '@/stores';
+import { getLocationDisplayName } from '@/utils/locations';
+import { useCRMStore, useDashboardStore, useAgentStore } from '@/stores';
 
 export default function LeadDetailPage() {
   const params = useParams();
@@ -45,29 +34,14 @@ export default function LeadDetailPage() {
 
   const fetchLeadsStore = useCRMStore((state) => state.fetchLeads);
   const fetchStatusOptionsStore = useAgentStore((state) => state.fetchStatusOptions);
-  const fetchPropertiesStore = usePropertyStore((state) => state.fetchProperties);
-  const fetchPublicSearch = usePropertySearchStore((state) => state.fetchPublicSearch);
 
   const [lead, setLead] = useState(null);
   const [allLeads, setAllLeads] = useState([]);
   const [totalLeadsCount, setTotalLeadsCount] = useState(0);
-  const [relatedProperties, setRelatedProperties] = useState([]);
-  const [nearbyProperties, setNearbyProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [activeTab, setActiveTab] = useState('exact');
-  const [searchResults, setSearchResults] = useState([]);
-  const [searchLoading, setSearchLoading] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [urlParams, setUrlParams] = useState({});
-  const [searchFilters, setSearchFilters] = useState({
-    location: '',
-    type: '',
-    mode: '',
-    bhk: '',
-    minPrice: '',
-    maxPrice: ''
-  });
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [updateStatus, setUpdateStatus] = useState('');
   const [updateSubstatus, setUpdateSubstatus] = useState('');
@@ -125,12 +99,6 @@ export default function LeadDetailPage() {
       fetchAllLeadsForNavigation();
     }
   }, [params.id, urlParams]);
-
-  useEffect(() => {
-    if (lead?.interestedLocation) {
-      fetchRelatedProperties();
-    }
-  }, [lead]);
 
   useEffect(() => {
     fetchStatusOptions();
@@ -203,99 +171,6 @@ export default function LeadDetailPage() {
     } catch (error) {
       console.error('Error fetching status options:', error);
     }
-  };
-
-  const fetchRelatedProperties = async () => {
-    try {
-      const res = await fetchPropertiesStore();
-      
-      if (res.success && Array.isArray(res.data)) {
-        const allProperties = res.data;
-        const interestedLocation = normalizeLocationName(lead.interestedLocation);
-        
-        // Exact location matches
-        const exactMatches = allProperties.filter(property => 
-          normalizeLocationName(property.location) === interestedLocation
-        );
-        
-        // Nearby location matches - using both predefined nearby areas and property nearbyLocations field
-        const nearbyLocations = getNearbyLocations(interestedLocation);
-        const nearbyMatches = allProperties.filter(property => {
-          const propLocation = normalizeLocationName(property.location);
-          
-          // Check if property location is in predefined nearby locations
-          const isNearbyByLocation = nearbyLocations.some(nearby => 
-            normalizeLocationName(nearby) === propLocation
-          );
-          
-          // Check if property has the lead's interested location in its nearbyLocations field
-          const isNearbyByProperty = property.nearbyLocations && property.nearbyLocations.some(nearby =>
-            normalizeLocationName(nearby) === interestedLocation
-          );
-          
-          return isNearbyByLocation || isNearbyByProperty;
-        });
-        
-        setRelatedProperties(exactMatches);
-        setNearbyProperties(nearbyMatches);
-      }
-    } catch (error) {
-      console.error('Error fetching properties:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const searchProperties = async () => {
-    try {
-      setSearchLoading(true);
-      const res = await fetchPublicSearch({
-        location: searchFilters.location,
-        type: searchFilters.type,
-        mode: searchFilters.mode,
-        bhk: searchFilters.bhk
-      });
-      
-      if (res.success) {
-        let results = res.data || [];
-        
-        // Filter by price range if specified
-        if (searchFilters.minPrice || searchFilters.maxPrice) {
-          results = results.filter(property => {
-            const price = parseFloat(property.price?.replace(/[^0-9.-]+/g, "") || 0);
-            const minPrice = searchFilters.minPrice ? parseFloat(searchFilters.minPrice) : 0;
-            const maxPrice = searchFilters.maxPrice ? parseFloat(searchFilters.maxPrice) : Infinity;
-            return price >= minPrice && price <= maxPrice;
-          });
-        }
-        
-        setSearchResults(results);
-      }
-    } catch (error) {
-      console.error('Error searching properties:', error);
-      setSearchResults([]);
-    } finally {
-      setSearchLoading(false);
-    }
-  };
-
-  const handleSearchInputChange = (field, value) => {
-    setSearchFilters(prev => ({
-      ...prev,
-      [field]: value
-    }));
-  };
-
-  const clearSearch = () => {
-    setSearchFilters({
-      location: '',
-      type: '',
-      mode: '',
-      bhk: '',
-      minPrice: '',
-      maxPrice: ''
-    });
-    setSearchResults([]);
   };
 
   const handleUpdateLead = async (e) => {
@@ -482,41 +357,12 @@ export default function LeadDetailPage() {
     });
   };
 
-  const CRMPropertyCard = ({ property, isNearby = false }) => (
-    <PropertyCard 
-      property={property} 
-      viewMode="grid"
-      customBadges={[
-        ...(isNearby ? [{ text: 'Nearby', color: 'blue' }] : []),
-        ...(property.gallery?.length > 0 ? [{ text: `📸 ${property.gallery.length}`, color: 'black' }] : []),
-        ...(property.videos?.length > 0 ? [{ text: `🎬 ${property.videos.length}`, color: 'purple' }] : [])
-      ]}
-      showContact={true}
-      showActions={true}
-      actionButtons={[
-        {
-          text: 'View Details',
-          href: `/admin/crm/property/${property._id}`,
-          color: 'red',
-          fullWidth: true
-        },
-        {
-          text: '📞',
-          href: `tel:${property.contactNumber}`,
-          color: 'green',
-          icon: true,
-          title: 'Call property owner'
-        }
-      ]}
-    />
-  );
-
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 p-6">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-center h-64">
-            <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-[#D7242A]"></div>
+            <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-[#1F6B4C]"></div>
           </div>
         </div>
       </div>
@@ -527,9 +373,9 @@ export default function LeadDetailPage() {
     return (
       <div className="min-h-screen bg-gray-50 p-6">
         <div className="max-w-7xl mx-auto">
-          <div className="bg-[#D7242A]/5 border border-[#D7242A]/20 rounded-lg p-6 text-center">
-            <h2 className="text-xl font-semibold text-[#D7242A] mb-2">Error Loading Lead</h2>
-            <p className="text-[#D7242A]/80">{error || 'Lead not found'}</p>
+          <div className="bg-[#1F6B4C]/5 border border-[#1F6B4C]/20 rounded-lg p-6 text-center">
+            <h2 className="text-xl font-semibold text-[#1F6B4C] mb-2">Error Loading Lead</h2>
+            <p className="text-[#1F6B4C]/80">{error || 'Lead not found'}</p>
             <div className="mt-4 space-x-4">
               <button 
                 onClick={() => router.back()}
@@ -540,7 +386,7 @@ export default function LeadDetailPage() {
               {error && (
                 <button 
                   onClick={fetchLeadDetails}
-                  className="px-4 py-2 bg-[#D7242A] text-white rounded-lg hover:bg-[#D7242A]/90 transition-colors"
+                  className="px-4 py-2 bg-[#1F6B4C] text-white rounded-lg hover:bg-[#1F6B4C]/90 transition-colors"
                 >
                   Retry
                 </button>
@@ -604,7 +450,7 @@ export default function LeadDetailPage() {
           <div className="bg-[#0B0F19] text-white p-5 border-b border-slate-800">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-xl bg-[#D7242A] flex items-center justify-center text-white shadow-xs">
+                <div className="w-8 h-8 rounded-xl bg-[#1F6B4C] flex items-center justify-center text-white shadow-xs">
                   <Layers className="w-4 h-4" />
                 </div>
                 <div>
@@ -637,7 +483,7 @@ export default function LeadDetailPage() {
                   }}
                   className={`pt-2 first:pt-0 p-3 rounded-xl cursor-pointer transition-all ${
                     isActive
-                      ? 'bg-rose-50/70 border border-[#D7242A]/30 text-slate-900 shadow-2xs'
+                      ? 'bg-rose-50/70 border border-[#1F6B4C]/30 text-slate-900 shadow-2xs'
                       : isVisited
                       ? 'bg-slate-50/60 hover:bg-slate-100/80 border border-transparent text-slate-700'
                       : 'hover:bg-slate-50 border border-transparent text-slate-800'
@@ -645,19 +491,19 @@ export default function LeadDetailPage() {
                 >
                   <div className="flex items-center space-x-3">
                     <div className={`flex-shrink-0 h-9 w-9 rounded-xl flex items-center justify-center font-bold text-xs shadow-2xs ${
-                      isActive ? 'bg-[#D7242A] text-white' : 'bg-slate-100 text-slate-700'
+                      isActive ? 'bg-[#1F6B4C] text-white' : 'bg-slate-100 text-slate-700'
                     }`}>
                       {leadItem.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2)}
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between">
                         <div className={`text-xs font-bold truncate ${
-                          isActive ? 'text-[#D7242A]' : 'text-slate-900'
+                          isActive ? 'text-[#1F6B4C]' : 'text-slate-900'
                         }`}>
                           {leadItem.name}
                         </div>
                         {isActive && (
-                          <span className="w-2 h-2 rounded-full bg-[#D7242A] animate-pulse"></span>
+                          <span className="w-2 h-2 rounded-full bg-[#1F6B4C] animate-pulse"></span>
                         )}
                       </div>
                       <div className="text-[11px] text-slate-500 truncate flex items-center gap-1 mt-0.5">
@@ -745,7 +591,7 @@ export default function LeadDetailPage() {
               {/* Leads Navigation Drawer Toggle */}
               <button
                 onClick={() => setSidebarOpen(true)}
-                className="p-2 rounded-xl bg-[#D7242A]/10 text-[#D7242A] hover:bg-[#D7242A]/15 transition-colors flex items-center gap-1.5 text-xs font-bold flex-shrink-0"
+                className="p-2 rounded-xl bg-[#1F6B4C]/10 text-[#1F6B4C] hover:bg-[#1F6B4C]/15 transition-colors flex items-center gap-1.5 text-xs font-bold flex-shrink-0"
                 title="Browse All Page Leads"
               >
                 <Layers className="w-4 h-4" />
@@ -790,7 +636,7 @@ export default function LeadDetailPage() {
                       if (next) navigateToLead(next._id);
                     }}
                     disabled={!getNextLead()}
-                    className="inline-flex items-center gap-1 px-3 py-2 text-xs font-bold text-white bg-[#D7242A] hover:bg-[#b5191f] rounded-xl disabled:opacity-40 disabled:cursor-not-allowed transition-colors shadow-sm shadow-[#D7242A]/20"
+                    className="inline-flex items-center gap-1 px-3 py-2 text-xs font-bold text-white bg-[#1F6B4C] hover:bg-[#18593F] rounded-xl disabled:opacity-40 disabled:cursor-not-allowed transition-colors shadow-sm shadow-[#1F6B4C]/20"
                     title={getNextLead() ? `Next: ${getNextLead().name}` : 'No more leads'}
                   >
                     <span className="hidden sm:inline">Next</span>
@@ -812,16 +658,16 @@ export default function LeadDetailPage() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto p-6">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Left Section - Client Dossier */}
-          <div className="lg:col-span-1">
-            <div className="bg-white rounded-3xl border border-slate-200/80 shadow-sm p-6 sticky top-24 space-y-6">
+      <div className="max-w-3xl mx-auto p-6">
+        <div className="grid grid-cols-1 gap-6">
+          {/* Client Dossier */}
+          <div>
+            <div className="bg-white rounded-3xl border border-slate-200/80 shadow-sm p-6 space-y-6">
               {/* Client Profile Header */}
               <div className="text-center pb-6 border-b border-slate-100">
                 <div className="relative inline-block mb-3">
-                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#D7242A]/15 via-[#D7242A]/5 to-slate-100 border-2 border-[#D7242A]/25 flex items-center justify-center mx-auto shadow-inner">
-                    <span className="text-[#D7242A] font-black text-2xl tracking-tight">
+                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#1F6B4C]/15 via-[#1F6B4C]/5 to-slate-100 border-2 border-[#1F6B4C]/25 flex items-center justify-center mx-auto shadow-inner">
+                    <span className="text-[#1F6B4C] font-black text-2xl tracking-tight">
                       {lead.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2)}
                     </span>
                   </div>
@@ -859,7 +705,7 @@ export default function LeadDetailPage() {
                   <span>Call Now</span>
                 </a>
                 <a
-                  href={`https://wa.me/91${lead.phone.replace(/\D/g, '')}?text=${encodeURIComponent(`Hello ${lead.name}, I am reaching out from A4 Realty regarding your property interest in ${getLocationDisplayName(lead.interestedLocation)}.`)}`}
+                  href={`https://wa.me/91${lead.phone.replace(/\D/g, '')}?text=${encodeURIComponent(`Hello ${lead.name}, I am reaching out from Dreamland regarding your property interest in ${getLocationDisplayName(lead.interestedLocation)}.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-sm transition-colors"
@@ -877,7 +723,7 @@ export default function LeadDetailPage() {
                     <Phone className="w-4 h-4 text-slate-400" />
                     <span>Mobile Phone</span>
                   </div>
-                  <a href={`tel:${lead.phone}`} className="font-bold text-slate-900 hover:text-[#D7242A] font-mono tabular-nums">
+                  <a href={`tel:${lead.phone}`} className="font-bold text-slate-900 hover:text-[#1F6B4C] font-mono tabular-nums">
                     {lead.phone}
                   </a>
                 </div>
@@ -889,7 +735,7 @@ export default function LeadDetailPage() {
                       <Mail className="w-4 h-4 text-slate-400" />
                       <span>Email</span>
                     </div>
-                    <a href={`mailto:${lead.email}`} className="font-semibold text-slate-800 hover:text-[#D7242A] truncate max-w-[180px]">
+                    <a href={`mailto:${lead.email}`} className="font-semibold text-slate-800 hover:text-[#1F6B4C] truncate max-w-[180px]">
                       {lead.email}
                     </a>
                   </div>
@@ -968,7 +814,7 @@ export default function LeadDetailPage() {
                     className="p-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-2xs transition-colors"
                     title="Update Stage or Add Note"
                   >
-                    <Edit3 className="w-4 h-4 text-[#D7242A]" />
+                    <Edit3 className="w-4 h-4 text-[#1F6B4C]" />
                   </button>
                 </div>
               </div>
@@ -983,7 +829,7 @@ export default function LeadDetailPage() {
                   setUpdateError('');
                   setShowUpdateModal(true);
                 }}
-                className="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-[#D7242A] to-[#B01A20] hover:from-[#e0292f] hover:to-[#99151A] text-white text-xs font-bold shadow-md shadow-[#D7242A]/25 transition-all hover:scale-[1.01] flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-[#1F6B4C] to-[#18593F] hover:from-[#1F6B4C] hover:to-[#0E3B29] text-white text-xs font-bold shadow-md shadow-[#1F6B4C]/25 transition-all hover:scale-[1.01] flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Edit3 className="w-4 h-4" />
                 <span>Update Status &amp; Add Note</span>
@@ -1101,7 +947,7 @@ export default function LeadDetailPage() {
                         Conversation Notes ({lead.notes.length})
                       </div>
                       {lead.notes.slice().reverse().map((note, index) => (
-                        <div key={index} className="border-l-2 border-[#D7242A]/40 pl-3 py-2 bg-slate-50 rounded-r-xl">
+                        <div key={index} className="border-l-2 border-[#1F6B4C]/40 pl-3 py-2 bg-slate-50 rounded-r-xl">
                           <p className="text-xs text-slate-800 font-medium leading-relaxed">{note.content}</p>
                           <p className="text-[10px] text-slate-400 mt-1">
                             {formatDate(note.addedAt)} • {note.addedBy}
@@ -1184,328 +1030,6 @@ export default function LeadDetailPage() {
               </div>
             </div>
           </div>
-
-          {/* Right Section - Portfolio Matchmaker */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Summary Telemetry */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-2xs flex items-center justify-between">
-                <div>
-                  <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Direct Location Match</div>
-                  <div className="text-3xl font-black text-slate-900 tracking-tight">{relatedProperties.length}</div>
-                  <div className="text-xs text-slate-500 font-medium mt-1">
-                    Matched in {getLocationDisplayName(lead.interestedLocation)}
-                  </div>
-                </div>
-                <div className="w-12 h-12 rounded-2xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#D7242A]">
-                  <MapPin className="w-6 h-6" />
-                </div>
-              </div>
-
-              <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-2xs flex items-center justify-between">
-                <div>
-                  <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Adjacent Micro-Markets</div>
-                  <div className="text-3xl font-black text-slate-900 tracking-tight">{nearbyProperties.length}</div>
-                  <div className="text-xs text-slate-500 font-medium mt-1">
-                    In neighboring zones & corridors
-                  </div>
-                </div>
-                <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600">
-                  <Compass className="w-6 h-6" />
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl border border-slate-200/80 shadow-2xs p-6">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6 pb-4 border-b border-slate-100">
-                <div>
-                  <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#D7242A] uppercase tracking-wider mb-1">
-                    <Sparkles className="w-3.5 h-3.5" />
-                    Portfolio Matchmaker
-                  </div>
-                  <h3 className="text-lg font-bold text-slate-900 tracking-tight">
-                    Matched Inventory for {lead.name}
-                  </h3>
-                </div>
-                <div className="text-xs text-slate-600 font-medium bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-200/70 inline-flex items-center gap-2">
-                  <span>Type: <strong className="text-slate-800 capitalize">{lead.preferredPropertyType || 'Any'}</strong></span>
-                  <span>•</span>
-                  <span>BHK: <strong className="text-slate-800">{lead.preferredBhk ? lead.preferredBhk.toUpperCase() : 'Any'}</strong></span>
-                </div>
-              </div>
-              
-              {/* Tabs */}
-              <div className="flex p-1 bg-slate-100 rounded-xl mb-6 gap-1">
-                <button
-                  onClick={() => setActiveTab('exact')}
-                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    activeTab === 'exact'
-                      ? 'bg-white text-slate-900 shadow-2xs'
-                      : 'text-slate-600 hover:text-slate-900'
-                  }`}
-                >
-                  <MapPin className={`w-3.5 h-3.5 ${activeTab === 'exact' ? 'text-[#D7242A]' : 'text-slate-400'}`} />
-                  <span>Exact Location</span>
-                  <span className={`px-1.5 py-0.5 rounded-full text-[10px] font-bold ${
-                    activeTab === 'exact' ? 'bg-[#D7242A]/10 text-[#D7242A]' : 'bg-slate-200 text-slate-600'
-                  }`}>
-                    {relatedProperties.length}
-                  </span>
-                </button>
-                <button
-                  onClick={() => setActiveTab('nearby')}
-                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    activeTab === 'nearby'
-                      ? 'bg-white text-slate-900 shadow-2xs'
-                      : 'text-slate-600 hover:text-slate-900'
-                  }`}
-                >
-                  <Compass className={`w-3.5 h-3.5 ${activeTab === 'nearby' ? 'text-blue-600' : 'text-slate-400'}`} />
-                  <span>Nearby Locations</span>
-                  <span className={`px-1.5 py-0.5 rounded-full text-[10px] font-bold ${
-                    activeTab === 'nearby' ? 'bg-blue-50 text-blue-700' : 'bg-slate-200 text-slate-600'
-                  }`}>
-                    {nearbyProperties.length}
-                  </span>
-                </button>
-                <button
-                  onClick={() => setActiveTab('search')}
-                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    activeTab === 'search'
-                      ? 'bg-white text-slate-900 shadow-2xs'
-                      : 'text-slate-600 hover:text-slate-900'
-                  }`}
-                >
-                  <Search className={`w-3.5 h-3.5 ${activeTab === 'search' ? 'text-[#D7242A]' : 'text-slate-400'}`} />
-                  <span>Custom Search</span>
-                  <span className={`px-1.5 py-0.5 rounded-full text-[10px] font-bold ${
-                    activeTab === 'search' ? 'bg-slate-900 text-white' : 'bg-slate-200 text-slate-600'
-                  }`}>
-                    {searchResults.length}
-                  </span>
-                </button>
-              </div>
-
-              {/* Property Lists */}
-              {activeTab === 'exact' && (
-                <div>
-                  {relatedProperties.length > 0 ? (
-                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
-                      {relatedProperties.map(property => (
-                        <CRMPropertyCard key={property._id} property={property} />
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="text-center py-14 px-4 bg-slate-50/60 rounded-2xl border border-dashed border-slate-200">
-                      <div className="w-12 h-12 mx-auto mb-3 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-slate-400 shadow-2xs">
-                        <Building2 className="w-6 h-6 text-slate-400" />
-                      </div>
-                      <h4 className="text-sm font-bold text-slate-900 mb-1">No Direct Matches</h4>
-                      <p className="text-xs text-slate-500 max-w-sm mx-auto">
-                        No properties currently listed in {getLocationDisplayName(lead.interestedLocation)}.
-                      </p>
-                      <button
-                        onClick={() => setActiveTab('nearby')}
-                        className="mt-3.5 inline-flex items-center gap-1.5 text-xs font-bold text-[#D7242A] hover:underline cursor-pointer"
-                      >
-                        <span>Check neighboring corridors ({nearbyProperties.length})</span>
-                        <ChevronRight className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {activeTab === 'nearby' && (
-                <div>
-                  {nearbyProperties.length > 0 ? (
-                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
-                      {nearbyProperties.map(property => (
-                        <CRMPropertyCard key={property._id} property={property} isNearby={true} />
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="text-center py-14 px-4 bg-slate-50/60 rounded-2xl border border-dashed border-slate-200">
-                      <div className="w-12 h-12 mx-auto mb-3 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-slate-400 shadow-2xs">
-                        <Compass className="w-6 h-6 text-slate-400" />
-                      </div>
-                      <h4 className="text-sm font-bold text-slate-900 mb-1">No Nearby Properties</h4>
-                      <p className="text-xs text-slate-500 max-w-sm mx-auto">
-                        No listings found in adjacent micro-markets matching this lead's criteria.
-                      </p>
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {activeTab === 'search' && (
-                <div>
-                  {/* Search Filters */}
-                  <div className="bg-slate-50/80 border border-slate-200/90 rounded-2xl p-5 mb-6 shadow-2xs">
-                    <div className="flex items-center justify-between mb-4">
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-2">
-                        <SlidersHorizontal className="w-4 h-4 text-[#D7242A]" />
-                        Inventory Filter Console
-                      </h4>
-                      <span className="text-[11px] text-slate-500 font-medium">Fine-tune recommendations</span>
-                    </div>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3.5 mb-4 text-slate-800">
-                      {/* Location */}
-                      <div>
-                        <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">Location</label>
-                        <input
-                          type="text"
-                          value={searchFilters.location}
-                          onChange={(e) => handleSearchInputChange('location', e.target.value)}
-                          placeholder="e.g. Whitefield, Indiranagar"
-                          className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#D7242A]/20 focus:border-[#D7242A] text-xs font-medium text-slate-900 placeholder:text-slate-400"
-                        />
-                      </div>
-
-                      {/* Property Type */}
-                      <div>
-                        <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">Property Type</label>
-                        <select
-                          value={searchFilters.type}
-                          onChange={(e) => handleSearchInputChange('type', e.target.value)}
-                          className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#D7242A]/20 focus:border-[#D7242A] text-xs font-medium text-slate-900"
-                        >
-                          <option value="">Any Type</option>
-                          <option value="flat">Flat / Apartment</option>
-                          <option value="house">Independent House / Villa</option>
-                          <option value="land">Plot / Land</option>
-                          <option value="office">Commercial / Office</option>
-                        </select>
-                      </div>
-
-                      {/* Mode */}
-                      <div>
-                        <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">Mode</label>
-                        <select
-                          value={searchFilters.mode}
-                          onChange={(e) => handleSearchInputChange('mode', e.target.value)}
-                          className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#D7242A]/20 focus:border-[#D7242A] text-xs font-medium text-slate-900"
-                        >
-                          <option value="">Any Mode</option>
-                          <option value="buy">For Sale / Buy</option>
-                          <option value="rent">For Rent</option>
-                          <option value="sell">Sell</option>
-                        </select>
-                      </div>
-
-                      {/* BHK */}
-                      <div>
-                        <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">Configuration (BHK)</label>
-                        <select
-                          value={searchFilters.bhk}
-                          onChange={(e) => handleSearchInputChange('bhk', e.target.value)}
-                          className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#D7242A]/20 focus:border-[#D7242A] text-xs font-medium text-slate-900"
-                        >
-                          <option value="">Any Configuration</option>
-                          <option value="1bhk">1 BHK</option>
-                          <option value="2bhk">2 BHK</option>
-                          <option value="3bhk">3 BHK</option>
-                          <option value="4bhk">4 BHK</option>
-                          <option value="5bhk">5+ BHK</option>
-                        </select>
-                      </div>
-
-                      {/* Price Range */}
-                      <div>
-                        <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">Min Price (₹)</label>
-                        <input
-                          type="number"
-                          value={searchFilters.minPrice}
-                          onChange={(e) => handleSearchInputChange('minPrice', e.target.value)}
-                          placeholder="Min budget"
-                          className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#D7242A]/20 focus:border-[#D7242A] text-xs font-medium text-slate-900 placeholder:text-slate-400"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">Max Price (₹)</label>
-                        <input
-                          type="number"
-                          value={searchFilters.maxPrice}
-                          onChange={(e) => handleSearchInputChange('maxPrice', e.target.value)}
-                          placeholder="Max budget"
-                          className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#D7242A]/20 focus:border-[#D7242A] text-xs font-medium text-slate-900 placeholder:text-slate-400"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Search Actions */}
-                    <div className="flex items-center gap-2 pt-2">
-                      <button
-                        onClick={searchProperties}
-                        disabled={searchLoading}
-                        className="px-5 py-2.5 bg-[#D7242A] text-white rounded-xl hover:bg-[#b51c22] transition-colors disabled:opacity-50 flex items-center gap-2 text-xs font-bold shadow-xs cursor-pointer"
-                      >
-                        {searchLoading ? (
-                          <>
-                            <div className="w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                            <span>Searching Inventory...</span>
-                          </>
-                        ) : (
-                          <>
-                            <Search className="w-3.5 h-3.5" />
-                            <span>Search Properties</span>
-                          </>
-                        )}
-                      </button>
-                      <button
-                        onClick={clearSearch}
-                        className="px-4 py-2.5 bg-white border border-slate-200 text-slate-700 rounded-xl hover:bg-slate-50 transition-colors text-xs font-semibold cursor-pointer"
-                      >
-                        Reset Filters
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Search Results */}
-                  <div>
-                    {searchResults.length > 0 ? (
-                      <div>
-                        <div className="flex items-center justify-between mb-4">
-                          <h4 className="text-sm font-bold text-slate-900">
-                            Search Results ({searchResults.length} properties)
-                          </h4>
-                          <div className="text-xs text-slate-500 font-medium">
-                            Alternative inventory options
-                          </div>
-                        </div>
-                        <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
-                          {searchResults.map(property => (
-                            <CRMPropertyCard key={property._id} property={property} isNearby={false} />
-                          ))}
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="text-center py-14 px-4 bg-slate-50/60 rounded-2xl border border-dashed border-slate-200">
-                        {searchLoading ? (
-                          <div className="py-4">
-                            <div className="animate-spin rounded-full h-8 w-8 border-2 border-[#D7242A] border-t-transparent mx-auto mb-3"></div>
-                            <p className="text-xs font-semibold text-slate-600">Querying real estate inventory...</p>
-                          </div>
-                        ) : (
-                          <div>
-                            <div className="w-12 h-12 mx-auto mb-3 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-slate-400 shadow-2xs">
-                              <Search className="w-6 h-6 text-slate-400" />
-                            </div>
-                            <h4 className="text-sm font-bold text-slate-900 mb-1">Search Available Portfolio</h4>
-                            <p className="text-xs text-slate-500 max-w-sm mx-auto mb-2">
-                              Use the filter console above to match properties by location, type, or budget.
-                            </p>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
         </div>
       </div>
 
@@ -1517,7 +1041,7 @@ export default function LeadDetailPage() {
             <div className="bg-[#0B0F19] text-white p-5 border-b border-slate-800">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-[#D7242A] flex items-center justify-center text-white shadow-xs">
+                  <div className="w-9 h-9 rounded-xl bg-[#1F6B4C] flex items-center justify-center text-white shadow-xs">
                     <Edit3 className="w-4 h-4" />
                   </div>
                   <div>
@@ -1556,7 +1080,7 @@ export default function LeadDetailPage() {
                 <select
                   value={updateStatus}
                   onChange={(e) => setUpdateStatus(e.target.value)}
-                  className="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#D7242A]/20 focus:border-[#D7242A] text-xs font-medium text-slate-900 shadow-2xs"
+                  className="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#1F6B4C]/20 focus:border-[#1F6B4C] text-xs font-medium text-slate-900 shadow-2xs"
                 >
                   <option value="">-- Select Status --</option>
                   {Object.keys(statusOptions).map((status) => (
@@ -1583,7 +1107,7 @@ export default function LeadDetailPage() {
                   <select
                     value={updateSubstatus}
                     onChange={(e) => setUpdateSubstatus(e.target.value)}
-                    className="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#D7242A]/20 focus:border-[#D7242A] text-xs font-medium text-slate-900 shadow-2xs"
+                    className="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#1F6B4C]/20 focus:border-[#1F6B4C] text-xs font-medium text-slate-900 shadow-2xs"
                   >
                     <option value="">-- Select Substatus --</option>
                     {availableSubstatuses.map((substatus) => (
@@ -1607,7 +1131,7 @@ export default function LeadDetailPage() {
                 <div className="space-y-3 p-3.5 bg-violet-50/60 rounded-xl border border-violet-100">
                   <div>
                     <label className="block text-[11px] font-bold uppercase tracking-wider text-violet-900 mb-1">
-                      Site Visit Date & Time <span className="text-[#D7242A]">*</span>
+                      Site Visit Date & Time <span className="text-[#1F6B4C]">*</span>
                     </label>
                     <input
                       type="datetime-local"
@@ -1619,7 +1143,7 @@ export default function LeadDetailPage() {
                   </div>
                   <div>
                     <label className="block text-[11px] font-bold uppercase tracking-wider text-violet-900 mb-1">
-                      Visit Reason / Tour Agenda <span className="text-[#D7242A]">*</span>
+                      Visit Reason / Tour Agenda <span className="text-[#1F6B4C]">*</span>
                     </label>
                     <textarea
                       value={visitReason}
@@ -1637,7 +1161,7 @@ export default function LeadDetailPage() {
               {updateStatus === 'follow_up_scheduled' && (
                 <div className="p-3.5 bg-amber-50/60 rounded-xl border border-amber-100">
                   <label className="block text-[11px] font-bold uppercase tracking-wider text-amber-900 mb-1">
-                    Follow-up Date & Time <span className="text-[#D7242A]">*</span>
+                    Follow-up Date & Time <span className="text-[#1F6B4C]">*</span>
                   </label>
                   <input
                     type="datetime-local"
@@ -1657,26 +1181,26 @@ export default function LeadDetailPage() {
                 <div className="space-y-3 p-3.5 bg-rose-50/60 rounded-xl border border-rose-100">
                   <div>
                     <label className="block text-[11px] font-bold uppercase tracking-wider text-rose-900 mb-1">
-                      New Visit Date & Time <span className="text-[#D7242A]">*</span>
+                      New Visit Date & Time <span className="text-[#1F6B4C]">*</span>
                     </label>
                     <input
                       type="datetime-local"
                       value={siteVisitDate}
                       onChange={(e) => setSiteVisitDate(e.target.value)}
-                      className="w-full px-3 py-2 bg-white border border-rose-200 rounded-xl focus:ring-2 focus:ring-[#D7242A]/20 text-xs font-medium text-slate-900 shadow-2xs"
+                      className="w-full px-3 py-2 bg-white border border-rose-200 rounded-xl focus:ring-2 focus:ring-[#1F6B4C]/20 text-xs font-medium text-slate-900 shadow-2xs"
                       required
                     />
                   </div>
                   <div>
                     <label className="block text-[11px] font-bold uppercase tracking-wider text-rose-900 mb-1">
-                      Reschedule Rationale <span className="text-[#D7242A]">*</span>
+                      Reschedule Rationale <span className="text-[#1F6B4C]">*</span>
                     </label>
                     <textarea
                       value={rescheduleReason}
                       onChange={(e) => setRescheduleReason(e.target.value)}
                       rows="2"
                       placeholder="e.g., Client requested weekend slot due to travel..."
-                      className="w-full p-2.5 bg-white border border-rose-200 rounded-xl focus:ring-2 focus:ring-[#D7242A]/20 text-xs font-medium text-slate-900 shadow-2xs"
+                      className="w-full p-2.5 bg-white border border-rose-200 rounded-xl focus:ring-2 focus:ring-[#1F6B4C]/20 text-xs font-medium text-slate-900 shadow-2xs"
                       required
                     />
                   </div>
@@ -1689,7 +1213,7 @@ export default function LeadDetailPage() {
                       onChange={(e) => setVisitReason(e.target.value)}
                       rows="2"
                       placeholder="Any logistical or property details for the updated schedule..."
-                      className="w-full p-2.5 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#D7242A]/20 text-xs font-medium text-slate-900 shadow-2xs"
+                      className="w-full p-2.5 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#1F6B4C]/20 text-xs font-medium text-slate-900 shadow-2xs"
                     />
                   </div>
                 </div>
@@ -1704,7 +1228,7 @@ export default function LeadDetailPage() {
                   onChange={(e) => setUpdateNote(e.target.value)}
                   rows="3"
                   placeholder="Record summary of call, client preference shifts, next touchpoints..."
-                  className="w-full p-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#D7242A]/20 focus:border-[#D7242A] text-xs font-medium text-slate-900 shadow-2xs resize-none placeholder:text-slate-400"
+                  className="w-full p-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#1F6B4C]/20 focus:border-[#1F6B4C] text-xs font-medium text-slate-900 shadow-2xs resize-none placeholder:text-slate-400"
                 />
               </div>
 
@@ -1734,7 +1258,7 @@ export default function LeadDetailPage() {
                     (updateStatus === 'site_visit_scheduled' && (!siteVisitDate || !visitReason)) ||
                     (updateStatus === 'follow_up_scheduled' && !followUpDate) ||
                     (updateStatus === 'visit_rescheduled' && (!siteVisitDate || !rescheduleReason))}
-                  className="px-5 py-2.5 text-xs font-bold text-white bg-[#D7242A] hover:bg-[#b51c22] rounded-xl shadow-xs transition-all disabled:opacity-50 flex items-center gap-2 cursor-pointer"
+                  className="px-5 py-2.5 text-xs font-bold text-white bg-[#1F6B4C] hover:bg-[#18593F] rounded-xl shadow-xs transition-all disabled:opacity-50 flex items-center gap-2 cursor-pointer"
                 >
                   {isUpdating ? (
                     <>

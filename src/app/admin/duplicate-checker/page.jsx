@@ -145,10 +145,10 @@ export default function DuplicateCheckerPage() {
                   Governance
                 </Link>
                 <span>/</span>
-                <span className="text-[#D7242A]">Integrity Diagnostics</span>
+                <span className="text-[#1F6B4C]">Integrity Diagnostics</span>
               </div>
               <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white flex items-center gap-3">
-                <ShieldCheck className="w-7 h-7 text-[#D7242A]" />
+                <ShieldCheck className="w-7 h-7 text-[#1F6B4C]" />
                 Lead Collision & Deduplication Console
               </h1>
               <p className="text-slate-400 text-sm mt-1 max-w-2xl">
@@ -166,7 +166,7 @@ export default function DuplicateCheckerPage() {
               <button
                 onClick={handleDetectDuplicates}
                 disabled={detecting}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#D7242A] to-[#B01B20] text-white text-xs font-bold uppercase tracking-wider hover:opacity-95 transition-all shadow-lg shadow-[#D7242A]/20 disabled:opacity-50"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#1F6B4C] to-[#18593F] text-white text-xs font-bold uppercase tracking-wider hover:opacity-95 transition-all shadow-lg shadow-[#1F6B4C]/20 disabled:opacity-50"
               >
                 <RefreshCw className={`w-4 h-4 ${detecting ? 'animate-spin' : ''}`} />
                 {detecting ? 'Scanning Pipeline...' : 'Run Integrity Scan'}
@@ -189,7 +189,7 @@ export default function DuplicateCheckerPage() {
             {messageType === 'success' ? (
               <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
             ) : (
-              <AlertTriangle className="w-5 h-5 text-[#D7242A] shrink-0 mt-0.5" />
+              <AlertTriangle className="w-5 h-5 text-[#1F6B4C] shrink-0 mt-0.5" />
             )}
             <div>
               <p className="text-xs font-bold uppercase tracking-wider mb-0.5">
@@ -205,7 +205,7 @@ export default function DuplicateCheckerPage() {
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex items-start gap-3.5">
               <div className="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center shrink-0">
-                <Database className="w-5 h-5 text-[#D7242A]" />
+                <Database className="w-5 h-5 text-[#1F6B4C]" />
               </div>
               <div>
                 <h2 className="text-base font-bold text-slate-900">Database Diagnostic Engine</h2>
@@ -219,7 +219,7 @@ export default function DuplicateCheckerPage() {
               <button
                 onClick={handleDetectDuplicates}
                 disabled={detecting}
-                className="w-full md:w-auto px-6 py-2.5 bg-[#0B0F19] hover:bg-[#D7242A] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-md disabled:opacity-50 flex items-center justify-center gap-2"
+                className="w-full md:w-auto px-6 py-2.5 bg-[#0B0F19] hover:bg-[#1F6B4C] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-md disabled:opacity-50 flex items-center justify-center gap-2"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${detecting ? 'animate-spin' : ''}`} />
                 {detecting ? 'Diagnosing...' : 'Scan Now'}
@@ -265,7 +265,7 @@ export default function DuplicateCheckerPage() {
                 </div>
                 <div
                   className={`text-2xl font-black mt-2 tracking-tight ${
-                    report.summary.totalDuplicatesFound > 0 ? 'text-[#D7242A]' : 'text-emerald-600'
+                    report.summary.totalDuplicatesFound > 0 ? 'text-[#1F6B4C]' : 'text-emerald-600'
                   }`}
                 >
                   {report.summary.totalDuplicatesFound}
@@ -293,7 +293,7 @@ export default function DuplicateCheckerPage() {
             {(report.summary.totalDuplicatesFound > 0 || report.summary.inconsistentLeadsFound > 0) && (
               <div className="bg-white rounded-2xl border border-rose-200/80 p-6 shadow-sm">
                 <div className="flex items-center gap-2.5 mb-2">
-                  <Wrench className="w-5 h-5 text-[#D7242A]" />
+                  <Wrench className="w-5 h-5 text-[#1F6B4C]" />
                   <h2 className="text-base font-bold text-slate-900">Database Resolution Engine</h2>
                 </div>
                 <p className="text-xs text-slate-500 mb-5">
@@ -326,7 +326,7 @@ export default function DuplicateCheckerPage() {
                   <button
                     onClick={() => handleFixDuplicates('all')}
                     disabled={fixing}
-                    className="px-4 py-3 bg-[#0B0F19] hover:bg-[#D7242A] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-md"
+                    className="px-4 py-3 bg-[#0B0F19] hover:bg-[#1F6B4C] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-md"
                   >
                     {fixing ? (
                       <>
@@ -335,7 +335,7 @@ export default function DuplicateCheckerPage() {
                       </>
                     ) : (
                       <>
-                        <ShieldCheck className="w-4 h-4 text-[#D7242A]" />
+                        <ShieldCheck className="w-4 h-4 text-[#1F6B4C]" />
                         Execute Full Normalization
                       </>
                     )}
@@ -349,7 +349,7 @@ export default function DuplicateCheckerPage() {
               <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm">
                 <div className="flex items-center justify-between mb-4">
                   <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                    <Users className="w-4 h-4 text-[#D7242A]" />
+                    <Users className="w-4 h-4 text-[#1F6B4C]" />
                     Advisor Collision Breakdown ({report.duplicateReport.length})
                   </h2>
                 </div>
@@ -374,7 +374,7 @@ export default function DuplicateCheckerPage() {
                       {/* Phone Duplicates Breakdown */}
                       {agentReport.duplicatesByPhone && agentReport.duplicatesByPhone.length > 0 && (
                         <div className="space-y-2">
-                          <div className="text-xs font-bold text-[#D7242A] flex items-center gap-1.5 uppercase tracking-wider mb-2">
+                          <div className="text-xs font-bold text-[#1F6B4C] flex items-center gap-1.5 uppercase tracking-wider mb-2">
                             <Phone className="w-3.5 h-3.5" />
                             Overlapping Phone Numbers ({agentReport.duplicatesByPhone.length})
                           </div>
@@ -386,7 +386,7 @@ export default function DuplicateCheckerPage() {
                               >
                                 <div className="flex items-center justify-between text-xs">
                                   <span className="font-extrabold text-slate-900 tracking-wide">{dup.phone}</span>
-                                  <span className="px-2 py-0.5 rounded-full bg-rose-50 text-[#D7242A] font-bold text-[10px]">
+                                  <span className="px-2 py-0.5 rounded-full bg-rose-50 text-[#1F6B4C] font-bold text-[10px]">
                                     {dup.count} instances
                                   </span>
                                 </div>

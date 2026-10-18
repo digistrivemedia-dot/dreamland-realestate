@@ -1,8 +1,8 @@
 'use client';
 
 export default function FloatingContact() {
-  const phoneNumber = '919002981353';
-  const whatsappMessage = encodeURIComponent('Hi, I am interested in a property listed on A4 Realty. Can you help me?');
+  const phoneNumber = '910000000000'; // TBD: replace with Dreamland's WhatsApp/phone number
+  const whatsappMessage = encodeURIComponent('Hi, I am interested in a property listed on Dreamland. Can you help me?');
 
   return (
     <div className="fixed bottom-24 lg:bottom-6 right-4 lg:right-6 z-40 flex flex-col gap-3">
@@ -23,7 +23,7 @@ export default function FloatingContact() {
       <a
         href={`tel:+${phoneNumber}`}
         aria-label="Call us"
-        className="w-14 h-14 bg-[#D7242A] hover:bg-[#b91c21] text-white rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110"
+        className="w-14 h-14 bg-[#1F6B4C] hover:bg-[#18593F] text-white rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>

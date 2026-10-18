@@ -132,8 +132,8 @@ export default function PropertyList() {
             <div className="flex justify-center items-center min-h-screen">
                 <div className="flex flex-col items-center space-y-4">
                     <div className="relative w-16 h-16">
-                        <div className="absolute inset-0 border-4 border-[#D7242A]/20 rounded-full"></div>
-                        <div className="absolute inset-0 border-4 border-[#D7242A] rounded-full animate-spin border-t-transparent"></div>
+                        <div className="absolute inset-0 border-4 border-[#1F6B4C]/20 rounded-full"></div>
+                        <div className="absolute inset-0 border-4 border-[#1F6B4C] rounded-full animate-spin border-t-transparent"></div>
                     </div>
                     <p className="text-gray-500 tracking-widest text-sm uppercase" style={{ fontFamily: 'var(--font-josefin)' }}>
                         Finding your perfect properties...
@@ -147,8 +147,8 @@ export default function PropertyList() {
         return (
             <div className="flex flex-col items-center justify-center min-h-screen px-4">
                 <div className="bg-white border border-gray-100 rounded-2xl p-10 text-center max-w-md shadow-xl">
-                    <div className="w-16 h-16 bg-[#D7242A]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg className="w-8 h-8 text-[#D7242A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-16 h-16 bg-[#1F6B4C]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg className="w-8 h-8 text-[#1F6B4C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
                         </svg>
                     </div>
@@ -156,7 +156,7 @@ export default function PropertyList() {
                     <p className="text-gray-500 mb-6 text-sm">{error}</p>
                     <button
                         onClick={() => fetchPropertiesWithFilters(filters, true)}
-                        className="px-6 py-3 rounded-xl bg-[#D7242A] text-white font-semibold hover:bg-[#D7242A]/90 transition-colors"
+                        className="px-6 py-3 rounded-xl bg-[#1F6B4C] text-white font-semibold hover:bg-[#1F6B4C]/90 transition-colors"
                         style={{ fontFamily: 'var(--font-josefin)' }}
                     >
                         Try Again
@@ -186,7 +186,7 @@ export default function PropertyList() {
                 {/* Search & Filter Card */}
                 <div className="bg-white rounded-2xl shadow-lg border border-gray-100 mb-8 overflow-hidden">
                     {/* Filter Header */}
-                    <div className="bg-[#D7242A] px-6 py-4 flex items-center justify-between">
+                    <div className="bg-[#1F6B4C] px-6 py-4 flex items-center justify-between">
                         <span className="text-white font-semibold tracking-widest text-sm uppercase" style={{ fontFamily: 'var(--font-josefin)' }}>
                             Search &amp; Filter
                         </span>
@@ -215,12 +215,12 @@ export default function PropertyList() {
                                 placeholder="Search by location, area, or property name..."
                                 value={filters.location}
                                 onChange={handleFilterChange}
-                                className="w-full pl-12 pr-28 py-4 text-base border-2 border-gray-100 rounded-xl focus:border-[#D7242A] focus:ring-4 focus:ring-[#D7242A]/10 transition-all outline-none bg-gray-50 text-gray-900"
+                                className="w-full pl-12 pr-28 py-4 text-base border-2 border-gray-100 rounded-xl focus:border-[#1F6B4C] focus:ring-4 focus:ring-[#1F6B4C]/10 transition-all outline-none bg-gray-50 text-gray-900"
                                 style={{ fontFamily: 'var(--font-josefin)' }}
                             />
                             {loading && (
                                 <div className="absolute inset-y-0 right-4 flex items-center">
-                                    <svg className="animate-spin h-5 w-5 text-[#D7242A]" fill="none" viewBox="0 0 24 24">
+                                    <svg className="animate-spin h-5 w-5 text-[#1F6B4C]" fill="none" viewBox="0 0 24 24">
                                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                     </svg>
@@ -243,8 +243,8 @@ export default function PropertyList() {
                                                 onClick={() => handlePillFilter('mode', v)}
                                                 className={`flex-1 py-2.5 rounded-xl text-sm font-semibold transition-all border ${
                                                     filters.mode === v
-                                                        ? 'bg-[#D7242A] text-white border-[#D7242A] shadow-lg shadow-red-500/20'
-                                                        : 'bg-white text-gray-600 border-gray-200 hover:border-[#D7242A]/40'
+                                                        ? 'bg-[#1F6B4C] text-white border-[#1F6B4C] shadow-lg shadow-red-500/20'
+                                                        : 'bg-white text-gray-600 border-gray-200 hover:border-[#1F6B4C]/40'
                                                 }`}
                                             >
                                                 {l}
@@ -260,7 +260,7 @@ export default function PropertyList() {
                                             name="price"
                                             value={filters.price}
                                             onChange={handleFilterChange}
-                                            className="w-full appearance-none pl-4 pr-10 py-3 bg-white border border-gray-200 rounded-xl text-gray-800 font-semibold text-sm focus:border-[#D7242A] focus:ring-4 focus:ring-[#D7242A]/10 transition-all outline-none cursor-pointer"
+                                            className="w-full appearance-none pl-4 pr-10 py-3 bg-white border border-gray-200 rounded-xl text-gray-800 font-semibold text-sm focus:border-[#1F6B4C] focus:ring-4 focus:ring-[#1F6B4C]/10 transition-all outline-none cursor-pointer"
                                             style={{ fontFamily: 'var(--font-josefin)' }}
                                         >
                                             <option value="">No Limit</option>
@@ -321,7 +321,7 @@ export default function PropertyList() {
                                 <button
                                     onClick={applyFilters}
                                     disabled={loading}
-                                    className="flex-[2] py-3.5 bg-[#D7242A] text-white font-bold rounded-xl hover:bg-[#D7242A]/90 shadow-lg shadow-red-500/20 transition-all active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-2 text-sm tracking-wide"
+                                    className="flex-[2] py-3.5 bg-[#1F6B4C] text-white font-bold rounded-xl hover:bg-[#1F6B4C]/90 shadow-lg shadow-red-500/20 transition-all active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-2 text-sm tracking-wide"
                                     style={{ fontFamily: 'var(--font-josefin)' }}
                                 >
                                     {loading ? (
@@ -365,7 +365,7 @@ export default function PropertyList() {
                             <select
                                 value={sortBy}
                                 onChange={(e) => setSortBy(e.target.value)}
-                                className="appearance-none pl-3 pr-8 py-2 bg-white border border-gray-200 rounded-xl text-sm font-semibold text-gray-700 focus:border-[#D7242A] outline-none cursor-pointer"
+                                className="appearance-none pl-3 pr-8 py-2 bg-white border border-gray-200 rounded-xl text-sm font-semibold text-gray-700 focus:border-[#1F6B4C] outline-none cursor-pointer"
                                 style={{ fontFamily: 'var(--font-josefin)' }}
                             >
                                 <option value="newest">Newest First</option>
@@ -380,7 +380,7 @@ export default function PropertyList() {
                         <div className="hidden sm:flex bg-white border border-gray-200 rounded-xl p-1">
                             <button
                                 onClick={() => setViewMode('grid')}
-                                className={`p-2 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-[#D7242A] text-white shadow-sm' : 'text-gray-400 hover:text-gray-600'}`}
+                                className={`p-2 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-[#1F6B4C] text-white shadow-sm' : 'text-gray-400 hover:text-gray-600'}`}
                             >
                                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
@@ -388,7 +388,7 @@ export default function PropertyList() {
                             </button>
                             <button
                                 onClick={() => setViewMode('list')}
-                                className={`p-2 rounded-lg transition-all ${viewMode === 'list' ? 'bg-[#D7242A] text-white shadow-sm' : 'text-gray-400 hover:text-gray-600'}`}
+                                className={`p-2 rounded-lg transition-all ${viewMode === 'list' ? 'bg-[#1F6B4C] text-white shadow-sm' : 'text-gray-400 hover:text-gray-600'}`}
                             >
                                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                     <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
@@ -425,7 +425,7 @@ export default function PropertyList() {
                                             For {property.mode}
                                         </span>
                                         {property.status === 'Ready to Move' && (
-                                            <span className="px-2.5 py-1 text-[10px] font-bold rounded-lg bg-[#D7242A] text-white uppercase tracking-wider shadow-sm">
+                                            <span className="px-2.5 py-1 text-[10px] font-bold rounded-lg bg-[#1F6B4C] text-white uppercase tracking-wider shadow-sm">
                                                 Ready
                                             </span>
                                         )}
@@ -444,13 +444,13 @@ export default function PropertyList() {
                                     <div className="flex justify-between items-start mb-1">
                                         <Link href={generatePropertyUrl(property)}>
                                             <h3
-                                                className="text-base font-bold text-gray-900 group-hover:text-[#D7242A] transition-colors line-clamp-1 leading-snug"
+                                                className="text-base font-bold text-gray-900 group-hover:text-[#1F6B4C] transition-colors line-clamp-1 leading-snug"
                                                 style={{ fontFamily: 'var(--font-cinzel)' }}
                                             >
                                                 {property.title}
                                             </h3>
                                         </Link>
-                                        <button className="ml-2 text-gray-300 hover:text-[#D7242A] transition-colors flex-shrink-0">
+                                        <button className="ml-2 text-gray-300 hover:text-[#1F6B4C] transition-colors flex-shrink-0">
                                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                             </svg>
@@ -458,7 +458,7 @@ export default function PropertyList() {
                                     </div>
 
                                     <p className="text-sm text-gray-500 flex items-center gap-1.5 mb-3">
-                                        <svg className="w-3.5 h-3.5 text-[#D7242A] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="w-3.5 h-3.5 text-[#1F6B4C] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                         </svg>
@@ -533,7 +533,7 @@ export default function PropertyList() {
                                             fetchPropertiesWithFilters(newFilters);
                                             syncUrl(newFilters);
                                         }}
-                                        className="px-4 py-1.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-600 text-sm font-medium hover:border-[#D7242A] hover:text-[#D7242A] transition-colors"
+                                        className="px-4 py-1.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-600 text-sm font-medium hover:border-[#1F6B4C] hover:text-[#1F6B4C] transition-colors"
                                     >
                                         {loc}
                                     </button>
@@ -543,7 +543,7 @@ export default function PropertyList() {
 
                         <button
                             onClick={clearFilters}
-                            className="px-8 py-3 bg-[#D7242A] text-white font-semibold rounded-xl hover:bg-[#D7242A]/90 transition-colors text-sm tracking-wide"
+                            className="px-8 py-3 bg-[#1F6B4C] text-white font-semibold rounded-xl hover:bg-[#1F6B4C]/90 transition-colors text-sm tracking-wide"
                             style={{ fontFamily: 'var(--font-josefin)' }}
                         >
                             Clear Filters & See All

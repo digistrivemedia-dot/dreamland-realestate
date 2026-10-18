@@ -34,11 +34,11 @@ export async function generateMetadata({ params }) {
   const data = await getBlogData(params.slug);
 
   if (!data) {
-    return { title: 'Blog Post Not Found | A4Realty' };
+    return { title: 'Blog Post Not Found | Dreamland' };
   }
 
   const { blog } = data;
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.a4realty.in';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.dreamland.com';
   const url = `${baseUrl}/blog/${params.slug}`;
   const title = blog.seo?.metaTitle || blog.title;
   const description = blog.seo?.metaDescription || '';
@@ -54,9 +54,9 @@ export async function generateMetadata({ params }) {
       description,
       url,
       type: 'article',
-      siteName: 'A4Realty',
+      siteName: 'Dreamland',
       publishedTime: blog.publishedAt,
-      authors: [blog.author?.name || 'A4Realty Team'],
+      authors: [blog.author?.name || 'Dreamland Team'],
       ...(image && { images: [{ url: image, width: 1200, height: 630, alt: title }] }),
     },
     twitter: {

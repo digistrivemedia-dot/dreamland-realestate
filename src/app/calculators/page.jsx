@@ -15,7 +15,7 @@ export default function CalculatorsPage() {
             icon: Calculator,
             description: 'Calculate your home loan EMI with detailed breakdown',
             available: true,
-            color: 'from-[#D7242A] to-[#ff4444]'
+            color: 'from-[#1F6B4C] to-[#6EE7A1]'
         },
         {
             id: 'affordability',
@@ -50,7 +50,7 @@ export default function CalculatorsPage() {
         <>
             <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
                 {/* Hero Section */}
-                <div className="bg-gradient-to-r from-[#D7242A] to-[#ff4444] text-white">
+                <div className="bg-gradient-to-r from-[#1F6B4C] to-[#6EE7A1] text-white">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
                         <div className="text-center">
                             <div className="flex items-center justify-center gap-3 mb-4">
@@ -78,9 +78,9 @@ export default function CalculatorsPage() {
                                     disabled={!calc.available}
                                     className={`relative group text-left p-6 rounded-2xl border-2 transition-all duration-300 ${
                                         activeCalculator === calc.id
-                                            ? 'border-[#D7242A] bg-white shadow-lg scale-105'
+                                            ? 'border-[#1F6B4C] bg-white shadow-lg scale-105'
                                             : calc.available
-                                            ? 'border-gray-200 bg-white hover:border-[#D7242A]/50 hover:shadow-md'
+                                            ? 'border-gray-200 bg-white hover:border-[#1F6B4C]/50 hover:shadow-md'
                                             : 'border-gray-200 bg-gray-50 opacity-60 cursor-not-allowed'
                                     }`}
                                 >
@@ -105,7 +105,7 @@ export default function CalculatorsPage() {
 
                                     {activeCalculator === calc.id && (
                                         <div className="absolute bottom-3 right-3">
-                                            <ChevronRight className="w-5 h-5 text-[#D7242A]" />
+                                            <ChevronRight className="w-5 h-5 text-[#1F6B4C]" />
                                         </div>
                                     )}
                                 </button>
@@ -158,7 +158,7 @@ export default function CalculatorsPage() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                             <div>
                                 <div className="flex items-center gap-2 mb-2">
-                                    <div className="w-2 h-2 bg-[#D7242A] rounded-full"></div>
+                                    <div className="w-2 h-2 bg-[#1F6B4C] rounded-full"></div>
                                     <h4 className="font-semibold text-gray-900">Accurate Results</h4>
                                 </div>
                                 <p className="text-sm text-gray-600">
@@ -168,7 +168,7 @@ export default function CalculatorsPage() {
 
                             <div>
                                 <div className="flex items-center gap-2 mb-2">
-                                    <div className="w-2 h-2 bg-[#D7242A] rounded-full"></div>
+                                    <div className="w-2 h-2 bg-[#1F6B4C] rounded-full"></div>
                                     <h4 className="font-semibold text-gray-900">Easy to Use</h4>
                                 </div>
                                 <p className="text-sm text-gray-600">
@@ -178,7 +178,7 @@ export default function CalculatorsPage() {
 
                             <div>
                                 <div className="flex items-center gap-2 mb-2">
-                                    <div className="w-2 h-2 bg-[#D7242A] rounded-full"></div>
+                                    <div className="w-2 h-2 bg-[#1F6B4C] rounded-full"></div>
                                     <h4 className="font-semibold text-gray-900">Instant Updates</h4>
                                 </div>
                                 <p className="text-sm text-gray-600">
@@ -188,7 +188,7 @@ export default function CalculatorsPage() {
 
                             <div>
                                 <div className="flex items-center gap-2 mb-2">
-                                    <div className="w-2 h-2 bg-[#D7242A] rounded-full"></div>
+                                    <div className="w-2 h-2 bg-[#1F6B4C] rounded-full"></div>
                                     <h4 className="font-semibold text-gray-900">Visual Breakdown</h4>
                                 </div>
                                 <p className="text-sm text-gray-600">
@@ -198,7 +198,7 @@ export default function CalculatorsPage() {
 
                             <div>
                                 <div className="flex items-center gap-2 mb-2">
-                                    <div className="w-2 h-2 bg-[#D7242A] rounded-full"></div>
+                                    <div className="w-2 h-2 bg-[#1F6B4C] rounded-full"></div>
                                     <h4 className="font-semibold text-gray-900">Mobile Friendly</h4>
                                 </div>
                                 <p className="text-sm text-gray-600">
@@ -208,7 +208,7 @@ export default function CalculatorsPage() {
 
                             <div>
                                 <div className="flex items-center gap-2 mb-2">
-                                    <div className="w-2 h-2 bg-[#D7242A] rounded-full"></div>
+                                    <div className="w-2 h-2 bg-[#1F6B4C] rounded-full"></div>
                                     <h4 className="font-semibold text-gray-900">Free to Use</h4>
                                 </div>
                                 <p className="text-sm text-gray-600">

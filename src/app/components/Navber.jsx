@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from 'next/navigation';
-import Logo from '../../../public/finalLogo.jpeg'
+import Logo from '../../../public/dreamlandlogo.jpeg'
 
 
 const Navber = () => {
@@ -45,7 +45,7 @@ const Navber = () => {
     }
 
     return (
-        <header className="sticky top-0 z-40 bg-[#D7242A] text-white shadow-lg">
+        <header className="sticky top-0 z-40 bg-[#1F6B4C] text-white shadow-lg">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Main navbar */}
                 <div className="flex items-center justify-between h-16">
@@ -54,7 +54,7 @@ const Navber = () => {
                         <div className="flex items-center">
                             <Image
                                 src={Logo}
-                                alt="A4Realty Logo"
+                                alt="Dreamland Logo"
                                 className="h-[2.5rem] w-[7rem] rounded-sm"
                             />
                         </div>
@@ -147,7 +147,7 @@ const Navber = () => {
                                     </div>
                                     <button
                                         onClick={handleLogout}
-                                        className="px-4 py-2 text-sm font-medium bg-white text-[#D7242A] rounded-lg hover:bg-white/90 transition-all duration-200 shadow-sm"
+                                        className="px-4 py-2 text-sm font-medium bg-white text-[#1F6B4C] rounded-lg hover:bg-white/90 transition-all duration-200 shadow-sm"
                                     >
                                         Logout
                                     </button>
@@ -157,14 +157,14 @@ const Navber = () => {
                             <div className='flex items-center space-x-2'>
                                 <Link
                                     href="/login"
-                                    className="px-4 py-2 text-sm font-medium bg-white text-[#D7242A] rounded-lg hover:bg-white/90 transition-all duration-200 shadow-sm"
+                                    className="px-4 py-2 text-sm font-medium bg-white text-[#1F6B4C] rounded-lg hover:bg-white/90 transition-all duration-200 shadow-sm"
                                 >
                                     Sign In
                                 </Link>
 
                                 <Link
                                     href="/register"
-                                    className="flex items-center justify-center px-4 py-3 text-sm font-bold bg-white text-[#D7242A] rounded-lg hover:bg-white/90 transition-all duration-200 shadow-lg"
+                                    className="flex items-center justify-center px-4 py-3 text-sm font-bold bg-white text-[#1F6B4C] rounded-lg hover:bg-white/90 transition-all duration-200 shadow-lg"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     {/* <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -186,7 +186,7 @@ const Navber = () => {
                 )}
 
                 {/* Mobile menu */}
-                <div className={`lg:hidden fixed top-0 left-0 h-full w-80 bg-[#D7242A] transform transition-transform duration-300 ease-in-out z-50 ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+                <div className={`lg:hidden fixed top-0 left-0 h-full w-80 bg-[#1F6B4C] transform transition-transform duration-300 ease-in-out z-50 ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
                     } shadow-2xl`}>
                     <div className="flex flex-col h-full">
                         {/* Header */}
@@ -194,7 +194,7 @@ const Navber = () => {
                             <div className="flex items-center">
                                 <Image
                                     src={Logo}
-                                    alt="A4Realty Logo"
+                                    alt="Dreamland Logo"
                                     className="h-10 w-20 rounded-sm"
                                 />
                             </div>
@@ -386,7 +386,7 @@ const Navber = () => {
                                             handleLogout();
                                             setIsMobileMenuOpen(false);
                                         }}
-                                        className="flex items-center justify-center w-full px-4 py-3 text-lg font-medium bg-white text-[#D7242A] rounded-lg hover:bg-white/90 transition-all duration-200 shadow-lg"
+                                        className="flex items-center justify-center w-full px-4 py-3 text-lg font-medium bg-white text-[#1F6B4C] rounded-lg hover:bg-white/90 transition-all duration-200 shadow-lg"
                                     >
                                         <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -398,7 +398,7 @@ const Navber = () => {
                                 <div>
                                     <Link
                                         href="/login"
-                                        className="flex items-center justify-center px-4 py-3 text-lg font-medium bg-white text-[#D7242A] rounded-lg hover:bg-white/90 transition-all duration-200 shadow-lg"
+                                        className="flex items-center justify-center px-4 py-3 text-lg font-medium bg-white text-[#1F6B4C] rounded-lg hover:bg-white/90 transition-all duration-200 shadow-lg"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
                                         <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -409,7 +409,7 @@ const Navber = () => {
 
                                     <Link
                                         href="/register"
-                                        className="flex items-center justify-center px-4 py-3 text-lg font-medium bg-white text-[#D7242A] rounded-lg hover:bg-white/90 transition-all duration-200 shadow-lg"
+                                        className="flex items-center justify-center px-4 py-3 text-lg font-medium bg-white text-[#1F6B4C] rounded-lg hover:bg-white/90 transition-all duration-200 shadow-lg"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
                                         <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

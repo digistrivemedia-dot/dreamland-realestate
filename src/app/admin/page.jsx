@@ -80,8 +80,8 @@ export default function AdminDashboard() {
       href: '/admin/crm/leads',
       tag: 'Core System',
       icon: Users,
-      accent: 'from-[#D7242A] to-[#99151A]',
-      bgTint: 'group-hover:border-[#D7242A]/40 hover:shadow-[#D7242A]/5',
+      accent: 'from-[#1F6B4C] to-[#0E3B29]',
+      bgTint: 'group-hover:border-[#1F6B4C]/40 hover:shadow-[#1F6B4C]/5',
     },
     {
       title: 'Property Portfolio',
@@ -92,15 +92,16 @@ export default function AdminDashboard() {
       accent: 'from-blue-600 to-indigo-700',
       bgTint: 'group-hover:border-blue-500/40 hover:shadow-blue-500/5',
     },
-    {
-      title: 'Geospatial Map Analytics',
-      description: 'Visual map distribution of active properties & geographic density',
-      href: '/admin/map',
-      tag: 'Spatial Intel',
-      icon: Map,
-      accent: 'from-emerald-600 to-teal-700',
-      bgTint: 'group-hover:border-emerald-500/40 hover:shadow-emerald-500/5',
-    },
+    // Hidden module (re-enable by uncommenting): Geospatial Map Analytics
+    // {
+    //   title: 'Geospatial Map Analytics',
+    //   description: 'Visual map distribution of active properties & geographic density',
+    //   href: '/admin/map',
+    //   tag: 'Spatial Intel',
+    //   icon: Map,
+    //   accent: 'from-emerald-600 to-teal-700',
+    //   bgTint: 'group-hover:border-emerald-500/40 hover:shadow-emerald-500/5',
+    // },
     {
       title: 'Business Analytics',
       description: 'Review lead velocity, agent closing rates & channel conversion',
@@ -117,14 +118,14 @@ export default function AdminDashboard() {
       {/* Executive Hero Banner */}
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0B0F19] via-[#111827] to-[#1E293B] text-white p-6 sm:p-8 lg:p-10 shadow-xl border border-slate-800">
         {/* Decorative background glow elements */}
-        <div className="absolute top-0 right-0 -mt-12 -mr-12 w-96 h-96 bg-gradient-to-br from-[#D7242A]/25 via-[#D7242A]/10 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute top-0 right-0 -mt-12 -mr-12 w-96 h-96 bg-gradient-to-br from-[#1F6B4C]/25 via-[#1F6B4C]/10 to-transparent rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute bottom-0 left-1/3 -mb-16 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-3 max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs font-semibold tracking-wide text-white/90">
-              <span className="w-2 h-2 rounded-full bg-[#D7242A] animate-pulse"></span>
-              <span>A4 REALTY • EXECUTIVE PLATFORM</span>
+              <span className="w-2 h-2 rounded-full bg-[#1F6B4C] animate-pulse"></span>
+              <span>DREAMLAND • EXECUTIVE PLATFORM</span>
             </div>
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
               Real Estate Intelligence &amp; Sales CRM
@@ -150,13 +151,13 @@ export default function AdminDashboard() {
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-xs font-semibold text-white transition-all backdrop-blur-sm cursor-pointer shadow-sm hover:scale-[1.02]"
               title="Import Prospects from CSV"
             >
-              <UploadCloud className="w-4 h-4 text-[#ff4d53]" />
+              <UploadCloud className="w-4 h-4 text-[#6EE7A1]" />
               <span>Bulk Upload Leads</span>
             </button>
 
             <Link
               href="/admin/crm/leads"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#D7242A] to-[#B01A20] hover:from-[#e0292f] hover:to-[#99151A] text-white text-xs font-bold shadow-lg shadow-[#D7242A]/30 transition-all hover:scale-[1.02]"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#1F6B4C] to-[#18593F] hover:from-[#1F6B4C] hover:to-[#0E3B29] text-white text-xs font-bold shadow-lg shadow-[#1F6B4C]/30 transition-all hover:scale-[1.02]"
             >
               <Users className="w-4 h-4" />
               <span>Launch Sales CRM</span>
@@ -195,7 +196,7 @@ export default function AdminDashboard() {
         {/* Metric 2: Total Leads */}
         <div className="group bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-all duration-200 relative overflow-hidden">
           <div className="flex items-center justify-between mb-4">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#D7242A]/10 to-[#D7242A]/20 text-[#D7242A] flex items-center justify-center border border-[#D7242A]/20">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#1F6B4C]/10 to-[#1F6B4C]/20 text-[#1F6B4C] flex items-center justify-center border border-[#1F6B4C]/20">
               <Users className="w-6 h-6" />
             </div>
             <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60">
@@ -211,7 +212,7 @@ export default function AdminDashboard() {
               <button
                 type="button"
                 onClick={() => setShowBulkUploadModal(true)}
-                className="text-[#D7242A] hover:underline font-semibold flex items-center gap-1 cursor-pointer"
+                className="text-[#1F6B4C] hover:underline font-semibold flex items-center gap-1 cursor-pointer"
                 title="Import Leads CSV"
               >
                 <UploadCloud className="w-3 h-3" />
@@ -291,7 +292,7 @@ export default function AdminDashboard() {
             </div>
             <Link
               href="/admin/crm/leads"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#D7242A] hover:text-[#a81419] bg-[#D7242A]/5 hover:bg-[#D7242A]/10 px-3 py-1.5 rounded-lg transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1F6B4C] hover:text-[#18593F] bg-[#1F6B4C]/5 hover:bg-[#1F6B4C]/10 px-3 py-1.5 rounded-lg transition-colors"
             >
               <span>Manage In CRM</span>
               <ChevronRight className="w-3.5 h-3.5" />
@@ -305,7 +306,7 @@ export default function AdminDashboard() {
                 <p className="text-sm font-medium">No customer inquiries yet</p>
                 <Link
                   href="/admin/crm/leads"
-                  className="mt-3 inline-block text-xs font-semibold text-[#D7242A] hover:underline"
+                  className="mt-3 inline-block text-xs font-semibold text-[#1F6B4C] hover:underline"
                 >
                   Create your first lead in CRM &rarr;
                 </Link>
@@ -337,7 +338,7 @@ export default function AdminDashboard() {
                           <div>
                             <Link
                               href={`/admin/crm/leads/${lead._id}`}
-                              className="font-bold text-slate-900 group-hover:text-[#D7242A] transition-colors block"
+                              className="font-bold text-slate-900 group-hover:text-[#1F6B4C] transition-colors block"
                             >
                               {lead.name}
                             </Link>
@@ -395,7 +396,7 @@ export default function AdminDashboard() {
                           )}
                           <Link
                             href={`/admin/crm/leads/${lead._id}`}
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-[#D7242A] hover:bg-[#D7242A]/5 transition-colors"
+                            className="p-1.5 rounded-lg text-slate-400 hover:text-[#1F6B4C] hover:bg-[#1F6B4C]/5 transition-colors"
                             title="Open Lead Profile"
                           >
                             <ArrowRight className="w-3.5 h-3.5" />
@@ -475,7 +476,7 @@ export default function AdminDashboard() {
 
           {/* Quick Real Estate Playbook Card */}
           <div className="bg-gradient-to-br from-[#0B0F19] to-[#1a2234] text-white rounded-3xl p-6 border border-slate-800 shadow-md">
-            <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-[#D7242A] mb-2">
+            <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-[#1F6B4C] mb-2">
               <Sparkles className="w-4 h-4" />
               <span>Advisor Best Practice</span>
             </div>
@@ -487,7 +488,7 @@ export default function AdminDashboard() {
             </p>
             <Link
               href="/admin/crm/leads?assignment=unassigned"
-              className="inline-flex items-center gap-2 text-xs font-bold text-white bg-[#D7242A] hover:bg-[#b5191f] px-4 py-2 rounded-xl shadow-md transition-colors"
+              className="inline-flex items-center gap-2 text-xs font-bold text-white bg-[#1F6B4C] hover:bg-[#18593F] px-4 py-2 rounded-xl shadow-md transition-colors"
             >
               <span>Triage Fresh Leads</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -521,7 +522,7 @@ export default function AdminDashboard() {
                       {item.tag}
                     </span>
                   </div>
-                  <h3 className="text-base font-bold text-slate-900 group-hover:text-[#D7242A] transition-colors">
+                  <h3 className="text-base font-bold text-slate-900 group-hover:text-[#1F6B4C] transition-colors">
                     {item.title}
                   </h3>
                   <p className="text-xs text-slate-500 mt-1 leading-relaxed">

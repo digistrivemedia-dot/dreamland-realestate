@@ -1,9 +1,9 @@
 export const metadata = {
   title: {
-    template: '%s | A4Realty Blog',
-    default: 'A4Realty Blog - Real Estate Insights & Property Investment Tips'
+    template: '%s | Dreamland Blog',
+    default: 'Dreamland Blog - Real Estate Insights & Property Investment Tips'
   },
-  description: 'Expert real estate insights, property investment tips, market trends, and buying guides from A4Realty. Stay informed with our comprehensive blog on real estate in Bangalore and beyond.',
+  description: 'Expert real estate insights, property investment tips, market trends, and buying guides from Dreamland. Stay informed with our comprehensive blog on real estate in Bangalore and beyond.',
   keywords: [
     'real estate blog',
     'property investment tips',
@@ -16,29 +16,29 @@ export const metadata = {
     'housing market',
     'real estate experts'
   ],
-  authors: [{ name: 'A4Realty Team' }],
-  creator: 'A4Realty',
-  publisher: 'A4Realty',
+  authors: [{ name: 'Dreamland Team' }],
+  creator: 'Dreamland',
+  publisher: 'Dreamland',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://a4realty.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://dreamland.com'),
   alternates: {
     canonical: '/blog',
   },
   openGraph: {
-    title: 'A4Realty Blog - Real Estate Insights & Investment Tips',
-    description: 'Expert real estate insights, property investment tips, and market trends from A4Realty professionals.',
+    title: 'Dreamland Blog - Real Estate Insights & Investment Tips',
+    description: 'Expert real estate insights, property investment tips, and market trends from Dreamland professionals.',
     url: '/blog',
-    siteName: 'A4Realty',
+    siteName: 'Dreamland',
     images: [
       {
-        url: '/finalLogo.jpeg',
+        url: '/dreamlandlogo.jpeg',
         width: 1200,
         height: 630,
-        alt: 'A4Realty Blog',
+        alt: 'Dreamland Blog',
       },
     ],
     locale: 'en_US',
@@ -46,9 +46,9 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'A4Realty Blog - Real Estate Insights & Investment Tips',
-    description: 'Expert real estate insights, property investment tips, and market trends from A4Realty professionals.',
-    images: ['/finalLogo.jpeg'],
+    title: 'Dreamland Blog - Real Estate Insights & Investment Tips',
+    description: 'Expert real estate insights, property investment tips, and market trends from Dreamland professionals.',
+    images: ['/dreamlandlogo.jpeg'],
   },
   robots: {
     index: true,
@@ -80,20 +80,20 @@ export default function BlogLayout({ children }) {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Blog",
-            "name": "A4Realty Blog",
-            "description": "Expert real estate insights, property investment tips, and market trends from A4Realty professionals.",
-            "url": `${process.env.NEXT_PUBLIC_BASE_URL || 'https://a4realty.com'}/blog`,
+            "name": "Dreamland Blog",
+            "description": "Expert real estate insights, property investment tips, and market trends from Dreamland professionals.",
+            "url": `${process.env.NEXT_PUBLIC_BASE_URL || 'https://dreamland.com'}/blog`,
             "publisher": {
               "@type": "Organization",
-              "name": "A4Realty",
+              "name": "Dreamland",
               "logo": {
                 "@type": "ImageObject",
-                "url": `${process.env.NEXT_PUBLIC_BASE_URL || 'https://a4realty.com'}/finalLogo.jpeg`
+                "url": `${process.env.NEXT_PUBLIC_BASE_URL || 'https://dreamland.com'}/dreamlandlogo.jpeg`
               }
             },
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": `${process.env.NEXT_PUBLIC_BASE_URL || 'https://a4realty.com'}/blog`
+              "@id": `${process.env.NEXT_PUBLIC_BASE_URL || 'https://dreamland.com'}/blog`
             }
           })
         }}

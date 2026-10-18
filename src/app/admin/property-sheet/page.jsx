@@ -177,7 +177,7 @@ export default function PropertySheetUpload() {
             <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight font-serif">
               Master Property Sheet
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#D7242A]/10 text-[#D7242A] border border-[#D7242A]/20">
+            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#1F6B4C]/10 text-[#1F6B4C] border border-[#1F6B4C]/20">
               Database Sync
             </span>
           </div>
@@ -190,7 +190,7 @@ export default function PropertySheetUpload() {
           onClick={() => router.push('/admin/property-search')}
           className="inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-2xs transition-colors self-start md:self-auto"
         >
-          <Database className="w-3.5 h-3.5 text-[#D7242A]" />
+          <Database className="w-3.5 h-3.5 text-[#1F6B4C]" />
           <span>Open Search Terminal</span>
         </button>
       </div>
@@ -273,11 +273,11 @@ export default function PropertySheetUpload() {
         </div>
 
         {/* Drag & Drop Visual Field */}
-        <label className="relative flex flex-col items-center justify-center p-8 sm:p-12 border-2 border-dashed border-slate-300 hover:border-[#D7242A] rounded-2xl bg-slate-50/50 hover:bg-rose-50/30 transition-all cursor-pointer group">
-          <div className="w-14 h-14 rounded-2xl bg-white text-[#D7242A] shadow-xs flex items-center justify-center mb-3 group-hover:scale-105 transition-transform border border-slate-200">
+        <label className="relative flex flex-col items-center justify-center p-8 sm:p-12 border-2 border-dashed border-slate-300 hover:border-[#1F6B4C] rounded-2xl bg-slate-50/50 hover:bg-rose-50/30 transition-all cursor-pointer group">
+          <div className="w-14 h-14 rounded-2xl bg-white text-[#1F6B4C] shadow-xs flex items-center justify-center mb-3 group-hover:scale-105 transition-transform border border-slate-200">
             <UploadCloud className="w-7 h-7" />
           </div>
-          <span className="text-sm font-bold text-slate-900 group-hover:text-[#D7242A] transition-colors">
+          <span className="text-sm font-bold text-slate-900 group-hover:text-[#1F6B4C] transition-colors">
             {file ? file.name : 'Click to select or drag & drop CSV file'}
           </span>
           <span className="text-xs text-slate-500 mt-1">
@@ -298,7 +298,7 @@ export default function PropertySheetUpload() {
             id="clearExisting"
             checked={clearExisting}
             onChange={(e) => setClearExisting(e.target.checked)}
-            className="w-4 h-4 mt-0.5 text-[#D7242A] rounded focus:ring-[#D7242A] accent-[#D7242A]"
+            className="w-4 h-4 mt-0.5 text-[#1F6B4C] rounded focus:ring-[#1F6B4C] accent-[#1F6B4C]"
           />
           <div className="space-y-0.5">
             <label htmlFor="clearExisting" className="text-xs font-bold text-amber-900 cursor-pointer">
@@ -314,7 +314,7 @@ export default function PropertySheetUpload() {
         <button
           onClick={handleUpload}
           disabled={!file || uploading}
-          className="w-full py-3.5 px-4 bg-[#D7242A] hover:bg-[#b81d22] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer shadow-sm flex items-center justify-center space-x-2"
+          className="w-full py-3.5 px-4 bg-[#1F6B4C] hover:bg-[#18593F] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer shadow-sm flex items-center justify-center space-x-2"
         >
           {uploading ? (
             <>
@@ -332,7 +332,7 @@ export default function PropertySheetUpload() {
         {/* Format Guidelines */}
         <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-3">
           <div className="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center space-x-1.5">
-            <FileCheck className="w-4 h-4 text-[#D7242A]" />
+            <FileCheck className="w-4 h-4 text-[#1F6B4C]" />
             <span>Required CSV Columns</span>
           </div>
           <p className="text-xs text-slate-600 leading-relaxed">

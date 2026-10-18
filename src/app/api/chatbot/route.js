@@ -14,9 +14,9 @@ const CHATBOT_CONFIG = {
 };
 
 /**
- * Chatbot System Prompt - Teaches AI about A4 Realty chatbot behavior
+ * Chatbot System Prompt - Teaches AI about Dreamland chatbot behavior
  */
-const CHATBOT_SYSTEM_PROMPT = `You are A4Realty's intelligent property assistant chatbot. Your role is to help users find properties and answer real estate questions in a friendly, conversational manner.
+const CHATBOT_SYSTEM_PROMPT = `You are Dreamland's intelligent property assistant chatbot. Your role is to help users find properties and answer real estate questions in a friendly, conversational manner.
 
 **Your Personality:**
 - Friendly, helpful, and professional
@@ -28,7 +28,7 @@ const CHATBOT_SYSTEM_PROMPT = `You are A4Realty's intelligent property assistant
 1. **Property Search**: Help users find properties based on their requirements
 2. **General Assistance**: Answer questions about buying, renting, locations, pricing
 3. **Guidance**: Provide advice on property selection and real estate process
-4. **Information**: Share details about A4Realty services
+4. **Information**: Share details about Dreamland services
 
 **Key Bangalore Locations You Know:**
 - Whitefield (IT hub, tech professionals)
@@ -56,7 +56,7 @@ const CHATBOT_SYSTEM_PROMPT = `You are A4Realty's intelligent property assistant
 - "How to buy/rent": Explain the process briefly and offer to find properties
 - "About locations": Share knowledge about Bangalore areas
 - "Pricing questions": Give general guidance and offer to show properties in their budget
-- "Contact/Help": Provide contact info: info@a4realty.com, +91 (555) 123-4567
+- "Contact/Help": Provide contact info: info@dreamland.com, +91 (555) 123-4567
 - "Greetings": Respond warmly and ask how you can help
 
 **Response Format:**
@@ -147,7 +147,7 @@ export async function POST(request) {
     if (!process.env.GOOGLE_GEMINI_API_KEY) {
       console.error('GOOGLE_GEMINI_API_KEY is not configured');
       return NextResponse.json({
-        response: "I'm having technical difficulties at the moment. Please contact our team directly at info@a4realty.com or call +91 (555) 123-4567.",
+        response: "I'm having technical difficulties at the moment. Please contact our team directly at info@dreamland.com or call +91 (555) 123-4567.",
         type: 'error'
       });
     }
@@ -228,20 +228,20 @@ Respond in a friendly, conversational way. If recommending properties, include p
     // Handle specific API errors
     if (error.message?.includes('API key')) {
       return NextResponse.json({
-        response: "I'm having authentication issues. Please contact our team at info@a4realty.com or call +91 (555) 123-4567 for immediate assistance.",
+        response: "I'm having authentication issues. Please contact our team at info@dreamland.com or call +91 (555) 123-4567 for immediate assistance.",
         type: 'error'
       });
     }
 
     if (error.message?.includes('quota') || error.message?.includes('rate limit')) {
       return NextResponse.json({
-        response: "I'm currently busy helping other customers. Please try again in a moment, or contact us directly at info@a4realty.com.",
+        response: "I'm currently busy helping other customers. Please try again in a moment, or contact us directly at info@dreamland.com.",
         type: 'error'
       });
     }
 
     return NextResponse.json({
-      response: "I apologize, but I'm experiencing technical difficulties. Please try again in a moment or contact our team at info@a4realty.com for immediate assistance.",
+      response: "I apologize, but I'm experiencing technical difficulties. Please try again in a moment or contact our team at info@dreamland.com for immediate assistance.",
       type: 'error'
     });
   }
@@ -253,7 +253,7 @@ Respond in a friendly, conversational way. If recommending properties, include p
 export async function GET() {
   return NextResponse.json({
     success: true,
-    info: 'A4Realty Chatbot API',
+    info: 'Dreamland Chatbot API',
     model: CHATBOT_CONFIG.model,
     version: '2.0.0',
     powered_by: 'Google Gemini AI'

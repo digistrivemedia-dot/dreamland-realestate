@@ -198,7 +198,7 @@ export default function CreateBlogPage() {
                 <ArrowLeft className="w-5 h-5" />
               </Link>
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#D7242A]">Editorial Studio</span>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#1F6B4C]">Editorial Studio</span>
                 <h1 className="text-base sm:text-lg font-bold text-white tracking-tight">Draft New Article</h1>
               </div>
             </div>
@@ -216,7 +216,7 @@ export default function CreateBlogPage() {
                 type="button"
                 onClick={handleSubmit}
                 disabled={loading}
-                className="px-5 py-2 rounded-xl bg-gradient-to-r from-[#D7242A] to-[#B01B20] text-white text-xs font-bold uppercase tracking-wider hover:opacity-95 transition-all shadow-md shadow-[#D7242A]/20 disabled:opacity-50 flex items-center gap-1.5"
+                className="px-5 py-2 rounded-xl bg-gradient-to-r from-[#1F6B4C] to-[#18593F] text-white text-xs font-bold uppercase tracking-wider hover:opacity-95 transition-all shadow-md shadow-[#1F6B4C]/20 disabled:opacity-50 flex items-center gap-1.5"
               >
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>{loading ? 'Publishing...' : 'Publish Article'}</span>
@@ -229,7 +229,7 @@ export default function CreateBlogPage() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
         {error && (
           <div className="bg-rose-50 border border-rose-200 text-rose-800 p-4 rounded-2xl mb-6 flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-[#D7242A] shrink-0 mt-0.5" />
+            <AlertCircle className="w-5 h-5 text-[#1F6B4C] shrink-0 mt-0.5" />
             <div>
               <p className="text-xs font-bold uppercase tracking-wider">Publication Error</p>
               <p className="text-sm">{error}</p>
@@ -250,7 +250,7 @@ export default function CreateBlogPage() {
                 value={formData.title}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-3.5 text-lg font-bold text-slate-900 bg-white border border-slate-300 rounded-2xl focus:ring-2 focus:ring-[#D7242A] focus:border-[#D7242A] transition-all placeholder:text-slate-500 placeholder:font-normal"
+                className="w-full px-4 py-3.5 text-lg font-bold text-slate-900 bg-white border border-slate-300 rounded-2xl focus:ring-2 focus:ring-[#1F6B4C] focus:border-[#1F6B4C] transition-all placeholder:text-slate-500 placeholder:font-normal"
                 placeholder="e.g. Masterclass: Navigating Luxury Real Estate in North Bangalore"
               />
             </div>
@@ -271,7 +271,7 @@ export default function CreateBlogPage() {
                 required
                 rows={3}
                 maxLength={300}
-                className="w-full px-4 py-3 text-sm text-slate-900 bg-white border border-slate-300 rounded-2xl focus:ring-2 focus:ring-[#D7242A] focus:border-[#D7242A] transition-all placeholder:text-slate-500"
+                className="w-full px-4 py-3 text-sm text-slate-900 bg-white border border-slate-300 rounded-2xl focus:ring-2 focus:ring-[#1F6B4C] focus:border-[#1F6B4C] transition-all placeholder:text-slate-500"
                 placeholder="A compelling, succinct synopsis to captivate readers on social listings and cards..."
               />
             </div>
@@ -296,7 +296,7 @@ export default function CreateBlogPage() {
                     type="url"
                     value={formData.featuredImage}
                     onChange={(e) => setFormData((prev) => ({ ...prev, featuredImage: e.target.value }))}
-                    className="flex-1 px-4 py-2.5 text-sm text-slate-900 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#D7242A] focus:border-[#D7242A] placeholder:text-slate-500"
+                    className="flex-1 px-4 py-2.5 text-sm text-slate-900 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#1F6B4C] focus:border-[#1F6B4C] placeholder:text-slate-500"
                     placeholder="or paste direct Cloudinary / HTTPS image link"
                   />
                 </div>
@@ -348,7 +348,7 @@ export default function CreateBlogPage() {
                   name="categories"
                   value={formData.categories}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 text-sm text-slate-900 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#D7242A] focus:border-[#D7242A] placeholder:text-slate-500"
+                  className="w-full px-4 py-3 text-sm text-slate-900 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#1F6B4C] focus:border-[#1F6B4C] placeholder:text-slate-500"
                   placeholder="Market Trends, Real Estate, Investment"
                 />
               </div>
@@ -362,7 +362,7 @@ export default function CreateBlogPage() {
                   name="tags"
                   value={formData.tags}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 text-sm text-slate-900 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#D7242A] focus:border-[#D7242A] placeholder:text-slate-500"
+                  className="w-full px-4 py-3 text-sm text-slate-900 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#1F6B4C] focus:border-[#1F6B4C] placeholder:text-slate-500"
                   placeholder="bangalore, luxury-villas, rera-compliance"
                 />
               </div>
@@ -373,10 +373,10 @@ export default function CreateBlogPage() {
           <div className="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-sm space-y-6">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <div className="flex items-center gap-2">
-                <Globe className="w-5 h-5 text-[#D7242A]" />
+                <Globe className="w-5 h-5 text-[#1F6B4C]" />
                 <h2 className="text-base font-bold text-slate-900">SEO & SERP Optimization</h2>
               </div>
-              <span className="text-[10px] font-bold uppercase tracking-wider bg-rose-50 text-[#D7242A] px-2.5 py-1 rounded-lg">
+              <span className="text-[10px] font-bold uppercase tracking-wider bg-rose-50 text-[#1F6B4C] px-2.5 py-1 rounded-lg">
                 Google Snippet Target
               </span>
             </div>
@@ -386,9 +386,9 @@ export default function CreateBlogPage() {
               <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
                 Search Result Mockup
               </span>
-              <p className="text-xs text-emerald-700 font-medium">https://a4realty.com › blog › {formData.title ? encodeURIComponent(formData.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 30)) : 'article'}</p>
+              <p className="text-xs text-emerald-700 font-medium">https://dreamland.com › blog › {formData.title ? encodeURIComponent(formData.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 30)) : 'article'}</p>
               <h4 className="text-base font-bold text-blue-800 hover:underline cursor-pointer line-clamp-1">
-                {formData.seo.metaTitle || formData.title || 'Page Title Appears Here'} | A4 Realty
+                {formData.seo.metaTitle || formData.title || 'Page Title Appears Here'} | Dreamland
               </h4>
               <p className="text-xs text-slate-600 line-clamp-2 mt-0.5">
                 {formData.seo.metaDescription || formData.excerpt || 'Add an optimized meta description to influence click-through rates on search engines...'}
@@ -412,7 +412,7 @@ export default function CreateBlogPage() {
                   onChange={handleInputChange}
                   required
                   maxLength={60}
-                  className="w-full px-4 py-2.5 text-sm text-slate-900 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#D7242A] focus:border-[#D7242A] placeholder:text-slate-500"
+                  className="w-full px-4 py-2.5 text-sm text-slate-900 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#1F6B4C] focus:border-[#1F6B4C] placeholder:text-slate-500"
                   placeholder="50-60 characters optimized title"
                 />
               </div>
@@ -433,7 +433,7 @@ export default function CreateBlogPage() {
                   required
                   rows={2}
                   maxLength={160}
-                  className="w-full px-4 py-2.5 text-sm text-slate-900 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#D7242A] focus:border-[#D7242A] placeholder:text-slate-500"
+                  className="w-full px-4 py-2.5 text-sm text-slate-900 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#1F6B4C] focus:border-[#1F6B4C] placeholder:text-slate-500"
                   placeholder="150-160 characters summary for search engine bots"
                 />
               </div>
@@ -447,7 +447,7 @@ export default function CreateBlogPage() {
                   name="seo.keywords"
                   value={formData.seo.keywords}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2.5 text-sm text-slate-900 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#D7242A] focus:border-[#D7242A] placeholder:text-slate-500"
+                  className="w-full px-4 py-2.5 text-sm text-slate-900 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#1F6B4C] focus:border-[#1F6B4C] placeholder:text-slate-500"
                   placeholder="real estate bangalore, luxury villa purchase, rera certified"
                 />
               </div>
@@ -464,7 +464,7 @@ export default function CreateBlogPage() {
                 name="status"
                 value={formData.status}
                 onChange={handleInputChange}
-                className="px-4 py-2.5 border border-slate-300 rounded-xl text-xs font-bold uppercase tracking-wider focus:ring-2 focus:ring-[#D7242A] focus:border-[#D7242A] bg-white text-slate-900"
+                className="px-4 py-2.5 border border-slate-300 rounded-xl text-xs font-bold uppercase tracking-wider focus:ring-2 focus:ring-[#1F6B4C] focus:border-[#1F6B4C] bg-white text-slate-900"
               >
                 <option value="draft">Save as Draft</option>
                 <option value="published">Publish Publicly</option>
@@ -481,7 +481,7 @@ export default function CreateBlogPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="px-6 py-2.5 bg-[#D7242A] hover:bg-[#B01B20] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-md shadow-[#D7242A]/20 disabled:opacity-50"
+                className="px-6 py-2.5 bg-[#1F6B4C] hover:bg-[#18593F] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-md shadow-[#1F6B4C]/20 disabled:opacity-50"
               >
                 {loading ? 'Saving Post...' : 'Save Article'}
               </button>

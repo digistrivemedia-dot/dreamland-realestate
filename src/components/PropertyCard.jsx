@@ -172,7 +172,7 @@ const PropertyCard = ({ property, viewMode = 'grid', isNearby = false }) => {
         
         {/* Status Badges - Top Left */}
         <div className="absolute top-4 left-4 flex flex-col gap-2">
-          <span className="px-3 py-1 bg-gradient-to-r from-[#D7242A] to-[#D7242A]/90 text-white text-sm font-bold rounded-full shadow-lg">
+          <span className="px-3 py-1 bg-gradient-to-r from-[#1F6B4C] to-[#1F6B4C]/90 text-white text-sm font-bold rounded-full shadow-lg">
             🔥 For {property.mode}
           </span>
           {isNearby && (
@@ -208,11 +208,11 @@ const PropertyCard = ({ property, viewMode = 'grid', isNearby = false }) => {
       <div className="p-6 flex-1">
         {/* Title and Location */}
         <div className="mb-4">
-          <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#D7242A] transition-colors line-clamp-2 mb-2">
+          <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#1F6B4C] transition-colors line-clamp-2 mb-2">
             {property.title}
           </h3>
           <p className="text-gray-600 flex items-center text-sm">
-            <svg className="w-4 h-4 mr-1 text-[#D7242A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 mr-1 text-[#1F6B4C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
@@ -236,7 +236,7 @@ const PropertyCard = ({ property, viewMode = 'grid', isNearby = false }) => {
         {specifications.length > 0 && (
           <div className="mb-4">
             <h4 className="text-sm font-semibold text-gray-700 mb-2 flex items-center">
-              <span className="w-2 h-2 bg-[#D7242A] rounded-full mr-2"></span>
+              <span className="w-2 h-2 bg-[#1F6B4C] rounded-full mr-2"></span>
               Specifications
             </h4>
             <div className="grid grid-cols-2 gap-2">
@@ -256,7 +256,7 @@ const PropertyCard = ({ property, viewMode = 'grid', isNearby = false }) => {
         {/* Property Type and Basic Info */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex gap-2">
-            <span className="px-3 py-1 bg-gradient-to-r from-[#D7242A]/10 to-[#D7242A]/5 text-[#D7242A] text-xs font-bold rounded-full border border-[#D7242A]/20">
+            <span className="px-3 py-1 bg-gradient-to-r from-[#1F6B4C]/10 to-[#1F6B4C]/5 text-[#1F6B4C] text-xs font-bold rounded-full border border-[#1F6B4C]/20">
               {property.type}
             </span>
             {property.developer && (
@@ -279,7 +279,7 @@ const PropertyCard = ({ property, viewMode = 'grid', isNearby = false }) => {
             <span className="text-sm text-gray-600">
               Listed by {property.user?.name || 'Owner'}
             </span>
-            <span className="text-[#D7242A] font-bold group-hover:text-[#D7242A]/80 flex items-center gap-1">
+            <span className="text-[#1F6B4C] font-bold group-hover:text-[#1F6B4C]/80 flex items-center gap-1">
               View Details 
               <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

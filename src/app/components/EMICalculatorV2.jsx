@@ -50,7 +50,7 @@ function PieChartVisual({ principalPercent, interestPercent, totalAmount }) {
                     cy="72"
                     r={radius}
                     fill="none"
-                    stroke="#D7242A"
+                    stroke="#1F6B4C"
                     strokeWidth="22"
                     strokeDasharray={`${interestDash} ${circumference}`}
                     strokeDashoffset={-principalDash}
@@ -134,7 +134,7 @@ export default function EMICalculatorV2({
         <div className={`${embedded ? '' : 'bg-white'} rounded-2xl ${embedded ? '' : 'shadow-xl'} overflow-hidden`}>
             {/* Header */}
             {!embedded && (
-                <div className="bg-gradient-to-r from-[#D7242A] to-[#ff4444] px-6 py-8 text-white">
+                <div className="bg-gradient-to-r from-[#1F6B4C] to-[#6EE7A1] px-6 py-8 text-white">
                     <div className="flex items-center gap-3 mb-2">
                         <Calculator className="w-8 h-8" />
                         <h2 className="text-3xl font-bold">EMI Calculator</h2>
@@ -175,7 +175,7 @@ export default function EMICalculatorV2({
                                         }}
                                         min={minPrice}
                                         max={maxPrice}
-                                        className="w-full text-black pl-6 pr-2 py-1.5 border border-gray-300 rounded text-sm font-semibold focus:border-[#D7242A] focus:outline-none"
+                                        className="w-full text-black pl-6 pr-2 py-1.5 border border-gray-300 rounded text-sm font-semibold focus:border-[#1F6B4C] focus:outline-none"
                                     />
                                 </div>
                             </div>
@@ -189,13 +189,13 @@ export default function EMICalculatorV2({
                                     onChange={(e) => setPropertyPrice(parseFloat(e.target.value))}
                                     className="w-full slider-modern"
                                     style={{
-                                        background: `linear-gradient(to right, #D7242A 0%, #D7242A ${((propertyPrice - minPrice) / (maxPrice - minPrice)) * 100}%, #e5e7eb ${((propertyPrice - minPrice) / (maxPrice - minPrice)) * 100}%, #e5e7eb 100%)`
+                                        background: `linear-gradient(to right, #1F6B4C 0%, #1F6B4C ${((propertyPrice - minPrice) / (maxPrice - minPrice)) * 100}%, #e5e7eb ${((propertyPrice - minPrice) / (maxPrice - minPrice)) * 100}%, #e5e7eb 100%)`
                                     }}
                                 />
                             </div>
                             <div className="flex justify-between mt-1 text-xs text-gray-500">
                                 <span>{formatCurrency(minPrice)}</span>
-                                <span className="font-semibold text-[#D7242A]">{formatCurrency(propertyPrice)}</span>
+                                <span className="font-semibold text-[#1F6B4C]">{formatCurrency(propertyPrice)}</span>
                                 <span>{formatCurrency(maxPrice)}</span>
                             </div>
                         </div>
@@ -221,7 +221,7 @@ export default function EMICalculatorV2({
                                         min={0}
                                         max={50}
                                         step={0.5}
-                                        className="w-full text-black px-2 py-1.5 border border-gray-300 rounded text-sm font-semibold focus:border-[#D7242A] focus:outline-none"
+                                        className="w-full text-black px-2 py-1.5 border border-gray-300 rounded text-sm font-semibold focus:border-[#1F6B4C] focus:outline-none"
                                     />
                                     <span className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 text-xs font-medium">%</span>
                                 </div>
@@ -236,13 +236,13 @@ export default function EMICalculatorV2({
                                     onChange={(e) => setDownPaymentPercent(parseFloat(e.target.value))}
                                     className="w-full slider-modern"
                                     style={{
-                                        background: `linear-gradient(to right, #D7242A 0%, #D7242A ${(downPaymentPercent / 50) * 100}%, #e5e7eb ${(downPaymentPercent / 50) * 100}%, #e5e7eb 100%)`
+                                        background: `linear-gradient(to right, #1F6B4C 0%, #1F6B4C ${(downPaymentPercent / 50) * 100}%, #e5e7eb ${(downPaymentPercent / 50) * 100}%, #e5e7eb 100%)`
                                     }}
                                 />
                             </div>
                             <div className="flex justify-between mt-1 text-xs text-gray-500">
                                 <span>0%</span>
-                                <span className="font-semibold text-[#D7242A]">{formatCurrency((propertyPrice * downPaymentPercent) / 100)}</span>
+                                <span className="font-semibold text-[#1F6B4C]">{formatCurrency((propertyPrice * downPaymentPercent) / 100)}</span>
                                 <span>50%</span>
                             </div>
                         </div>
@@ -268,7 +268,7 @@ export default function EMICalculatorV2({
                                         min={6.5}
                                         max={15}
                                         step={0.1}
-                                        className="w-full text-black px-2 py-1.5 border border-gray-300 rounded text-sm font-semibold focus:border-[#D7242A] focus:outline-none"
+                                        className="w-full text-black px-2 py-1.5 border border-gray-300 rounded text-sm font-semibold focus:border-[#1F6B4C] focus:outline-none"
                                     />
                                     <span className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 text-xs font-medium">%</span>
                                 </div>
@@ -283,13 +283,13 @@ export default function EMICalculatorV2({
                                     onChange={(e) => setInterestRate(parseFloat(e.target.value))}
                                     className="w-full slider-modern"
                                     style={{
-                                        background: `linear-gradient(to right, #D7242A 0%, #D7242A ${((interestRate - 6.5) / (15 - 6.5)) * 100}%, #e5e7eb ${((interestRate - 6.5) / (15 - 6.5)) * 100}%, #e5e7eb 100%)`
+                                        background: `linear-gradient(to right, #1F6B4C 0%, #1F6B4C ${((interestRate - 6.5) / (15 - 6.5)) * 100}%, #e5e7eb ${((interestRate - 6.5) / (15 - 6.5)) * 100}%, #e5e7eb 100%)`
                                     }}
                                 />
                             </div>
                             <div className="flex justify-between mt-1 text-xs text-gray-500">
                                 <span>6.5%</span>
-                                <span className="font-semibold text-[#D7242A]">{interestRate}% p.a.</span>
+                                <span className="font-semibold text-[#1F6B4C]">{interestRate}% p.a.</span>
                                 <span>15%</span>
                             </div>
                         </div>
@@ -315,7 +315,7 @@ export default function EMICalculatorV2({
                                         min={1}
                                         max={30}
                                         step={1}
-                                        className="w-full px-2 text-black py-1.5 border border-gray-300 rounded text-sm font-semibold focus:border-[#D7242A] focus:outline-none"
+                                        className="w-full px-2 text-black py-1.5 border border-gray-300 rounded text-sm font-semibold focus:border-[#1F6B4C] focus:outline-none"
                                     />
                                     <span className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 text-xs font-medium">Yrs</span>
                                 </div>
@@ -330,13 +330,13 @@ export default function EMICalculatorV2({
                                     onChange={(e) => setTenureYears(parseFloat(e.target.value))}
                                     className="w-full slider-modern"
                                     style={{
-                                        background: `linear-gradient(to right, #D7242A 0%, #D7242A ${((tenureYears - 1) / (30 - 1)) * 100}%, #e5e7eb ${((tenureYears - 1) / (30 - 1)) * 100}%, #e5e7eb 100%)`
+                                        background: `linear-gradient(to right, #1F6B4C 0%, #1F6B4C ${((tenureYears - 1) / (30 - 1)) * 100}%, #e5e7eb ${((tenureYears - 1) / (30 - 1)) * 100}%, #e5e7eb 100%)`
                                     }}
                                 />
                             </div>
                             <div className="flex justify-between mt-1 text-xs text-gray-500">
                                 <span>1 Yr</span>
-                                <span className="font-semibold text-[#D7242A]">{tenureYears} Years</span>
+                                <span className="font-semibold text-[#1F6B4C]">{tenureYears} Years</span>
                                 <span>30 Yrs</span>
                             </div>
                         </div>
@@ -355,7 +355,7 @@ export default function EMICalculatorV2({
                     {/* Results Section */}
                     <div className="space-y-4">
                         {/* Monthly EMI - Primary Result */}
-                        <div className="bg-gradient-to-br from-[#D7242A] to-[#ff4444] rounded-xl p-4 text-white shadow-lg">
+                        <div className="bg-gradient-to-br from-[#1F6B4C] to-[#6EE7A1] rounded-xl p-4 text-white shadow-lg">
                             <div className="flex items-center gap-2 mb-1">
                                 <DollarSign className="w-4 h-4" />
                                 <p className="text-xs font-medium opacity-90">Monthly EMI</p>
@@ -426,7 +426,7 @@ export default function EMICalculatorV2({
 
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center gap-2">
-                                                <div className="w-3 h-3 bg-[#D7242A] rounded-full"></div>
+                                                <div className="w-3 h-3 bg-[#1F6B4C] rounded-full"></div>
                                                 <span className="text-xs text-gray-700">Interest</span>
                                             </div>
                                             <span className="text-xs font-semibold text-gray-900">
@@ -475,7 +475,7 @@ export default function EMICalculatorV2({
                     width: 20px;
                     height: 20px;
                     border-radius: 50%;
-                    background: #D7242A;
+                    background: #1F6B4C;
                     cursor: pointer;
                     border: 3px solid white;
                     box-shadow: 0 2px 8px rgba(215, 36, 42, 0.3);
@@ -506,7 +506,7 @@ export default function EMICalculatorV2({
                     width: 20px;
                     height: 20px;
                     border-radius: 50%;
-                    background: #D7242A;
+                    background: #1F6B4C;
                     cursor: pointer;
                     border: 3px solid white;
                     box-shadow: 0 2px 8px rgba(215, 36, 42, 0.3);
@@ -535,7 +535,7 @@ export default function EMICalculatorV2({
                 .slider-modern::-moz-range-progress {
                     height: 8px;
                     border-radius: 4px;
-                    background: #D7242A;
+                    background: #1F6B4C;
                 }
             `}</style>
         </div>

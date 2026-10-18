@@ -149,7 +149,7 @@ export default function AdminBlogsPage() {
     return (
       <div className="min-h-[80vh] flex items-center justify-center p-6">
         <div className="text-center">
-          <div className="w-12 h-12 rounded-2xl border-2 border-t-[#D7242A] border-r-transparent border-b-[#D7242A] border-l-transparent animate-spin mx-auto mb-3"></div>
+          <div className="w-12 h-12 rounded-2xl border-2 border-t-[#1F6B4C] border-r-transparent border-b-[#1F6B4C] border-l-transparent animate-spin mx-auto mb-3"></div>
           <p className="text-xs font-bold text-slate-700">Loading Editorial Suite...</p>
         </div>
       </div>
@@ -165,7 +165,7 @@ export default function AdminBlogsPage() {
             <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight font-serif">
               Editorial &amp; Insights
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#D7242A]/10 text-[#D7242A] border border-[#D7242A]/20">
+            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#1F6B4C]/10 text-[#1F6B4C] border border-[#1F6B4C]/20">
               SEO Engine
             </span>
           </div>
@@ -185,7 +185,7 @@ export default function AdminBlogsPage() {
           </Link>
           <Link
             href="/admin/blogs/create"
-            className="inline-flex items-center space-x-1.5 px-4 py-2 bg-[#D7242A] hover:bg-[#b81d22] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-xs"
+            className="inline-flex items-center space-x-1.5 px-4 py-2 bg-[#1F6B4C] hover:bg-[#18593F] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-xs"
           >
             <Plus className="w-4 h-4" />
             <span>Create Article</span>
@@ -248,7 +248,7 @@ export default function AdminBlogsPage() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search articles by title or keyword..."
-            className="w-full pl-9 pr-8 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-900 outline-none focus:border-[#D7242A] focus:bg-white transition-colors"
+            className="w-full pl-9 pr-8 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-900 outline-none focus:border-[#1F6B4C] focus:bg-white transition-colors"
           />
           {searchTerm && (
             <button
@@ -309,7 +309,7 @@ export default function AdminBlogsPage() {
                           </div>
                         )}
                         <div className="space-y-1 min-w-0">
-                          <h3 className="font-bold text-slate-900 group-hover:text-[#D7242A] transition-colors truncate">
+                          <h3 className="font-bold text-slate-900 group-hover:text-[#1F6B4C] transition-colors truncate">
                             {blog.title}
                           </h3>
                           <p className="text-[11px] text-slate-500 line-clamp-1 leading-relaxed">
@@ -362,7 +362,7 @@ export default function AdminBlogsPage() {
                         })}
                       </div>
                       <div className="text-[11px] text-slate-500">
-                        by {blog.author?.name || 'A4 Editorial'}
+                        by {blog.author?.name || 'Dreamland Editorial'}
                       </div>
                     </td>
 

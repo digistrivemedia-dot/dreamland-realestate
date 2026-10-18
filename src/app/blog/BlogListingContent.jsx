@@ -64,7 +64,7 @@ export default function BlogListingContent({ initialBlogs = null, initialTotalPa
   if (loading && blogs.length === 0) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#D7242A]"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#1F6B4C]"></div>
       </div>
     );
   }
@@ -73,11 +73,11 @@ export default function BlogListingContent({ initialBlogs = null, initialTotalPa
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="bg-[#D7242A] text-white">
+      <div className="bg-[#1F6B4C] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
             <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-              A4Realty Blog
+              Dreamland Blog
             </h1>
             <p className="text-xl text-white/90 max-w-2xl mx-auto">
               Expert insights, market trends, and valuable tips for your real estate journey
@@ -95,7 +95,7 @@ export default function BlogListingContent({ initialBlogs = null, initialTotalPa
                 onClick={() => handleCategoryFilter('')}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   !selectedCategory
-                    ? 'bg-[#D7242A] text-white'
+                    ? 'bg-[#1F6B4C] text-white'
                     : 'bg-white text-gray-600 hover:bg-gray-100'
                 }`}
               >
@@ -107,7 +107,7 @@ export default function BlogListingContent({ initialBlogs = null, initialTotalPa
                   onClick={() => handleCategoryFilter(category)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                     selectedCategory === category
-                      ? 'bg-[#D7242A] text-white'
+                      ? 'bg-[#1F6B4C] text-white'
                       : 'bg-white text-gray-600 hover:bg-gray-100'
                   }`}
                 >
@@ -150,14 +150,14 @@ export default function BlogListingContent({ initialBlogs = null, initialTotalPa
                           {blog.categories.slice(0, 2).map(category => (
                             <span
                               key={category}
-                              className="px-2 py-1 text-xs font-medium bg-[#D7242A]/10 text-[#D7242A] rounded"
+                              className="px-2 py-1 text-xs font-medium bg-[#1F6B4C]/10 text-[#1F6B4C] rounded"
                             >
                               {category}
                             </span>
                           ))}
                         </div>
                         
-                        <h2 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 hover:text-[#D7242A] transition-colors">
+                        <h2 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 hover:text-[#1F6B4C] transition-colors">
                           {blog.title}
                         </h2>
                         
@@ -167,12 +167,12 @@ export default function BlogListingContent({ initialBlogs = null, initialTotalPa
                         
                         <div className="flex items-center justify-between text-sm text-gray-500">
                           <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 bg-[#D7242A]/10 rounded-full flex items-center justify-center">
-                              <span className="text-xs font-medium text-[#D7242A]">
+                            <div className="w-8 h-8 bg-[#1F6B4C]/10 rounded-full flex items-center justify-center">
+                              <span className="text-xs font-medium text-[#1F6B4C]">
                                 {blog.author?.name?.charAt(0) || 'A'}
                               </span>
                             </div>
-                            <span>{blog.author?.name || 'A4Realty Team'}</span>
+                            <span>{blog.author?.name || 'Dreamland Team'}</span>
                           </div>
                           <div className="text-right">
                             <div>{formatDate(blog.publishedAt || blog.createdAt)}</div>
@@ -204,7 +204,7 @@ export default function BlogListingContent({ initialBlogs = null, initialTotalPa
                       onClick={() => setCurrentPage(i + 1)}
                       className={`w-10 h-10 font-medium rounded-lg transition-colors ${
                         currentPage === i + 1
-                          ? 'bg-[#D7242A] text-white'
+                          ? 'bg-[#1F6B4C] text-white'
                           : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
                       }`}
                     >
@@ -216,7 +216,7 @@ export default function BlogListingContent({ initialBlogs = null, initialTotalPa
                 <button
                   onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
                   disabled={currentPage === totalPages}
-                  className="px-6 py-3 bg-[#D7242A] text-white font-medium rounded-lg hover:bg-[#D7242A]/90 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-6 py-3 bg-[#1F6B4C] text-white font-medium rounded-lg hover:bg-[#1F6B4C]/90 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Next
                 </button>

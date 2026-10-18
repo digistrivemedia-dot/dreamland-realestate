@@ -7,31 +7,21 @@ import {
   User,
   Phone,
   Mail,
-  MapPin,
-  Calendar,
   Clock,
-  Building2,
-  CheckCircle2,
   AlertCircle,
   MessageCircle,
-  Sparkles,
   ChevronLeft,
   ChevronRight,
   Edit3,
-  Search,
   X,
   Plus,
   FileText,
   CalendarCheck,
-  History,
-  RotateCcw,
   SlidersHorizontal
 } from 'lucide-react';
-import PropertyCard from '@/components/PropertyCard';
 import AssignmentHistory from '@/components/AssignmentHistory';
-import { getLocationDisplayName, getNearbyLocations, normalizeLocationName } from '@/utils/locations';
-import { formatPrice } from '@/utils/formatPrice';
-import { useAgentStore, usePropertyStore, useCRMStore, useDashboardStore, usePropertySearchStore } from '@/stores';
+import { getLocationDisplayName } from '@/utils/locations';
+import { useAgentStore, useCRMStore, useDashboardStore } from '@/stores';
 
 export default function LeadDetailPage() {
   const params = useParams();
@@ -39,29 +29,14 @@ export default function LeadDetailPage() {
 
   const fetchStatusOptionsStore = useAgentStore((state) => state.fetchStatusOptions);
   const fetchMyLeadsStore = useAgentStore((state) => state.fetchMyLeads);
-  const fetchPropertiesStore = usePropertyStore((state) => state.fetchProperties);
-  const fetchPublicSearch = usePropertySearchStore((state) => state.fetchPublicSearch);
 
   const [lead, setLead] = useState(null);
   const [allLeads, setAllLeads] = useState([]);
   const [totalLeadsCount, setTotalLeadsCount] = useState(0);
-  const [relatedProperties, setRelatedProperties] = useState([]);
-  const [nearbyProperties, setNearbyProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [activeTab, setActiveTab] = useState('exact');
-  const [searchResults, setSearchResults] = useState([]);
-  const [searchLoading, setSearchLoading] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [urlParams, setUrlParams] = useState({});
-  const [searchFilters, setSearchFilters] = useState({
-    location: '',
-    type: '',
-    mode: '',
-    bhk: '',
-    minPrice: '',
-    maxPrice: ''
-  });
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [updateStatus, setUpdateStatus] = useState('');
   const [updateSubstatus, setUpdateSubstatus] = useState('');
@@ -115,12 +90,6 @@ export default function LeadDetailPage() {
       fetchAllLeadsForNavigation();
     }
   }, [params.id, urlParams]);
-
-  useEffect(() => {
-    if (lead?.interestedLocation) {
-      fetchRelatedProperties();
-    }
-  }, [lead]);
 
   useEffect(() => {
     fetchStatusOptions();
@@ -196,87 +165,6 @@ export default function LeadDetailPage() {
     } catch (err) {
       console.error('Error fetching status options:', err);
     }
-  };
-
-  const fetchRelatedProperties = async () => {
-    try {
-      const res = await fetchPropertiesStore();
-
-      if (res.success && Array.isArray(res.data)) {
-        const allProperties = res.data;
-        const interestedLocation = normalizeLocationName(lead.interestedLocation);
-
-        const exactMatches = allProperties.filter(property =>
-          normalizeLocationName(property.location) === interestedLocation
-        );
-
-        const nearbyLocations = getNearbyLocations(interestedLocation);
-        const nearbyMatches = allProperties.filter(property => {
-          const propLocation = normalizeLocationName(property.location);
-          const isNearbyByLocation = nearbyLocations.some(nearby =>
-            normalizeLocationName(nearby) === propLocation
-          );
-          const isNearbyByProperty = property.nearbyLocations && property.nearbyLocations.some(nearby =>
-            normalizeLocationName(nearby) === interestedLocation
-          );
-          return isNearbyByLocation || isNearbyByProperty;
-        });
-
-        setRelatedProperties(exactMatches);
-        setNearbyProperties(nearbyMatches);
-      }
-    } catch (err) {
-      console.error('Error fetching properties:', err);
-    }
-  };
-
-  const searchProperties = async () => {
-    try {
-      setSearchLoading(true);
-      const res = await fetchPublicSearch({
-        location: searchFilters.location,
-        type: searchFilters.type,
-        mode: searchFilters.mode,
-        bhk: searchFilters.bhk
-      });
-
-      if (res.success) {
-        let results = res.data || [];
-        if (searchFilters.minPrice || searchFilters.maxPrice) {
-          results = results.filter(property => {
-            const price = parseFloat(property.price?.replace(/[^0-9.-]+/g, '') || 0);
-            const minPrice = searchFilters.minPrice ? parseFloat(searchFilters.minPrice) : 0;
-            const maxPrice = searchFilters.maxPrice ? parseFloat(searchFilters.maxPrice) : Infinity;
-            return price >= minPrice && price <= maxPrice;
-          });
-        }
-        setSearchResults(results);
-      }
-    } catch (err) {
-      console.error('Error searching properties:', err);
-      setSearchResults([]);
-    } finally {
-      setSearchLoading(false);
-    }
-  };
-
-  const handleSearchInputChange = (field, value) => {
-    setSearchFilters(prev => ({
-      ...prev,
-      [field]: value
-    }));
-  };
-
-  const clearSearch = () => {
-    setSearchFilters({
-      location: '',
-      type: '',
-      mode: '',
-      bhk: '',
-      minPrice: '',
-      maxPrice: ''
-    });
-    setSearchResults([]);
   };
 
   const handleUpdateLead = async (e) => {
@@ -491,40 +379,11 @@ export default function LeadDetailPage() {
     return null;
   };
 
-  const CRMPropertyCard = ({ property, isNearby = false }) => (
-    <PropertyCard
-      property={property}
-      viewMode="grid"
-      customBadges={[
-        ...(isNearby ? [{ text: 'Nearby Location', color: 'blue' }] : []),
-        ...(property.gallery?.length > 0 ? [{ text: `📸 ${property.gallery.length}`, color: 'black' }] : []),
-        ...(property.videos?.length > 0 ? [{ text: `🎬 ${property.videos.length}`, color: 'purple' }] : [])
-      ]}
-      showContact={true}
-      showActions={true}
-      actionButtons={[
-        {
-          text: 'View Details',
-          href: `/admin/crm/property/${property._id}`,
-          color: 'red',
-          fullWidth: true
-        },
-        {
-          text: '📞',
-          href: `tel:${property.contactNumber}`,
-          color: 'green',
-          icon: true,
-          title: 'Call Property Owner'
-        }
-      ]}
-    />
-  );
-
   if (loading) {
     return (
       <div className="min-h-[80vh] flex items-center justify-center p-6">
         <div className="text-center">
-          <div className="w-12 h-12 rounded-2xl border-2 border-t-[#D7242A] border-r-transparent border-b-[#D7242A] border-l-transparent animate-spin mx-auto mb-3"></div>
+          <div className="w-12 h-12 rounded-2xl border-2 border-t-[#1F6B4C] border-r-transparent border-b-[#1F6B4C] border-l-transparent animate-spin mx-auto mb-3"></div>
           <p className="text-xs font-bold text-slate-700">Accessing prospect dossier...</p>
         </div>
       </div>
@@ -548,7 +407,7 @@ export default function LeadDetailPage() {
           </button>
           <button
             onClick={fetchLeadDetails}
-            className="px-4 py-2 bg-[#D7242A] text-white rounded-xl text-xs font-bold hover:bg-[#b81d22] transition-colors"
+            className="px-4 py-2 bg-[#1F6B4C] text-white rounded-xl text-xs font-bold hover:bg-[#18593F] transition-colors"
           >
             Retry
           </button>
@@ -569,7 +428,7 @@ export default function LeadDetailPage() {
           <div className="bg-[#0B0F19] text-white p-4 border-b border-slate-800">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <span className="w-2 h-2 rounded-full bg-[#D7242A]"></span>
+                <span className="w-2 h-2 rounded-full bg-[#1F6B4C]"></span>
                 <h3 className="text-sm font-bold text-white tracking-tight">Active Queue ({allLeads.length})</h3>
               </div>
               <button
@@ -597,7 +456,7 @@ export default function LeadDetailPage() {
                   }}
                   className={`p-3 rounded-xl cursor-pointer transition-all ${
                     isActive
-                      ? 'bg-[#D7242A]/10 border-l-4 border-[#D7242A] text-[#D7242A]'
+                      ? 'bg-[#1F6B4C]/10 border-l-4 border-[#1F6B4C] text-[#1F6B4C]'
                       : isVisited
                       ? 'bg-slate-50/60 hover:bg-slate-100 border-l-4 border-emerald-500'
                       : 'hover:bg-slate-50 border-l-4 border-transparent'
@@ -606,13 +465,13 @@ export default function LeadDetailPage() {
                   <div className="flex items-center space-x-3">
                     <div
                       className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${
-                        isActive ? 'bg-[#D7242A] text-white' : 'bg-slate-200 text-slate-700'
+                        isActive ? 'bg-[#1F6B4C] text-white' : 'bg-slate-200 text-slate-700'
                       }`}
                     >
                       {leadItem.name?.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2)}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className={`text-xs font-bold truncate ${isActive ? 'text-[#D7242A]' : 'text-slate-900'}`}>
+                      <div className={`text-xs font-bold truncate ${isActive ? 'text-[#1F6B4C]' : 'text-slate-900'}`}>
                         {leadItem.name}
                       </div>
                       <div className="text-[11px] text-slate-400 truncate">
@@ -726,7 +585,7 @@ export default function LeadDetailPage() {
                 if (next) navigateToLead(next._id);
               }}
               disabled={!getNextLead()}
-              className="inline-flex items-center space-x-1 px-3 py-1.5 rounded-xl text-xs font-bold text-white bg-slate-900 hover:bg-[#D7242A] disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-xs"
+              className="inline-flex items-center space-x-1 px-3 py-1.5 rounded-xl text-xs font-bold text-white bg-slate-900 hover:bg-[#1F6B4C] disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-xs"
             >
               <span className="hidden sm:inline">Next</span>
               <ChevronRight className="w-3.5 h-3.5" />
@@ -735,11 +594,11 @@ export default function LeadDetailPage() {
         </div>
       </div>
 
-      {/* Main Two-Column Layout */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left Column: Dossier Profile & Actions */}
-          <div className="lg:col-span-1 space-y-6">
+      {/* Main Layout */}
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="grid grid-cols-1 gap-8">
+          {/* Dossier Profile & Actions */}
+          <div className="space-y-6">
             {/* Prospect Card */}
             <div className="bg-white rounded-2xl border border-slate-200/80 shadow-xs p-6 space-y-6">
               <div className="text-center space-y-2">
@@ -760,7 +619,7 @@ export default function LeadDetailPage() {
                   <span>Call</span>
                 </a>
                 <a
-                  href={`https://wa.me/91${cleanPhone(lead.phone)}?text=Hello%20${encodeURIComponent(lead.name)},%20this%20is%20regarding%20your%20property%20inquiry%20with%20A4%20Realty.`}
+                  href={`https://wa.me/91${cleanPhone(lead.phone)}?text=Hello%20${encodeURIComponent(lead.name)},%20this%20is%20regarding%20your%20property%20inquiry%20with%20Dreamland.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex flex-col items-center justify-center p-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-800 text-xs font-bold transition-colors"
@@ -770,7 +629,7 @@ export default function LeadDetailPage() {
                 </a>
                 {lead.email ? (
                   <a
-                    href={`mailto:${lead.email}?subject=Property Inquiry - A4 Realty`}
+                    href={`mailto:${lead.email}?subject=Property Inquiry - Dreamland`}
                     className="flex flex-col items-center justify-center p-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-800 text-xs font-bold transition-colors"
                   >
                     <Mail className="w-4 h-4 mb-1 text-blue-600" />
@@ -813,7 +672,7 @@ export default function LeadDetailPage() {
                   setUpdateError('');
                   setShowUpdateModal(true);
                 }}
-                className="w-full flex items-center justify-center space-x-2 px-4 py-3 bg-[#D7242A] hover:bg-[#b81d22] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-xs cursor-pointer"
+                className="w-full flex items-center justify-center space-x-2 px-4 py-3 bg-[#1F6B4C] hover:bg-[#18593F] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-xs cursor-pointer"
               >
                 <Edit3 className="w-4 h-4" />
                 <span>Update Status &amp; Add Note</span>
@@ -828,7 +687,7 @@ export default function LeadDetailPage() {
                 </h3>
                 <button
                   onClick={() => setShowUpdateModal(true)}
-                  className="text-xs font-bold text-[#D7242A] hover:text-[#b81d22] flex items-center space-x-1"
+                  className="text-xs font-bold text-[#1F6B4C] hover:text-[#18593F] flex items-center space-x-1"
                 >
                   <Plus className="w-3.5 h-3.5" />
                   <span>Add Note</span>
@@ -888,180 +747,6 @@ export default function LeadDetailPage() {
               )}
             </div>
           </div>
-
-          {/* Right Column: Inventory Suggestions for this Lead */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Match Telemetry */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs">
-                <div className="text-2xl font-black text-[#D7242A] tracking-tight">{relatedProperties.length}</div>
-                <div className="text-xs font-semibold text-slate-600 mt-0.5">Exact Location Matches</div>
-              </div>
-              <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs">
-                <div className="text-2xl font-black text-slate-900 tracking-tight">{nearbyProperties.length}</div>
-                <div className="text-xs font-semibold text-slate-600 mt-0.5">Adjacent Locality Matches</div>
-              </div>
-            </div>
-
-            {/* Inventory Matching Tabs */}
-            <div className="bg-white rounded-2xl border border-slate-200/80 shadow-xs p-6 space-y-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="text-base font-bold text-slate-900">
-                    Recommended Inventory for {lead.name}
-                  </h3>
-                  <p className="text-xs text-slate-600">
-                    Pitch these curated properties matching the prospect&apos;s interested territory.
-                  </p>
-                </div>
-              </div>
-
-              {/* Tab Selector */}
-              <div className="flex space-x-1.5 p-1 bg-slate-100 rounded-xl">
-                <button
-                  onClick={() => setActiveTab('exact')}
-                  className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all ${
-                    activeTab === 'exact'
-                      ? 'bg-white text-slate-900 shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
-                  }`}
-                >
-                  Exact ({relatedProperties.length})
-                </button>
-                <button
-                  onClick={() => setActiveTab('nearby')}
-                  className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all ${
-                    activeTab === 'nearby'
-                      ? 'bg-white text-slate-900 shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
-                  }`}
-                >
-                  Nearby Areas ({nearbyProperties.length})
-                </button>
-                <button
-                  onClick={() => setActiveTab('search')}
-                  className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all flex items-center justify-center space-x-1.5 ${
-                    activeTab === 'search'
-                      ? 'bg-white text-[#D7242A] shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
-                  }`}
-                >
-                  <Search className="w-3.5 h-3.5" />
-                  <span>Custom Filter ({searchResults.length})</span>
-                </button>
-              </div>
-
-              {/* Exact Location Properties */}
-              {activeTab === 'exact' && (
-                <div>
-                  {relatedProperties.length > 0 ? (
-                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-                      {relatedProperties.map((property) => (
-                        <CRMPropertyCard key={property._id} property={property} />
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="text-center py-12 text-slate-400 space-y-2">
-                      <Building2 className="w-10 h-10 mx-auto text-slate-300" />
-                      <p className="text-xs font-medium">
-                        No active properties found in {getLocationDisplayName(lead.interestedLocation)}.
-                      </p>
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {/* Nearby Location Properties */}
-              {activeTab === 'nearby' && (
-                <div>
-                  {nearbyProperties.length > 0 ? (
-                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-                      {nearbyProperties.map((property) => (
-                        <CRMPropertyCard key={property._id} property={property} isNearby={true} />
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="text-center py-12 text-slate-400 space-y-2">
-                      <Building2 className="w-10 h-10 mx-auto text-slate-300" />
-                      <p className="text-xs font-medium">No properties found in nearby sectors.</p>
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {/* Custom Search Tab */}
-              {activeTab === 'search' && (
-                <div className="space-y-4">
-                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-200/80 space-y-3">
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                      <div>
-                        <label className="block text-[11px] font-bold text-slate-500 uppercase mb-1">Location</label>
-                        <input
-                          type="text"
-                          value={searchFilters.location}
-                          onChange={(e) => handleSearchInputChange('location', e.target.value)}
-                          placeholder="e.g. Bandra West"
-                          className="w-full px-3 py-2 bg-white rounded-lg border border-slate-200 text-xs font-medium outline-none focus:border-[#D7242A]"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-[11px] font-bold text-slate-500 uppercase mb-1">Configuration</label>
-                        <select
-                          value={searchFilters.bhk}
-                          onChange={(e) => handleSearchInputChange('bhk', e.target.value)}
-                          className="w-full px-3 py-2 bg-white rounded-lg border border-slate-200 text-xs font-medium outline-none focus:border-[#D7242A]"
-                        >
-                          <option value="">Any BHK</option>
-                          <option value="1bhk">1 BHK</option>
-                          <option value="2bhk">2 BHK</option>
-                          <option value="3bhk">3 BHK</option>
-                          <option value="4bhk">4 BHK</option>
-                        </select>
-                      </div>
-                      <div>
-                        <label className="block text-[11px] font-bold text-slate-500 uppercase mb-1">Max Price (₹)</label>
-                        <input
-                          type="number"
-                          value={searchFilters.maxPrice}
-                          onChange={(e) => handleSearchInputChange('maxPrice', e.target.value)}
-                          placeholder="Max Price"
-                          className="w-full px-3 py-2 bg-white rounded-lg border border-slate-200 text-xs font-medium outline-none focus:border-[#D7242A]"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="flex gap-2">
-                      <button
-                        onClick={searchProperties}
-                        disabled={searchLoading}
-                        className="px-4 py-2 bg-[#D7242A] hover:bg-[#b81d22] text-white text-xs font-bold rounded-lg transition-colors cursor-pointer"
-                      >
-                        {searchLoading ? 'Searching...' : 'Search Inventory'}
-                      </button>
-                      <button
-                        onClick={clearSearch}
-                        className="px-3 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold rounded-lg transition-colors cursor-pointer"
-                      >
-                        Clear
-                      </button>
-                    </div>
-                  </div>
-
-                  {searchResults.length > 0 ? (
-                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-                      {searchResults.map((property) => (
-                        <CRMPropertyCard key={property._id} property={property} />
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="text-center py-8 text-slate-400 text-xs">
-                      No custom search results yet. Apply filters to search.
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          </div>
         </div>
       </div>
 
@@ -1071,7 +756,7 @@ export default function LeadDetailPage() {
           <div className="bg-white rounded-3xl shadow-2xl max-w-lg w-full overflow-hidden border border-slate-200">
             <div className="bg-[#0B0F19] text-white p-5 flex items-center justify-between border-b border-slate-800">
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 rounded-xl bg-[#D7242A] flex items-center justify-center text-white">
+                <div className="w-8 h-8 rounded-xl bg-[#1F6B4C] flex items-center justify-center text-white">
                   <Edit3 className="w-4 h-4" />
                 </div>
                 <div>
@@ -1101,7 +786,7 @@ export default function LeadDetailPage() {
                 <select
                   value={updateStatus}
                   onChange={(e) => setUpdateStatus(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800 outline-none focus:border-[#D7242A]"
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800 outline-none focus:border-[#1F6B4C]"
                 >
                   <option value="">Select New Status</option>
                   {Object.keys(statusOptions).map((st) => (
@@ -1120,7 +805,7 @@ export default function LeadDetailPage() {
                   <select
                     value={updateSubstatus}
                     onChange={(e) => setUpdateSubstatus(e.target.value)}
-                    className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800 outline-none focus:border-[#D7242A]"
+                    className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800 outline-none focus:border-[#1F6B4C]"
                   >
                     <option value="">Select Substatus (Optional)</option>
                     {availableSubstatuses.map((sub) => (
@@ -1142,7 +827,7 @@ export default function LeadDetailPage() {
                       type="datetime-local"
                       value={siteVisitDate}
                       onChange={(e) => setSiteVisitDate(e.target.value)}
-                      className="w-full px-3 py-2 bg-white border border-purple-200 rounded-xl text-xs font-semibold text-slate-800 outline-none focus:border-[#D7242A]"
+                      className="w-full px-3 py-2 bg-white border border-purple-200 rounded-xl text-xs font-semibold text-slate-800 outline-none focus:border-[#1F6B4C]"
                       required
                     />
                   </div>
@@ -1155,7 +840,7 @@ export default function LeadDetailPage() {
                       onChange={(e) => setVisitReason(e.target.value)}
                       rows={2}
                       placeholder="e.g. Client requested 3 BHK tour at high floor..."
-                      className="w-full px-3 py-2 bg-white border border-purple-200 rounded-xl text-xs font-medium text-slate-800 outline-none focus:border-[#D7242A]"
+                      className="w-full px-3 py-2 bg-white border border-purple-200 rounded-xl text-xs font-medium text-slate-800 outline-none focus:border-[#1F6B4C]"
                       required
                     />
                   </div>
@@ -1171,7 +856,7 @@ export default function LeadDetailPage() {
                     type="datetime-local"
                     value={followUpDate}
                     onChange={(e) => setFollowUpDate(e.target.value)}
-                    className="w-full px-3 py-2 bg-white border border-cyan-200 rounded-xl text-xs font-semibold text-slate-800 outline-none focus:border-[#D7242A]"
+                    className="w-full px-3 py-2 bg-white border border-cyan-200 rounded-xl text-xs font-semibold text-slate-800 outline-none focus:border-[#1F6B4C]"
                     required
                   />
                 </div>
@@ -1186,7 +871,7 @@ export default function LeadDetailPage() {
                   onChange={(e) => setUpdateNote(e.target.value)}
                   rows={3}
                   placeholder="Record summary of call, client objections, or next steps..."
-                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-800 outline-none focus:border-[#D7242A] focus:bg-white resize-none"
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-800 outline-none focus:border-[#1F6B4C] focus:bg-white resize-none"
                 />
               </div>
 
@@ -1201,7 +886,7 @@ export default function LeadDetailPage() {
                 <button
                   type="submit"
                   disabled={isUpdating}
-                  className="px-5 py-2 bg-[#D7242A] hover:bg-[#b81d22] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all disabled:opacity-50 cursor-pointer shadow-xs"
+                  className="px-5 py-2 bg-[#1F6B4C] hover:bg-[#18593F] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all disabled:opacity-50 cursor-pointer shadow-xs"
                 >
                   {isUpdating ? 'Saving...' : 'Save Updates'}
                 </button>

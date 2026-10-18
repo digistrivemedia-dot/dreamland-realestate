@@ -577,7 +577,7 @@ export default function CRMLeadsPage() {
             {/* Title & Stats Pill */}
             <div className="min-w-0">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#D7242A] to-[#99151A] flex items-center justify-center text-white shadow-md shadow-[#D7242A]/20 shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#1F6B4C] to-[#0E3B29] flex items-center justify-center text-white shadow-md shadow-[#1F6B4C]/20 shrink-0">
                   <Users className="w-5 h-5" />
                 </div>
                 <div className="min-w-0">
@@ -585,7 +585,7 @@ export default function CRMLeadsPage() {
                     <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 whitespace-nowrap">
                       Sales CRM &amp; Lead Intelligence
                     </h1>
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#D7242A]/10 text-[#D7242A] border border-[#D7242A]/20 tabular-nums shrink-0">
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#1F6B4C]/10 text-[#1F6B4C] border border-[#1F6B4C]/20 tabular-nums shrink-0">
                       {hasActiveFilters
                         ? `${totalCount.toLocaleString()} Matching Leads`
                         : `${(pipelineStats.total || totalCount).toLocaleString()} Leads`}
@@ -604,7 +604,7 @@ export default function CRMLeadsPage() {
               <button
                 type="button"
                 onClick={() => setShowAddModal(true)}
-                className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-gradient-to-r from-[#D7242A] to-[#B01A20] hover:from-[#e0292f] hover:to-[#99151A] text-white text-xs font-bold shadow-sm shadow-[#D7242A]/25 transition-all hover:scale-[1.01] active:scale-[0.99] cursor-pointer shrink-0"
+                className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-gradient-to-r from-[#1F6B4C] to-[#18593F] hover:from-[#1F6B4C] hover:to-[#0E3B29] text-white text-xs font-bold shadow-sm shadow-[#1F6B4C]/25 transition-all hover:scale-[1.01] active:scale-[0.99] cursor-pointer shrink-0"
               >
                 <UserPlus className="w-4 h-4" />
                 <span>Add Lead</span>
@@ -614,10 +614,10 @@ export default function CRMLeadsPage() {
               <button
                 type="button"
                 onClick={() => setShowBulkUpload(true)}
-                className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-xs font-bold text-slate-700 hover:text-[#D7242A] hover:border-[#D7242A]/40 transition-all shadow-2xs cursor-pointer shrink-0"
+                className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-xs font-bold text-slate-700 hover:text-[#1F6B4C] hover:border-[#1F6B4C]/40 transition-all shadow-2xs cursor-pointer shrink-0"
                 title="Import Leads from CSV"
               >
-                <Upload className="w-4 h-4 text-[#D7242A]" />
+                <Upload className="w-4 h-4 text-[#1F6B4C]" />
                 <span>Bulk Upload</span>
               </button>
 
@@ -700,7 +700,7 @@ export default function CRMLeadsPage() {
                         downloadTemplate();
                         setShowToolsMenu(false);
                       }}
-                      className="w-full text-left px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-[#D7242A] flex items-center gap-2.5 transition-colors cursor-pointer"
+                      className="w-full text-left px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-[#1F6B4C] flex items-center gap-2.5 transition-colors cursor-pointer"
                     >
                       <FileDown className="w-4 h-4 text-blue-500" />
                       <span>Download Sample CSV</span>
@@ -739,14 +739,14 @@ export default function CRMLeadsPage() {
             title={isAllActive ? 'Showing complete pipeline' : 'Click to show all prospects'}
             className={`relative text-left p-4 rounded-2xl border transition-all duration-150 cursor-pointer ${
               isAllActive
-                ? 'bg-white border-[#D7242A] shadow-md ring-2 ring-[#D7242A]/25'
+                ? 'bg-white border-[#1F6B4C] shadow-md ring-2 ring-[#1F6B4C]/25'
                 : 'bg-white/80 hover:bg-white border-slate-200/80 hover:border-slate-300 shadow-2xs hover:shadow-xs'
             }`}
           >
             <div className="flex items-center justify-between text-xs font-medium text-slate-500 mb-1">
               <span className="font-semibold text-slate-700">All Prospects</span>
               {isAllActive ? (
-                <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-[#D7242A] text-white">
+                <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-[#1F6B4C] text-white">
                   <Check className="w-2.5 h-2.5" /> All
                 </span>
               ) : (
@@ -909,7 +909,7 @@ export default function CRMLeadsPage() {
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
                 onKeyDown={handleSearchKeyPress}
-                className="w-full pl-11 pr-10 py-2.5 text-xs sm:text-sm bg-slate-50/70 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#D7242A]/20 focus:border-[#D7242A] transition-all text-slate-900 placeholder:text-slate-400 outline-none"
+                className="w-full pl-11 pr-10 py-2.5 text-xs sm:text-sm bg-slate-50/70 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#1F6B4C]/20 focus:border-[#1F6B4C] transition-all text-slate-900 placeholder:text-slate-400 outline-none"
               />
               {searchInput && (
                 <button
@@ -943,7 +943,7 @@ export default function CRMLeadsPage() {
               <select
                 value={statusFilter}
                 onChange={(e) => updateURLParams({ status: e.target.value, page: '1' })}
-                className="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-lg text-slate-800 focus:ring-2 focus:ring-[#D7242A]/20 focus:border-[#D7242A] outline-none"
+                className="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-lg text-slate-800 focus:ring-2 focus:ring-[#1F6B4C]/20 focus:border-[#1F6B4C] outline-none"
               >
                 <option value="all">All Stages</option>
                 <option value="new">New Inquiry</option>
@@ -970,7 +970,7 @@ export default function CRMLeadsPage() {
               <select
                 value={assignmentFilter}
                 onChange={(e) => updateURLParams({ assignment: e.target.value, page: '1' })}
-                className="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-lg text-slate-800 focus:ring-2 focus:ring-[#D7242A]/20 focus:border-[#D7242A] outline-none"
+                className="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-lg text-slate-800 focus:ring-2 focus:ring-[#1F6B4C]/20 focus:border-[#1F6B4C] outline-none"
               >
                 <option value="all">All Statuses</option>
                 <option value="assigned">Assigned Only</option>
@@ -986,7 +986,7 @@ export default function CRMLeadsPage() {
               <select
                 value={agentFilter}
                 onChange={(e) => updateURLParams({ agent: e.target.value, page: '1' })}
-                className="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-lg text-slate-800 focus:ring-2 focus:ring-[#D7242A]/20 focus:border-[#D7242A] outline-none"
+                className="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-lg text-slate-800 focus:ring-2 focus:ring-[#1F6B4C]/20 focus:border-[#1F6B4C] outline-none"
               >
                 <option value="all">All Advisors</option>
                 {agents.map((agent) => (
@@ -1006,7 +1006,7 @@ export default function CRMLeadsPage() {
                 type="date"
                 value={dateFrom}
                 onChange={(e) => updateURLParams({ dateFrom: e.target.value, page: '1' })}
-                className="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-lg text-slate-800 focus:ring-2 focus:ring-[#D7242A]/20 focus:border-[#D7242A] outline-none"
+                className="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-lg text-slate-800 focus:ring-2 focus:ring-[#1F6B4C]/20 focus:border-[#1F6B4C] outline-none"
               />
             </div>
 
@@ -1019,7 +1019,7 @@ export default function CRMLeadsPage() {
                 type="date"
                 value={dateTo}
                 onChange={(e) => updateURLParams({ dateTo: e.target.value, page: '1' })}
-                className="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-lg text-slate-800 focus:ring-2 focus:ring-[#D7242A]/20 focus:border-[#D7242A] outline-none"
+                className="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-lg text-slate-800 focus:ring-2 focus:ring-[#1F6B4C]/20 focus:border-[#1F6B4C] outline-none"
               />
             </div>
 
@@ -1032,7 +1032,7 @@ export default function CRMLeadsPage() {
                 <select
                   value={sortBy}
                   onChange={(e) => updateURLParams({ sortBy: e.target.value })}
-                  className="flex-1 px-2.5 py-2 text-xs bg-white border border-slate-200 rounded-lg text-slate-800 focus:ring-2 focus:ring-[#D7242A]/20 focus:border-[#D7242A] outline-none"
+                  className="flex-1 px-2.5 py-2 text-xs bg-white border border-slate-200 rounded-lg text-slate-800 focus:ring-2 focus:ring-[#1F6B4C]/20 focus:border-[#1F6B4C] outline-none"
                 >
                   <option value="createdAt">Date Created</option>
                   <option value="name">Name</option>
@@ -1060,7 +1060,7 @@ export default function CRMLeadsPage() {
                 <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-slate-100 text-slate-700 font-medium">
                   Search: &quot;{searchTerm}&quot;
                   <button onClick={() => updateURLParams({ search: '', page: '1' })}>
-                    <X className="w-3 h-3 hover:text-[#D7242A]" />
+                    <X className="w-3 h-3 hover:text-[#1F6B4C]" />
                   </button>
                 </span>
               )}
@@ -1165,8 +1165,8 @@ export default function CRMLeadsPage() {
         {loading ? (
           <div className="bg-white rounded-3xl border border-slate-200/80 shadow-sm p-16 flex flex-col items-center justify-center">
             <div className="relative w-14 h-14 mb-4">
-              <div className="absolute inset-0 rounded-full border-2 border-[#D7242A]/20"></div>
-              <div className="absolute inset-0 rounded-full border-2 border-t-[#D7242A] animate-spin"></div>
+              <div className="absolute inset-0 rounded-full border-2 border-[#1F6B4C]/20"></div>
+              <div className="absolute inset-0 rounded-full border-2 border-t-[#1F6B4C] animate-spin"></div>
             </div>
             <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Loading Pipeline Data...</p>
           </div>
@@ -1177,7 +1177,7 @@ export default function CRMLeadsPage() {
             <p className="text-xs text-slate-600 mb-4">{error}</p>
             <button
               onClick={() => window.location.reload()}
-              className="px-4 py-2 bg-[#D7242A] text-white text-xs font-bold rounded-xl hover:bg-[#b8181e] transition-colors"
+              className="px-4 py-2 bg-[#1F6B4C] text-white text-xs font-bold rounded-xl hover:bg-[#18593F] transition-colors"
             >
               Retry Connection
             </button>
@@ -1206,7 +1206,7 @@ export default function CRMLeadsPage() {
             ) : (
               <button
                 onClick={() => setShowAddModal(true)}
-                className="px-4 py-2 rounded-xl bg-[#D7242A] hover:bg-[#b8181e] text-white text-xs font-bold transition-colors inline-flex items-center gap-2"
+                className="px-4 py-2 rounded-xl bg-[#1F6B4C] hover:bg-[#18593F] text-white text-xs font-bold transition-colors inline-flex items-center gap-2"
               >
                 <UserPlus className="w-4 h-4" />
                 <span>Add First Lead</span>
@@ -1252,7 +1252,7 @@ export default function CRMLeadsPage() {
                         {/* 1. Prospect Info */}
                         <td className="py-4 px-6 whitespace-nowrap">
                           <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-slate-100 to-slate-200 text-slate-800 font-black text-xs flex items-center justify-center border border-slate-200 flex-shrink-0 shadow-2xs group-hover:border-[#D7242A]/40 transition-colors">
+                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-slate-100 to-slate-200 text-slate-800 font-black text-xs flex items-center justify-center border border-slate-200 flex-shrink-0 shadow-2xs group-hover:border-[#1F6B4C]/40 transition-colors">
                               {lead.name
                                 ?.split(' ')
                                 .map((n) => n[0])
@@ -1262,7 +1262,7 @@ export default function CRMLeadsPage() {
                             </div>
                             <div className="min-w-0">
                               <div className="flex items-center gap-1.5">
-                                <span className="font-bold text-slate-900 group-hover:text-[#D7242A] transition-colors truncate">
+                                <span className="font-bold text-slate-900 group-hover:text-[#1F6B4C] transition-colors truncate">
                                   {lead.name}
                                 </span>
                                 {isVisited && (
@@ -1299,7 +1299,7 @@ export default function CRMLeadsPage() {
                             )}
                             {lead.phone && (
                               <a
-                                href={`https://wa.me/91${lead.phone.replace(/\D/g, '')}?text=${encodeURIComponent(`Hello ${lead.name}, regarding your real estate inquiry with A4 Realty...`)}`}
+                                href={`https://wa.me/91${lead.phone.replace(/\D/g, '')}?text=${encodeURIComponent(`Hello ${lead.name}, regarding your real estate inquiry with Dreamland...`)}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="p-1 rounded-lg text-slate-400 hover:text-green-600 hover:bg-green-50 transition-colors"
@@ -1323,7 +1323,7 @@ export default function CRMLeadsPage() {
                         {/* 3. Target Location */}
                         <td className="py-4 px-4 whitespace-nowrap text-xs text-slate-600">
                           <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-100 font-medium max-w-[180px] truncate">
-                            <MapPin className="w-3 h-3 text-[#D7242A] flex-shrink-0" />
+                            <MapPin className="w-3 h-3 text-[#1F6B4C] flex-shrink-0" />
                             <span className="truncate">
                               {getLocationDisplayName(lead.interestedLocation || 'Bangalore')}
                             </span>
@@ -1341,7 +1341,7 @@ export default function CRMLeadsPage() {
                                 {statusConfig.label}
                               </span>
                               {lead.notes && lead.notes.length > 0 && (
-                                <span className="inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold bg-[#D7242A]/10 text-[#D7242A] rounded-full border border-[#D7242A]/20">
+                                <span className="inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold bg-[#1F6B4C]/10 text-[#1F6B4C] rounded-full border border-[#1F6B4C]/20">
                                   {lead.notes.length}
                                 </span>
                               )}
@@ -1391,7 +1391,7 @@ export default function CRMLeadsPage() {
                             >
                               <div className="flex items-center justify-between pb-2.5 mb-3 border-b border-slate-100">
                                 <div className="flex items-center gap-2">
-                                  <div className="w-6 h-6 rounded-lg bg-[#D7242A]/10 text-[#D7242A] flex items-center justify-center font-bold">
+                                  <div className="w-6 h-6 rounded-lg bg-[#1F6B4C]/10 text-[#1F6B4C] flex items-center justify-center font-bold">
                                     <FileText className="w-3.5 h-3.5" />
                                   </div>
                                   <div>
@@ -1480,7 +1480,7 @@ export default function CRMLeadsPage() {
                                       Conversation Notes ({lead.notes.length})
                                     </div>
                                     {lead.notes.slice().reverse().map((note, idx) => (
-                                      <div key={idx} className="text-xs p-2.5 rounded-xl bg-slate-50/90 border border-slate-200/70 border-l-3 border-l-[#D7242A]">
+                                      <div key={idx} className="text-xs p-2.5 rounded-xl bg-slate-50/90 border border-slate-200/70 border-l-3 border-l-[#1F6B4C]">
                                         <p className="text-slate-800 font-medium leading-relaxed">{note.content}</p>
                                         <p className="text-[10px] text-slate-400 mt-1.5 font-medium flex items-center justify-between">
                                           <span>{note.addedBy || 'Advisor'}</span>
@@ -1496,7 +1496,7 @@ export default function CRMLeadsPage() {
                                 <span className="text-slate-400">Hovering reveals intel</span>
                                 <span
                                   onClick={() => onRowNavigate(lead._id)}
-                                  className="text-[#D7242A] font-bold hover:underline cursor-pointer"
+                                  className="text-[#1F6B4C] font-bold hover:underline cursor-pointer"
                                 >
                                   Open Dossier →
                                 </span>
@@ -1530,9 +1530,9 @@ export default function CRMLeadsPage() {
                             {lead.notes && lead.notes.length > 0 ? (
                               <button
                                 onClick={() => setActiveNotesPopover(activeNotesPopover === lead._id ? null : lead._id)}
-                                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 group-hover/notes:bg-rose-50 group-hover/notes:text-[#D7242A] text-slate-700 transition-colors cursor-pointer"
+                                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 group-hover/notes:bg-rose-50 group-hover/notes:text-[#1F6B4C] text-slate-700 transition-colors cursor-pointer"
                               >
-                                <FileText className="w-3.5 h-3.5 text-slate-500 group-hover/notes:text-[#D7242A]" />
+                                <FileText className="w-3.5 h-3.5 text-slate-500 group-hover/notes:text-[#1F6B4C]" />
                                 <span>{lead.notes.length} {lead.notes.length === 1 ? 'Note' : 'Notes'}</span>
                               </button>
                             ) : (
@@ -1548,7 +1548,7 @@ export default function CRMLeadsPage() {
                               >
                                 <div className="flex items-center justify-between pb-2.5 mb-3 border-b border-slate-100">
                                   <div className="flex items-center gap-2">
-                                    <div className="w-6 h-6 rounded-lg bg-[#D7242A]/10 text-[#D7242A] flex items-center justify-center font-bold">
+                                    <div className="w-6 h-6 rounded-lg bg-[#1F6B4C]/10 text-[#1F6B4C] flex items-center justify-center font-bold">
                                       <FileText className="w-3.5 h-3.5" />
                                     </div>
                                     <div>
@@ -1563,7 +1563,7 @@ export default function CRMLeadsPage() {
 
                                 <div className="space-y-2 max-h-56 overflow-y-auto pr-1">
                                   {lead.notes.slice().reverse().map((note, idx) => (
-                                    <div key={idx} className="text-xs p-2.5 rounded-xl bg-slate-50/90 border border-slate-200/70 border-l-3 border-l-[#D7242A]">
+                                    <div key={idx} className="text-xs p-2.5 rounded-xl bg-slate-50/90 border border-slate-200/70 border-l-3 border-l-[#1F6B4C]">
                                       <p className="text-slate-800 font-medium leading-relaxed">{note.content}</p>
                                       <p className="text-[10px] text-slate-400 mt-1.5 font-medium flex items-center justify-between">
                                         <span>{note.addedBy || 'Advisor'}</span>
@@ -1577,7 +1577,7 @@ export default function CRMLeadsPage() {
                                   <span className="text-slate-400">Hovering reveals notes</span>
                                   <span
                                     onClick={() => onRowNavigate(lead._id)}
-                                    className="text-[#D7242A] font-bold hover:underline cursor-pointer"
+                                    className="text-[#1F6B4C] font-bold hover:underline cursor-pointer"
                                   >
                                     Open Dossier →
                                   </span>
@@ -1601,7 +1601,7 @@ export default function CRMLeadsPage() {
                             {isAdmin && (
                               <button
                                 onClick={(e) => handleEditClick(e, lead)}
-                                className="p-1.5 rounded-lg text-slate-400 hover:text-[#D7242A] hover:bg-slate-100 transition-colors"
+                                className="p-1.5 rounded-lg text-slate-400 hover:text-[#1F6B4C] hover:bg-slate-100 transition-colors"
                                 title="Edit Lead"
                               >
                                 <Edit3 className="w-4 h-4" />
@@ -1689,7 +1689,7 @@ export default function CRMLeadsPage() {
                           onClick={() => updateURLParams({ page: page.toString() }, true)}
                           className={`w-8 h-8 rounded-xl text-xs font-bold transition-colors ${
                             currentPage === page
-                              ? 'bg-[#D7242A] text-white shadow-sm shadow-[#D7242A]/20'
+                              ? 'bg-[#1F6B4C] text-white shadow-sm shadow-[#1F6B4C]/20'
                               : 'text-slate-600 bg-white hover:bg-slate-100 border border-slate-200'
                           }`}
                         >
@@ -1721,7 +1721,7 @@ export default function CRMLeadsPage() {
             {/* Modal Header */}
             <div className="bg-gradient-to-r from-[#0B0F19] to-[#1E293B] text-white p-6 flex items-center justify-between border-b border-slate-800">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-xl bg-[#D7242A] flex items-center justify-center text-white shadow-md shadow-[#D7242A]/30">
+                <div className="w-10 h-10 rounded-xl bg-[#1F6B4C] flex items-center justify-center text-white shadow-md shadow-[#1F6B4C]/30">
                   <UserPlus className="w-5 h-5" />
                 </div>
                 <div>
@@ -1747,7 +1747,7 @@ export default function CRMLeadsPage() {
             <form onSubmit={handleAddLead} className="p-6 space-y-4">
               <div>
                 <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                  Full Name <span className="text-[#D7242A]">*</span>
+                  Full Name <span className="text-[#1F6B4C]">*</span>
                 </label>
                 <input
                   type="text"
@@ -1756,13 +1756,13 @@ export default function CRMLeadsPage() {
                   onChange={handleInputChange}
                   required
                   placeholder="e.g. Vikram Malhotra"
-                  className="w-full px-4 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#D7242A]/20 focus:border-[#D7242A] text-slate-900 outline-none"
+                  className="w-full px-4 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#1F6B4C]/20 focus:border-[#1F6B4C] text-slate-900 outline-none"
                 />
               </div>
 
               <div>
                 <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                  Phone Number (10 Digits) <span className="text-[#D7242A]">*</span>
+                  Phone Number (10 Digits) <span className="text-[#1F6B4C]">*</span>
                 </label>
                 <div className="relative">
                   <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400">
@@ -1776,7 +1776,7 @@ export default function CRMLeadsPage() {
                     required
                     maxLength="10"
                     placeholder="10-digit mobile number"
-                    className="w-full pl-12 pr-4 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#D7242A]/20 focus:border-[#D7242A] text-slate-900 outline-none font-mono"
+                    className="w-full pl-12 pr-4 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#1F6B4C]/20 focus:border-[#1F6B4C] text-slate-900 outline-none font-mono"
                   />
                 </div>
               </div>
@@ -1791,13 +1791,13 @@ export default function CRMLeadsPage() {
                   value={newLead.email}
                   onChange={handleInputChange}
                   placeholder="vikram@example.com"
-                  className="w-full px-4 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#D7242A]/20 focus:border-[#D7242A] text-slate-900 outline-none"
+                  className="w-full px-4 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#1F6B4C]/20 focus:border-[#1F6B4C] text-slate-900 outline-none"
                 />
               </div>
 
               <div>
                 <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                  Interested Location <span className="text-[#D7242A]">*</span>
+                  Interested Location <span className="text-[#1F6B4C]">*</span>
                 </label>
                 <input
                   type="text"
@@ -1806,7 +1806,7 @@ export default function CRMLeadsPage() {
                   onChange={handleInputChange}
                   required
                   placeholder="e.g. Koramangala, Indiranagar, Whitefield"
-                  className="w-full px-4 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#D7242A]/20 focus:border-[#D7242A] text-slate-900 outline-none"
+                  className="w-full px-4 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#1F6B4C]/20 focus:border-[#1F6B4C] text-slate-900 outline-none"
                 />
               </div>
 
@@ -1822,7 +1822,7 @@ export default function CRMLeadsPage() {
                 <button
                   type="submit"
                   disabled={addingLead || !newLead.name || !newLead.phone || !newLead.interestedLocation}
-                  className="px-5 py-2.5 text-xs font-bold text-white bg-gradient-to-r from-[#D7242A] to-[#B01A20] hover:from-[#e0292f] hover:to-[#99151A] rounded-xl shadow-md shadow-[#D7242A]/25 transition-all disabled:opacity-50 cursor-pointer flex items-center gap-2"
+                  className="px-5 py-2.5 text-xs font-bold text-white bg-gradient-to-r from-[#1F6B4C] to-[#18593F] hover:from-[#1F6B4C] hover:to-[#0E3B29] rounded-xl shadow-md shadow-[#1F6B4C]/25 transition-all disabled:opacity-50 cursor-pointer flex items-center gap-2"
                 >
                   {addingLead ? 'Adding...' : 'Save Prospect'}
                 </button>

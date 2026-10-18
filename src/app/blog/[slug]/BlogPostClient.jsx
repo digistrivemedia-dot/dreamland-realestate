@@ -136,14 +136,14 @@ export default function BlogPostClient({ initialData = null }) {
       "image": blogData.featuredImage,
       "author": {
         "@type": "Person",
-        "name": blogData.author?.name || "A4Realty Team"
+        "name": blogData.author?.name || "Dreamland Team"
       },
       "publisher": {
         "@type": "Organization",
-        "name": "A4Realty",
+        "name": "Dreamland",
         "logo": {
           "@type": "ImageObject",
-          "url": "/finalLogo.jpeg"
+          "url": "/dreamlandlogo.jpeg"
         }
       },
       "datePublished": blogData.publishedAt || blogData.createdAt,
@@ -168,7 +168,7 @@ export default function BlogPostClient({ initialData = null }) {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#D7242A]"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#1F6B4C]"></div>
       </div>
     );
   }
@@ -181,7 +181,7 @@ export default function BlogPostClient({ initialData = null }) {
           <p className="text-gray-600 mb-6">{error || 'The blog post you\'re looking for doesn\'t exist.'}</p>
           <Link
             href="/blog"
-            className="px-6 py-3 bg-[#D7242A] text-white font-medium rounded-lg hover:bg-[#D7242A]/90"
+            className="px-6 py-3 bg-[#1F6B4C] text-white font-medium rounded-lg hover:bg-[#1F6B4C]/90"
           >
             Back to Blog
           </Link>
@@ -248,7 +248,7 @@ export default function BlogPostClient({ initialData = null }) {
               {blog.categories.map(category => (
                 <span
                   key={category}
-                  className="px-3 py-1 text-sm font-medium bg-[#D7242A]/10 text-[#D7242A] rounded-full"
+                  className="px-3 py-1 text-sm font-medium bg-[#1F6B4C]/10 text-[#1F6B4C] rounded-full"
                 >
                   {category}
                 </span>
@@ -261,14 +261,14 @@ export default function BlogPostClient({ initialData = null }) {
 
             <div className="flex items-center justify-between flex-wrap gap-4 mb-8">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-[#D7242A]/10 rounded-full flex items-center justify-center">
-                  <span className="text-lg font-medium text-[#D7242A]">
+                <div className="w-12 h-12 bg-[#1F6B4C]/10 rounded-full flex items-center justify-center">
+                  <span className="text-lg font-medium text-[#1F6B4C]">
                     {blog.author?.name?.charAt(0) || 'A'}
                   </span>
                 </div>
                 <div>
                   <div className="font-medium text-gray-900">
-                    {blog.author?.name || 'A4Realty Team'}
+                    {blog.author?.name || 'Dreamland Team'}
                   </div>
                   <div className="text-sm text-gray-600">
                     {formatDate(blog.publishedAt || blog.createdAt)} • {blog.readingTime} min read
@@ -298,7 +298,7 @@ export default function BlogPostClient({ initialData = null }) {
 
           {/* Article Content */}
           <div 
-            className="prose text-black prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-[#D7242A] prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-ul:text-gray-700 prose-ol:text-gray-700"
+            className="prose text-black prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-[#1F6B4C] prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-ul:text-gray-700 prose-ol:text-gray-700"
             dangerouslySetInnerHTML={{ __html: blog.content }}
           />
 
@@ -322,14 +322,14 @@ export default function BlogPostClient({ initialData = null }) {
           {/* Author Bio */}
           <div className="mt-12 pt-8 border-t border-gray-200">
             <div className="flex items-start gap-4">
-              <div className="w-16 h-16 bg-[#D7242A]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                <span className="text-xl font-medium text-[#D7242A]">
+              <div className="w-16 h-16 bg-[#1F6B4C]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                <span className="text-xl font-medium text-[#1F6B4C]">
                   {blog.author?.name?.charAt(0) || 'A'}
                 </span>
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  {blog.author?.name || 'A4Realty Team'}
+                  {blog.author?.name || 'Dreamland Team'}
                 </h3>
                 <p className="text-gray-600">
                   Expert real estate professionals helping you make informed property decisions. 
@@ -367,7 +367,7 @@ export default function BlogPostClient({ initialData = null }) {
                         )}
                         
                         <div className="p-6">
-                          <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2 hover:text-[#D7242A] transition-colors">
+                          <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2 hover:text-[#1F6B4C] transition-colors">
                             {relatedBlog.title}
                           </h3>
                           
@@ -389,7 +389,7 @@ export default function BlogPostClient({ initialData = null }) {
         )}
 
         {/* CTA Section */}
-        <section className="bg-[#D7242A] text-white">
+        <section className="bg-[#1F6B4C] text-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
             <h2 className="text-3xl font-bold mb-4">
               Ready to Find Your Dream Property?
@@ -400,7 +400,7 @@ export default function BlogPostClient({ initialData = null }) {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/search"
-                className="px-8 py-3 bg-white text-[#D7242A] font-medium rounded-lg hover:bg-white/90 transition-colors"
+                className="px-8 py-3 bg-white text-[#1F6B4C] font-medium rounded-lg hover:bg-white/90 transition-colors"
               >
                 Search Properties
               </Link>

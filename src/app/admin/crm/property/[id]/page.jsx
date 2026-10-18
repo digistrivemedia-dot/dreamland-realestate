@@ -98,7 +98,7 @@ export default function AdminPropertyDetailPage() {
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6">
         <div className="text-center">
-          <div className="w-12 h-12 border-3 border-slate-200 border-t-[#D7242A] rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-12 h-12 border-3 border-slate-200 border-t-[#1F6B4C] rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-xs font-bold text-slate-600 uppercase tracking-wider">Loading Property Portfolio...</p>
         </div>
       </div>
@@ -141,7 +141,7 @@ export default function AdminPropertyDetailPage() {
               </button>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#D7242A] bg-rose-50 border border-rose-100 px-2 py-0.5 rounded-md">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#1F6B4C] bg-rose-50 border border-rose-100 px-2 py-0.5 rounded-md">
                     Sales Match Dossier
                   </span>
                   <span className="text-xs text-slate-400 font-mono">
@@ -163,7 +163,7 @@ export default function AdminPropertyDetailPage() {
               </Link>
               <a
                 href={`tel:${property.contactNumber}`}
-                className="px-4 py-2 bg-[#D7242A] hover:bg-[#b51c22] text-white rounded-xl text-xs font-bold shadow-xs transition-colors inline-flex items-center gap-1.5 cursor-pointer"
+                className="px-4 py-2 bg-[#1F6B4C] hover:bg-[#18593F] text-white rounded-xl text-xs font-bold shadow-xs transition-colors inline-flex items-center gap-1.5 cursor-pointer"
               >
                 <Phone className="w-3.5 h-3.5" />
                 <span>Call Owner</span>
@@ -186,12 +186,12 @@ export default function AdminPropertyDetailPage() {
                       {property.title}
                     </h2>
                     <div className="flex items-center text-sm font-medium text-slate-600 gap-1.5">
-                      <MapPin className="w-4 h-4 text-[#D7242A] flex-shrink-0" />
+                      <MapPin className="w-4 h-4 text-[#1F6B4C] flex-shrink-0" />
                       <span>{property.location}</span>
                     </div>
                   </div>
                   <div className="sm:text-right">
-                    <div className="text-2xl sm:text-3xl font-black text-[#D7242A] tracking-tight">
+                    <div className="text-2xl sm:text-3xl font-black text-[#1F6B4C] tracking-tight">
                       {formatPrice(property.price)}
                     </div>
                     <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 mt-0.5">
@@ -206,7 +206,7 @@ export default function AdminPropertyDetailPage() {
                     {property.type}
                   </span>
                   {property.bhk && property.bhk !== 'na' && (
-                    <span className="px-3 py-1 bg-rose-50 border border-rose-100 text-[#D7242A] text-xs font-bold rounded-lg">
+                    <span className="px-3 py-1 bg-rose-50 border border-rose-100 text-[#1F6B4C] text-xs font-bold rounded-lg">
                       {property.bhk.toUpperCase()}
                     </span>
                   )}
@@ -277,7 +277,7 @@ export default function AdminPropertyDetailPage() {
                             onClick={() => setSelectedImageIndex(index)}
                             className={`relative rounded-xl overflow-hidden aspect-video border-2 transition-all cursor-pointer ${
                               selectedImageIndex === index 
-                                ? 'border-[#D7242A] shadow-xs scale-98' 
+                                ? 'border-[#1F6B4C] shadow-xs scale-98' 
                                 : 'border-transparent opacity-70 hover:opacity-100'
                             }`}
                           >
@@ -317,7 +317,7 @@ export default function AdminPropertyDetailPage() {
                               href={videoUrl} 
                               target="_blank" 
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 text-xs font-bold text-[#D7242A] hover:underline"
+                              className="inline-flex items-center gap-1 text-xs font-bold text-[#1F6B4C] hover:underline"
                             >
                               <span>Open Video in New Tab</span>
                               <ExternalLink className="w-3 h-3" />
@@ -346,10 +346,10 @@ export default function AdminPropertyDetailPage() {
           <div className="lg:col-span-1 space-y-6">
             {/* Critical Sales Contact Card */}
             <div className="bg-[#0B0F19] text-white rounded-2xl p-6 border border-slate-800 shadow-xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[#D7242A]/10 rounded-full blur-2xl"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#1F6B4C]/10 rounded-full blur-2xl"></div>
               <div className="relative">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#D7242A] bg-[#D7242A]/10 px-2.5 py-1 rounded-md border border-[#D7242A]/20">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#1F6B4C] bg-[#1F6B4C]/10 px-2.5 py-1 rounded-md border border-[#1F6B4C]/20">
                     Direct Owner Contact
                   </span>
                   <button
@@ -372,7 +372,7 @@ export default function AdminPropertyDetailPage() {
                 <div className="grid grid-cols-2 gap-2">
                   <a
                     href={`tel:${property.contactNumber}`}
-                    className="flex items-center justify-center gap-1.5 py-2.5 px-3 bg-[#D7242A] hover:bg-[#b51c22] text-white text-xs font-bold rounded-xl transition-all shadow-xs cursor-pointer"
+                    className="flex items-center justify-center gap-1.5 py-2.5 px-3 bg-[#1F6B4C] hover:bg-[#18593F] text-white text-xs font-bold rounded-xl transition-all shadow-xs cursor-pointer"
                   >
                     <Phone className="w-3.5 h-3.5" />
                     <span>Call Now</span>
@@ -451,7 +451,7 @@ export default function AdminPropertyDetailPage() {
               <div className="divide-y divide-slate-100 text-xs font-medium">
                 <div className="flex justify-between py-2.5">
                   <span className="text-slate-500">Base Listing Price:</span>
-                  <span className="font-bold text-[#D7242A]">{formatPrice(property.price)}</span>
+                  <span className="font-bold text-[#1F6B4C]">{formatPrice(property.price)}</span>
                 </div>
                 {property.hoa && (
                   <div className="flex justify-between py-2.5">

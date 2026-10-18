@@ -62,7 +62,7 @@ export default function LeadCaptureModal({ isOpen, onClose, onSubmit, title = "G
       <div className="relative flex max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-3xl bg-white shadow-2xl animate-in fade-in zoom-in duration-300 md:flex-row">
           
           {/* Left Side: Visual & Benefits (Hidden on Mobile) */}
-          <div className="relative hidden overflow-hidden bg-[#D7242A] p-6 text-white md:flex md:w-2/5 md:flex-col md:justify-between">
+          <div className="relative hidden overflow-hidden bg-[#1F6B4C] p-6 text-white md:flex md:w-2/5 md:flex-col md:justify-between">
             {/* Decorative circles */}
             <div className="absolute top-0 right-0 -translate-y-12 translate-x-12 w-48 h-48 bg-white/10 rounded-full"></div>
             <div className="absolute bottom-0 left-0 translate-y-12 -translate-x-12 w-32 h-32 bg-white/5 rounded-full"></div>
@@ -101,7 +101,7 @@ export default function LeadCaptureModal({ isOpen, onClose, onSubmit, title = "G
               <div className="flex items-center gap-3">
                 <div className="flex -space-x-2">
                   {[1,2,3].map(i => (
-                    <div key={i} className="w-8 h-8 rounded-full border-2 border-[#D7242A] bg-gray-200 overflow-hidden">
+                    <div key={i} className="w-8 h-8 rounded-full border-2 border-[#1F6B4C] bg-gray-200 overflow-hidden">
                       <img src={`https://i.pravatar.cc/100?img=${i+10}`} alt="User" />
                     </div>
                   ))}
@@ -129,7 +129,7 @@ export default function LeadCaptureModal({ isOpen, onClose, onSubmit, title = "G
 
             <form onSubmit={handleSubmit} className="space-y-3.5">
               {error && (
-                <div className="bg-red-50 border-l-4 border-[#D7242A] text-[#D7242A] p-3 rounded text-sm animate-shake">
+                <div className="bg-red-50 border-l-4 border-[#1F6B4C] text-[#1F6B4C] p-3 rounded text-sm animate-shake">
                   {error}
                 </div>
               )}
@@ -146,7 +146,7 @@ export default function LeadCaptureModal({ isOpen, onClose, onSubmit, title = "G
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-gray-900 outline-none transition-all placeholder-gray-400 focus:border-[#D7242A] focus:bg-white focus:ring-4 focus:ring-[#D7242A]/10"
+                    className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-gray-900 outline-none transition-all placeholder-gray-400 focus:border-[#1F6B4C] focus:bg-white focus:ring-4 focus:ring-[#1F6B4C]/10"
                     placeholder="John Doe"
                   />
                 </div>
@@ -164,7 +164,7 @@ export default function LeadCaptureModal({ isOpen, onClose, onSubmit, title = "G
                       value={formData.phone}
                       onChange={handleChange}
                       required
-                      className="w-full rounded-xl border border-gray-200 bg-gray-50 py-2.5 pl-12 pr-4 text-gray-900 outline-none transition-all placeholder-gray-400 focus:border-[#D7242A] focus:bg-white focus:ring-4 focus:ring-[#D7242A]/10"
+                      className="w-full rounded-xl border border-gray-200 bg-gray-50 py-2.5 pl-12 pr-4 text-gray-900 outline-none transition-all placeholder-gray-400 focus:border-[#1F6B4C] focus:bg-white focus:ring-4 focus:ring-[#1F6B4C]/10"
                       placeholder="98765 43210"
                     />
                   </div>
@@ -183,7 +183,7 @@ export default function LeadCaptureModal({ isOpen, onClose, onSubmit, title = "G
                     value={formData.interestedLocation}
                     onChange={handleChange}
                     required
-                    className="w-full rounded-xl border border-gray-200 bg-gray-50 bg-white px-4 py-2.5 text-gray-900 outline-none transition-all focus:border-[#D7242A] focus:bg-white focus:ring-4 focus:ring-[#D7242A]/10"
+                    className="w-full rounded-xl border border-gray-200 bg-gray-50 bg-white px-4 py-2.5 text-gray-900 outline-none transition-all focus:border-[#1F6B4C] focus:bg-white focus:ring-4 focus:ring-[#1F6B4C]/10"
                   >
                     <option value="">Select where you want to buy</option>
                     {getAllLocations().map(location => (
@@ -207,7 +207,7 @@ export default function LeadCaptureModal({ isOpen, onClose, onSubmit, title = "G
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-gray-900 outline-none transition-all placeholder-gray-400 focus:border-[#D7242A] focus:bg-white focus:ring-4 focus:ring-[#D7242A]/10"
+                    className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-gray-900 outline-none transition-all placeholder-gray-400 focus:border-[#1F6B4C] focus:bg-white focus:ring-4 focus:ring-[#1F6B4C]/10"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -217,7 +217,7 @@ export default function LeadCaptureModal({ isOpen, onClose, onSubmit, title = "G
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#D7242A] py-3.5 text-base font-extrabold text-white shadow-xl shadow-red-600/20 transition-all hover:bg-[#D7242A]/90 focus:ring-4 focus:ring-[#D7242A]/20 disabled:opacity-50"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#1F6B4C] py-3.5 text-base font-extrabold text-white shadow-xl shadow-red-600/20 transition-all hover:bg-[#1F6B4C]/90 focus:ring-4 focus:ring-[#1F6B4C]/20 disabled:opacity-50"
                 >
                   {submitting ? (
                     <>

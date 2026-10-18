@@ -118,7 +118,7 @@ export default function LocationMap({ location, propertyTitle, mapLocationLink }
                         `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(location)}&limit=1`,
                         {
                             headers: {
-                                'User-Agent': 'A4Realty-PropertyApp/1.0'
+                                'User-Agent': 'Dreamland-PropertyApp/1.0'
                             }
                         }
                     );
@@ -166,7 +166,7 @@ export default function LocationMap({ location, propertyTitle, mapLocationLink }
         return (
             <div className="w-full h-96 bg-gray-100 rounded-xl flex items-center justify-center border border-gray-200">
                 <div className="text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#D7242A] mx-auto mb-4"></div>
+                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#1F6B4C] mx-auto mb-4"></div>
                     <p className="text-gray-600">Loading map...</p>
                 </div>
             </div>
@@ -223,7 +223,7 @@ export default function LocationMap({ location, propertyTitle, mapLocationLink }
                                         href={mapLocationLink}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="text-xs text-[#D7242A] hover:underline mt-2 inline-block"
+                                        className="text-xs text-[#1F6B4C] hover:underline mt-2 inline-block"
                                     >
                                         View on Google Maps →
                                     </a>
@@ -245,7 +245,7 @@ export default function LocationMap({ location, propertyTitle, mapLocationLink }
                         href={mapLocationLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-sm text-[#D7242A] hover:text-[#D7242A]/80 font-medium transition-colors"
+                        className="flex items-center gap-2 text-sm text-[#1F6B4C] hover:text-[#1F6B4C]/80 font-medium transition-colors"
                     >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />

@@ -1,5 +1,5 @@
 export default function robots() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.a4realty.in';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.dreamland.com';
 
   return {
     rules: [

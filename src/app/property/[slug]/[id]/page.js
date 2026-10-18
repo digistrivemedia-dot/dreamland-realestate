@@ -18,19 +18,19 @@ export async function generateMetadata({ params }) {
   const property = await getProperty(params.id);
 
   if (!property || property.status !== 'approved') {
-    return { title: 'Property Not Found | A4Realty' };
+    return { title: 'Property Not Found | Dreamland' };
   }
 
   const bhkStr = property.bhk ? `${property.bhk.toUpperCase()} ` : '';
   const typeStr = property.type ? property.type.replace(/-/g, ' ') : 'Property';
-  const title = `${property.title} - ${bhkStr}${typeStr} in ${property.location} | A4Realty`;
+  const title = `${property.title} - ${bhkStr}${typeStr} in ${property.location} | Dreamland`;
 
   const description = property.description
     ? property.description.replace(/<[^>]*>/g, '').substring(0, 160)
-    : `${bhkStr}${typeStr} in ${property.location} at ${property.price}. Explore premium real estate listings at A4Realty.`;
+    : `${bhkStr}${typeStr} in ${property.location} at ${property.price}. Explore premium real estate listings at Dreamland.`;
 
   const image = property.gallery?.[0] || null;
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.a4realty.in';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.dreamland.com';
   const url = `${baseUrl}/property/${params.slug}/${params.id}`;
 
   return {
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }) {
       description,
       url,
       type: 'website',
-      siteName: 'A4Realty',
+      siteName: 'Dreamland',
       ...(image && { images: [{ url: image, width: 1200, height: 630, alt: property.title }] }),
     },
     twitter: {
@@ -56,7 +56,7 @@ export async function generateMetadata({ params }) {
 
 export default async function PropertyPage({ params }) {
   const property = await getProperty(params.id);
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.a4realty.in';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.dreamland.com';
   const url = `${baseUrl}/property/${params.slug}/${params.id}`;
 
   const bhkStr = property?.bhk ? `${property.bhk.toUpperCase()} ` : '';
@@ -95,9 +95,9 @@ export default async function PropertyPage({ params }) {
           "price": property.price,
           "priceCurrency": "INR",
           "availability": "https://schema.org/InStock",
-          "seller": { "@id": "https://www.a4realty.in/#organization" }
+          "seller": { "@id": "https://www.dreamland.com/#organization" }
         },
-        "provider": { "@id": "https://www.a4realty.in/#organization" }
+        "provider": { "@id": "https://www.dreamland.com/#organization" }
       },
       {
         "@type": "BreadcrumbList",

@@ -8,7 +8,7 @@ export default function Terms() {
         <>
             <main className="min-h-screen bg-white">
                 {/* Header */}
-                <section className="bg-[#D7242A] text-white py-16">
+                <section className="bg-[#1F6B4C] text-white py-16">
                     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                         <h1 className="text-4xl md:text-5xl font-bold mb-4">
                             Terms and Conditions
@@ -28,7 +28,7 @@ export default function Terms() {
                             <div className="mb-12">
                                 <h2 className="text-2xl font-bold text-gray-900 mb-6">1. Introduction</h2>
                                 <p className="text-gray-700 leading-relaxed mb-4">
-                                    Welcome to A4Realty (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;). These Terms and Conditions (&ldquo;Terms&rdquo;) govern your use of our website and services. By accessing or using our platform, you agree to comply with and be bound by these Terms.
+                                    Welcome to Dreamland (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;). These Terms and Conditions (&ldquo;Terms&rdquo;) govern your use of our website and services. By accessing or using our platform, you agree to comply with and be bound by these Terms.
                                 </p>
                                 <p className="text-gray-700 leading-relaxed">
                                     If you do not agree with any part of these Terms, you must not use our services.
@@ -40,7 +40,7 @@ export default function Terms() {
                                 <h2 className="text-2xl font-bold text-gray-900 mb-6">2. Definitions</h2>
                                 <div className="space-y-4">
                                     <div>
-                                        <strong className="text-gray-900">&ldquo;Platform&rdquo;</strong> refers to the A4Realty website and mobile applications.
+                                        <strong className="text-gray-900">&ldquo;Platform&rdquo;</strong> refers to the Dreamland website and mobile applications.
                                     </div>
                                     <div>
                                         <strong className="text-gray-900">&ldquo;User&rdquo;</strong> refers to any individual or entity accessing our services.
@@ -49,7 +49,7 @@ export default function Terms() {
                                         <strong className="text-gray-900">&ldquo;Property&rdquo;</strong> refers to real estate listings available on our platform.
                                     </div>
                                     <div>
-                                        <strong className="text-gray-900">&ldquo;Services&rdquo;</strong> refers to all services provided by A4Realty including property listing, search, and transaction facilitation.
+                                        <strong className="text-gray-900">&ldquo;Services&rdquo;</strong> refers to all services provided by Dreamland including property listing, search, and transaction facilitation.
                                     </div>
                                 </div>
                             </div>
@@ -155,7 +155,7 @@ export default function Terms() {
                                 <h2 className="text-2xl font-bold text-gray-900 mb-6">8. Intellectual Property</h2>
                                 <div className="space-y-4 text-gray-700">
                                     <p>
-                                        All content on our platform, including text, graphics, logos, images, and software, is owned by A4Realty or our licensors and is protected by intellectual property laws.
+                                        All content on our platform, including text, graphics, logos, images, and software, is owned by Dreamland or our licensors and is protected by intellectual property laws.
                                     </p>
                                     <p>
                                         You may not reproduce, distribute, modify, or create derivative works from our content without explicit written permission.
@@ -189,7 +189,7 @@ export default function Terms() {
                                 <h2 className="text-2xl font-bold text-gray-900 mb-6">10. Limitation of Liability</h2>
                                 <div className="space-y-4 text-gray-700">
                                     <p>
-                                        To the fullest extent permitted by law, A4Realty shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our services.
+                                        To the fullest extent permitted by law, Dreamland shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our services.
                                     </p>
                                     <p>
                                         Our total liability for any claims related to our services shall not exceed the amount you paid to us in the twelve months preceding the claim.
@@ -241,19 +241,19 @@ export default function Terms() {
                                         If you have questions about these Terms and Conditions, please contact us:
                                     </p>
                                     <div className="bg-gray-50 p-6 rounded-lg space-y-1">
-                                        <p><strong>A4Realty Pvt Ltd</strong></p>
-                                        <p>Email: a4realtyinfo@gmail.com</p>
-                                        <p>Phone: +91-9002981353 / +91-6289038527</p>
-                                        <p>Address: No.184, A4 Realty, Hennur Cross, 3rd Cross, Narayanappa Road, Kalyan Nagar Post, Bengaluru, 560043</p>
+                                        <p><strong>Dreamland Pvt Ltd</strong></p>
+                                        <p>Email: TBD</p>
+                                        <p>Phone: TBD</p>
+                                        <p>Address: TBD</p>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Acceptance */}
-                            <div className="bg-[#D7242A]/5 p-8 rounded-xl border border-[#D7242A]/20">
+                            <div className="bg-[#1F6B4C]/5 p-8 rounded-xl border border-[#1F6B4C]/20">
                                 <h2 className="text-2xl font-bold text-gray-900 mb-4">15. Acceptance of Terms</h2>
                                 <p className="text-gray-700 leading-relaxed">
-                                    By using A4Realty&apos;s services, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions. These Terms constitute a legally binding agreement between you and A4Realty.
+                                    By using Dreamland&apos;s services, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions. These Terms constitute a legally binding agreement between you and Dreamland.
                                 </p>
                             </div>
 

@@ -292,7 +292,7 @@ export default function AdminProperties() {
     return (
       <div className="min-h-[80vh] flex items-center justify-center p-6">
         <div className="text-center">
-          <div className="w-12 h-12 rounded-2xl border-2 border-t-[#D7242A] border-r-transparent border-b-[#D7242A] border-l-transparent animate-spin mx-auto mb-3"></div>
+          <div className="w-12 h-12 rounded-2xl border-2 border-t-[#1F6B4C] border-r-transparent border-b-[#1F6B4C] border-l-transparent animate-spin mx-auto mb-3"></div>
           <p className="text-xs font-bold text-slate-700">Loading Property Portfolio...</p>
         </div>
       </div>
@@ -308,7 +308,7 @@ export default function AdminProperties() {
             <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight font-serif">
               Property Portfolio
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#D7242A]/10 text-[#D7242A] border border-[#D7242A]/20">
+            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#1F6B4C]/10 text-[#1F6B4C] border border-[#1F6B4C]/20">
               {properties.length} Listings
             </span>
           </div>
@@ -351,7 +351,7 @@ export default function AdminProperties() {
 
           <Link
             href="/list-property"
-            className="inline-flex items-center space-x-1.5 px-4 py-2 bg-[#D7242A] hover:bg-[#b81d22] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-xs"
+            className="inline-flex items-center space-x-1.5 px-4 py-2 bg-[#1F6B4C] hover:bg-[#18593F] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-xs"
           >
             <Plus className="w-4 h-4" />
             <span>Add Property</span>
@@ -440,7 +440,7 @@ export default function AdminProperties() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search by title or locality..."
-            className="w-full pl-9 pr-8 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-900 outline-none focus:border-[#D7242A] focus:bg-white transition-colors"
+            className="w-full pl-9 pr-8 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-900 outline-none focus:border-[#1F6B4C] focus:bg-white transition-colors"
           />
           {searchTerm && (
             <button
@@ -503,7 +503,7 @@ export default function AdminProperties() {
                           )}
                         </div>
                         <div className="space-y-0.5 min-w-0">
-                          <div className="font-bold text-slate-900 group-hover:text-[#D7242A] transition-colors truncate max-w-xs">
+                          <div className="font-bold text-slate-900 group-hover:text-[#1F6B4C] transition-colors truncate max-w-xs">
                             {property.title}
                           </div>
                           <div className="flex items-center space-x-2 text-[11px] text-slate-600">
@@ -729,7 +729,7 @@ export default function AdminProperties() {
               <button
                 onClick={confirmDelete}
                 disabled={deleting}
-                className="px-5 py-2 bg-[#D7242A] hover:bg-[#b81d22] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all disabled:opacity-50"
+                className="px-5 py-2 bg-[#1F6B4C] hover:bg-[#18593F] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all disabled:opacity-50"
               >
                 {deleting ? 'Deleting...' : 'Delete Permanently'}
               </button>

@@ -217,7 +217,7 @@ export default function AdminUsers() {
     return (
       <div className="min-h-[80vh] flex items-center justify-center p-6">
         <div className="text-center">
-          <div className="w-12 h-12 rounded-2xl border-2 border-t-[#D7242A] border-r-transparent border-b-[#D7242A] border-l-transparent animate-spin mx-auto mb-3"></div>
+          <div className="w-12 h-12 rounded-2xl border-2 border-t-[#1F6B4C] border-r-transparent border-b-[#1F6B4C] border-l-transparent animate-spin mx-auto mb-3"></div>
           <p className="text-xs font-bold text-slate-700">Loading User Directory...</p>
         </div>
       </div>
@@ -233,7 +233,7 @@ export default function AdminUsers() {
             <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight font-serif">
               Advisor Directory
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#D7242A]/10 text-[#D7242A] border border-[#D7242A]/20">
+            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#1F6B4C]/10 text-[#1F6B4C] border border-[#1F6B4C]/20">
               {agents.length} Advisors
             </span>
           </div>
@@ -258,7 +258,7 @@ export default function AdminUsers() {
               setFormData({ name: '', email: '', phone: '', password: '' });
               setShowAddModal(true);
             }}
-            className="inline-flex items-center space-x-1.5 px-4 py-2 bg-[#D7242A] hover:bg-[#b81d22] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-xs cursor-pointer"
+            className="inline-flex items-center space-x-1.5 px-4 py-2 bg-[#1F6B4C] hover:bg-[#18593F] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-xs cursor-pointer"
           >
             <UserPlus className="w-4 h-4" />
             <span>Add New Advisor</span>
@@ -314,7 +314,7 @@ export default function AdminUsers() {
         <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs">
           <div className="flex items-center justify-between text-slate-400 mb-2">
             <span className="text-[11px] font-bold uppercase tracking-wider">Assigned Queue</span>
-            <Target className="w-4 h-4 text-[#D7242A]" />
+            <Target className="w-4 h-4 text-[#1F6B4C]" />
           </div>
           <div className="text-3xl font-black text-slate-900 tracking-tight">{totalAssignedAcrossTeam}</div>
           <p className="text-[11px] text-slate-500 mt-1">Active prospect assignments</p>
@@ -342,7 +342,7 @@ export default function AdminUsers() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search advisor by name, email, phone..."
-              className="w-full pl-9 pr-8 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-900 outline-none focus:border-[#D7242A] focus:bg-white transition-colors"
+              className="w-full pl-9 pr-8 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-900 outline-none focus:border-[#1F6B4C] focus:bg-white transition-colors"
             />
             {searchTerm && (
               <button
@@ -392,7 +392,7 @@ export default function AdminUsers() {
                           </div>
                           <div className="space-y-0.5">
                             <div className="flex items-center space-x-2">
-                              <span className="font-bold text-slate-900 group-hover:text-[#D7242A] transition-colors">
+                              <span className="font-bold text-slate-900 group-hover:text-[#1F6B4C] transition-colors">
                                 {agent.name}
                               </span>
                               {agent.email?.includes('@demo') && (
@@ -452,11 +452,11 @@ export default function AdminUsers() {
                       <td className="py-4 px-4 whitespace-nowrap space-y-1.5">
                         <div className="flex items-center justify-between text-xs font-bold text-slate-700">
                           <span>{completed} Handled</span>
-                          <span className="text-[#D7242A]">{completionRate}%</span>
+                          <span className="text-[#1F6B4C]">{completionRate}%</span>
                         </div>
                         <div className="w-32 bg-slate-100 rounded-full h-1.5 overflow-hidden">
                           <div
-                            className="bg-[#D7242A] h-1.5 rounded-full transition-all duration-300"
+                            className="bg-[#1F6B4C] h-1.5 rounded-full transition-all duration-300"
                             style={{ width: `${Math.min(100, completionRate)}%` }}
                           />
                         </div>
@@ -496,7 +496,7 @@ export default function AdminUsers() {
           <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden border border-slate-200">
             <div className="bg-[#0B0F19] text-white p-5 flex items-center justify-between border-b border-slate-800">
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 rounded-xl bg-[#D7242A] flex items-center justify-center text-white">
+                <div className="w-8 h-8 rounded-xl bg-[#1F6B4C] flex items-center justify-center text-white">
                   <UserPlus className="w-4 h-4" />
                 </div>
                 <div>
@@ -522,7 +522,7 @@ export default function AdminUsers() {
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-900 outline-none focus:border-[#D7242A] focus:bg-white transition-colors"
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-900 outline-none focus:border-[#1F6B4C] focus:bg-white transition-colors"
                   placeholder="e.g. Rahul Sharma"
                 />
               </div>
@@ -536,8 +536,8 @@ export default function AdminUsers() {
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-900 outline-none focus:border-[#D7242A] focus:bg-white transition-colors"
-                  placeholder="advisor@a4realty.in"
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-900 outline-none focus:border-[#1F6B4C] focus:bg-white transition-colors"
+                  placeholder="advisor@dreamland.com"
                 />
               </div>
 
@@ -549,7 +549,7 @@ export default function AdminUsers() {
                   type="tel"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-900 outline-none focus:border-[#D7242A] focus:bg-white transition-colors"
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-900 outline-none focus:border-[#1F6B4C] focus:bg-white transition-colors"
                   placeholder="e.g. 9845123456"
                 />
               </div>
@@ -563,7 +563,7 @@ export default function AdminUsers() {
                   required
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-900 outline-none focus:border-[#D7242A] focus:bg-white transition-colors"
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-900 outline-none focus:border-[#1F6B4C] focus:bg-white transition-colors"
                   placeholder="Minimum 6 characters"
                 />
               </div>
@@ -579,7 +579,7 @@ export default function AdminUsers() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-5 py-2 bg-[#D7242A] hover:bg-[#b81d22] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all disabled:opacity-50 cursor-pointer shadow-xs"
+                  className="px-5 py-2 bg-[#1F6B4C] hover:bg-[#18593F] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all disabled:opacity-50 cursor-pointer shadow-xs"
                 >
                   {submitting ? 'Creating...' : 'Create Account'}
                 </button>
@@ -595,7 +595,7 @@ export default function AdminUsers() {
           <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden border border-slate-200">
             <div className="bg-[#0B0F19] text-white p-5 flex items-center justify-between border-b border-slate-800">
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 rounded-xl bg-[#D7242A] flex items-center justify-center text-white">
+                <div className="w-8 h-8 rounded-xl bg-[#1F6B4C] flex items-center justify-center text-white">
                   <Edit3 className="w-4 h-4" />
                 </div>
                 <div>
@@ -621,7 +621,7 @@ export default function AdminUsers() {
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-900 outline-none focus:border-[#D7242A] focus:bg-white transition-colors"
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-900 outline-none focus:border-[#1F6B4C] focus:bg-white transition-colors"
                 />
               </div>
 
@@ -634,7 +634,7 @@ export default function AdminUsers() {
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-900 outline-none focus:border-[#D7242A] focus:bg-white transition-colors"
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-900 outline-none focus:border-[#1F6B4C] focus:bg-white transition-colors"
                 />
               </div>
 
@@ -646,7 +646,7 @@ export default function AdminUsers() {
                   type="tel"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-900 outline-none focus:border-[#D7242A] focus:bg-white transition-colors"
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-900 outline-none focus:border-[#1F6B4C] focus:bg-white transition-colors"
                 />
               </div>
 
@@ -658,7 +658,7 @@ export default function AdminUsers() {
                   type="password"
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-900 outline-none focus:border-[#D7242A] focus:bg-white transition-colors"
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-900 outline-none focus:border-[#1F6B4C] focus:bg-white transition-colors"
                   placeholder="New password (optional)"
                 />
               </div>
@@ -674,7 +674,7 @@ export default function AdminUsers() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-5 py-2 bg-[#D7242A] hover:bg-[#b81d22] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all disabled:opacity-50 cursor-pointer shadow-xs"
+                  className="px-5 py-2 bg-[#1F6B4C] hover:bg-[#18593F] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all disabled:opacity-50 cursor-pointer shadow-xs"
                 >
                   {submitting ? 'Saving...' : 'Save Changes'}
                 </button>

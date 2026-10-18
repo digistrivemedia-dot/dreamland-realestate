@@ -173,10 +173,10 @@ export default function CleanupAgentLeadsPage() {
                   Governance
                 </Link>
                 <span>/</span>
-                <span className="text-[#D7242A]">Pipeline Rebalancing</span>
+                <span className="text-[#1F6B4C]">Pipeline Rebalancing</span>
               </div>
               <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white flex items-center gap-3">
-                <ArrowRightLeft className="w-7 h-7 text-[#D7242A]" />
+                <ArrowRightLeft className="w-7 h-7 text-[#1F6B4C]" />
                 Advisor Pipeline Sanitizer & Rebalancer
               </h1>
               <p className="text-slate-400 text-sm mt-1 max-w-2xl">
@@ -187,7 +187,7 @@ export default function CleanupAgentLeadsPage() {
             <div className="flex items-center gap-3">
               <Link
                 href="/admin/duplicate-checker"
-                className="px-4 py-2.5 rounded-xl border border-rose-500/40 bg-rose-500/10 hover:bg-rose-500/20 text-[#ff6b70] text-xs font-bold uppercase tracking-wider transition-all"
+                className="px-4 py-2.5 rounded-xl border border-rose-500/40 bg-rose-500/10 hover:bg-rose-500/20 text-[#6EE7A1] text-xs font-bold uppercase tracking-wider transition-all"
               >
                 Duplicate Checker
               </Link>
@@ -215,7 +215,7 @@ export default function CleanupAgentLeadsPage() {
             {messageType === 'success' ? (
               <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
             ) : (
-              <AlertCircle className="w-5 h-5 text-[#D7242A] shrink-0 mt-0.5" />
+              <AlertCircle className="w-5 h-5 text-[#1F6B4C] shrink-0 mt-0.5" />
             )}
             <div>
               <p className="text-xs font-bold uppercase tracking-wider mb-0.5">
@@ -249,7 +249,7 @@ export default function CleanupAgentLeadsPage() {
                       onClick={() => setSelectedAgent(agent)}
                       className={`p-4 rounded-2xl border-2 cursor-pointer transition-all ${
                         isSelected
-                          ? 'border-[#D7242A] bg-rose-50/40 shadow-sm'
+                          ? 'border-[#1F6B4C] bg-rose-50/40 shadow-sm'
                           : 'border-slate-200/80 hover:border-slate-300 bg-white'
                       }`}
                     >
@@ -258,7 +258,7 @@ export default function CleanupAgentLeadsPage() {
                           <div
                             className={`w-10 h-10 rounded-xl flex items-center justify-center text-xs font-black uppercase ${
                               isSelected
-                                ? 'bg-[#D7242A] text-white shadow-md shadow-[#D7242A]/20'
+                                ? 'bg-[#1F6B4C] text-white shadow-md shadow-[#1F6B4C]/20'
                                 : 'bg-slate-100 text-slate-700'
                             }`}
                           >
@@ -320,7 +320,7 @@ export default function CleanupAgentLeadsPage() {
                 {/* Step 1: Flush Pipeline */}
                 <div className="p-5 rounded-2xl border border-rose-200 bg-rose-50/40">
                   <div className="flex items-center gap-2 mb-1.5">
-                    <UserX className="w-5 h-5 text-[#D7242A]" />
+                    <UserX className="w-5 h-5 text-[#1F6B4C]" />
                     <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
                       Phase 1: Release Pipeline
                     </h3>
@@ -332,7 +332,7 @@ export default function CleanupAgentLeadsPage() {
                   <button
                     onClick={handleUnassignAll}
                     disabled={loading || (selectedAgent.currentAssignedCount || 0) === 0}
-                    className="w-full py-3 bg-[#D7242A] hover:bg-[#B01B20] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-md shadow-[#D7242A]/20"
+                    className="w-full py-3 bg-[#1F6B4C] hover:bg-[#18593F] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-md shadow-[#1F6B4C]/20"
                   >
                     <UserX className="w-4 h-4" />
                     {loading ? 'Releasing Leads...' : `Unassign All (${selectedAgent.currentAssignedCount || 0}) Leads`}

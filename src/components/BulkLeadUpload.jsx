@@ -186,12 +186,12 @@ export default function BulkLeadUpload({ onUploadComplete, onClose }) {
         {/* Executive Header */}
         <div className="bg-gradient-to-r from-[#0B0F19] via-[#111827] to-[#1E293B] text-white p-5 sm:p-6 border-b border-slate-800 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#D7242A] to-[#99151A] text-white flex items-center justify-center shadow-lg shadow-[#D7242A]/20">
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#1F6B4C] to-[#0E3B29] text-white flex items-center justify-center shadow-lg shadow-[#1F6B4C]/20">
               <UploadCloud className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#ff4d53] bg-[#D7242A]/20 px-2 py-0.5 rounded-full border border-[#D7242A]/30">
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#6EE7A1] bg-[#1F6B4C]/20 px-2 py-0.5 rounded-full border border-[#1F6B4C]/30">
                   CRM Ingestion Engine
                 </span>
               </div>
@@ -301,7 +301,7 @@ export default function BulkLeadUpload({ onUploadComplete, onClose }) {
               {/* Default Lead Source Selector */}
               <div className="space-y-2">
                 <label className="flex items-center gap-2 text-xs font-bold text-slate-800 uppercase tracking-wider">
-                  <Tag className="w-3.5 h-3.5 text-[#D7242A]" />
+                  <Tag className="w-3.5 h-3.5 text-[#1F6B4C]" />
                   <span>Default Lead Source</span>
                   <span className="text-slate-400 font-normal normal-case text-[11px]">
                     (Applied when row source is empty)
@@ -315,7 +315,7 @@ export default function BulkLeadUpload({ onUploadComplete, onClose }) {
                       setLeadSource(e.target.value);
                       setCustomSource('');
                     }}
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-[#D7242A] focus:border-transparent transition-all"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-[#1F6B4C] focus:border-transparent transition-all"
                   >
                     <option value="">-- Select Default Channel Source --</option>
                     {LEAD_SOURCES.map((src) => (
@@ -331,7 +331,7 @@ export default function BulkLeadUpload({ onUploadComplete, onClose }) {
                       placeholder="Specify custom channel name (e.g., Luxury Expo 2026)"
                       value={customSource}
                       onChange={(e) => setCustomSource(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#D7242A] focus:border-transparent transition-all"
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1F6B4C] focus:border-transparent transition-all"
                     />
                   )}
                 </div>
@@ -341,7 +341,7 @@ export default function BulkLeadUpload({ onUploadComplete, onClose }) {
               <div
                 className={`border-2 border-dashed rounded-3xl p-8 sm:p-10 text-center transition-all ${
                   dragActive
-                    ? 'border-[#D7242A] bg-red-50/50 scale-[1.005]'
+                    ? 'border-[#1F6B4C] bg-red-50/50 scale-[1.005]'
                     : file
                     ? 'border-emerald-300 bg-emerald-50/20'
                     : 'border-slate-300 hover:border-slate-400 bg-slate-50/40'
@@ -395,7 +395,7 @@ export default function BulkLeadUpload({ onUploadComplete, onClose }) {
 
                     <div className="pt-2">
                       <label className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-all cursor-pointer shadow-md hover:scale-[1.02]">
-                        <UploadCloud className="w-4 h-4 text-[#ff4d53]" />
+                        <UploadCloud className="w-4 h-4 text-[#6EE7A1]" />
                         <span>Browse from Computer</span>
                         <input
                           type="file"
@@ -485,7 +485,7 @@ export default function BulkLeadUpload({ onUploadComplete, onClose }) {
                     onClick={() => setActiveTab('summary')}
                     className={`px-4 py-3 text-xs font-bold transition-colors border-b-2 cursor-pointer ${
                       activeTab === 'summary'
-                        ? 'border-[#D7242A] text-slate-900 bg-white'
+                        ? 'border-[#1F6B4C] text-slate-900 bg-white'
                         : 'border-transparent text-slate-500 hover:text-slate-800'
                     }`}
                   >
@@ -612,7 +612,7 @@ export default function BulkLeadUpload({ onUploadComplete, onClose }) {
                 type="button"
                 onClick={handleUpload}
                 disabled={!file || uploading || (leadSource === 'Other' && !customSource.trim())}
-                className="px-6 py-2.5 text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#D7242A] to-[#B01A20] hover:from-[#e0292f] hover:to-[#99151A] rounded-xl shadow-lg shadow-[#D7242A]/25 transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 cursor-pointer"
+                className="px-6 py-2.5 text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#1F6B4C] to-[#18593F] hover:from-[#1F6B4C] hover:to-[#0E3B29] rounded-xl shadow-lg shadow-[#1F6B4C]/25 transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 cursor-pointer"
               >
                 {uploading ? (
                   <>

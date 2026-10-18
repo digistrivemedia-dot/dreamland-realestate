@@ -159,7 +159,7 @@ export default function AdminAnalytics() {
     return (
       <div className="min-h-[80vh] flex items-center justify-center p-6">
         <div className="text-center">
-          <div className="w-12 h-12 rounded-2xl border-2 border-t-[#D7242A] border-r-transparent border-b-[#D7242A] border-l-transparent animate-spin mx-auto mb-3"></div>
+          <div className="w-12 h-12 rounded-2xl border-2 border-t-[#1F6B4C] border-r-transparent border-b-[#1F6B4C] border-l-transparent animate-spin mx-auto mb-3"></div>
           <p className="text-xs font-bold text-slate-700">Compiling Portfolio Intelligence...</p>
         </div>
       </div>
@@ -175,7 +175,7 @@ export default function AdminAnalytics() {
             <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight font-serif">
               Intelligence &amp; Analytics
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#D7242A]/10 text-[#D7242A] border border-[#D7242A]/20">
+            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#1F6B4C]/10 text-[#1F6B4C] border border-[#1F6B4C]/20">
               Executive Telemetry
             </span>
           </div>
@@ -229,7 +229,7 @@ export default function AdminAnalytics() {
         <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs">
           <div className="flex items-center justify-between text-slate-400 mb-2">
             <span className="text-[11px] font-bold uppercase tracking-wider">Pipeline Conversion</span>
-            <TrendingUp className="w-4 h-4 text-[#D7242A]" />
+            <TrendingUp className="w-4 h-4 text-[#1F6B4C]" />
           </div>
           <div className="text-3xl font-black text-slate-900 tracking-tight">{conversionRate}%</div>
           <p className="text-[11px] text-slate-500 mt-1">
@@ -284,7 +284,7 @@ export default function AdminAnalytics() {
               <h2 className="text-sm font-bold text-slate-900">Prospect Pipeline Funnel</h2>
               <p className="text-xs text-slate-500 mt-0.5">Stage velocity and inquiry conversion depth</p>
             </div>
-            <span className="text-xs font-bold text-[#D7242A] bg-rose-50 px-2.5 py-1 rounded-full">
+            <span className="text-xs font-bold text-[#1F6B4C] bg-rose-50 px-2.5 py-1 rounded-full">
               {analyticsData.totalLeads} Records Analyzed
             </span>
           </div>
@@ -373,7 +373,7 @@ export default function AdminAnalytics() {
         {/* Territory Demand Curve (1 Col) */}
         <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-xs space-y-4">
           <div className="flex items-center space-x-2 border-b border-slate-100 pb-3">
-            <Compass className="w-4 h-4 text-[#D7242A]" />
+            <Compass className="w-4 h-4 text-[#1F6B4C]" />
             <h2 className="text-sm font-bold text-slate-900">Top Demanded Localities</h2>
           </div>
 
@@ -394,7 +394,7 @@ export default function AdminAnalytics() {
                     </div>
                     <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
                       <div
-                        className="bg-gradient-to-r from-[#D7242A] to-rose-400 h-full rounded-full"
+                        className="bg-gradient-to-r from-[#1F6B4C] to-rose-400 h-full rounded-full"
                         style={{ width: `${pct}%` }}
                       ></div>
                     </div>

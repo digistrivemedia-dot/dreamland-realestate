@@ -114,15 +114,15 @@ export default function Home({ initialProperties = null }) {
             <section className="relative bg-white">
                 {/* Decorative background elements */}
                 <div className="absolute inset-0 overflow-hidden">
-                    <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#D7242A]/5 rounded-full"></div>
-                    <div className="absolute top-32 -left-16 w-64 h-64 bg-[#D7242A]/3 rounded-full"></div>
+                    <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#1F6B4C]/5 rounded-full"></div>
+                    <div className="absolute top-32 -left-16 w-64 h-64 bg-[#1F6B4C]/3 rounded-full"></div>
                 </div>
 
                 <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-16">
                     <div className="max-w-4xl text-center mx-auto">
                         <h1 className="text-4xl sm:text-6xl font-extrabold text-gray-900 leading-tight">
                             Your Trusted Partner in
-                            <span className="text-[#D7242A]"> Verified Real Estate</span>
+                            <span className="text-[#1F6B4C]"> Verified Real Estate</span>
                         </h1>
                         <p className="mt-4 text-gray-600 text-lg sm:text-xl max-w-2xl mx-auto">
                             Handpicked listings, zero-brokerage direct builder offers, and complete transparency.
@@ -131,15 +131,15 @@ export default function Home({ initialProperties = null }) {
                         {/* Trust Signals */}
                         <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm font-semibold text-gray-500">
                             <div className="flex items-center gap-2">
-                                <svg className="w-5 h-5 text-[#D7242A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                <svg className="w-5 h-5 text-[#1F6B4C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                                 100% Verified Listings
                             </div>
                             <div className="flex items-center gap-2">
-                                <svg className="w-5 h-5 text-[#D7242A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                <svg className="w-5 h-5 text-[#1F6B4C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                                 Best Market Price
                             </div>
                             <div className="flex items-center gap-2">
-                                <svg className="w-5 h-5 text-[#D7242A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                                <svg className="w-5 h-5 text-[#1F6B4C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
                                 5,000+ Happy Families
                             </div>
                         </div>
@@ -159,7 +159,7 @@ export default function Home({ initialProperties = null }) {
                                     type="button"
                                     onClick={() => setActiveTab(t.key)}
                                     className={`flex-1 flex items-center justify-center gap-2 py-4 text-sm font-bold transition-all duration-300 ${activeTab === t.key
-                                        ? "bg-white text-[#D7242A] border-b-2 border-[#D7242A]"
+                                        ? "bg-white text-[#1F6B4C] border-b-2 border-[#1F6B4C]"
                                         : "text-gray-500 hover:text-gray-900 hover:bg-gray-100/50"
                                         }`}
                                 >
@@ -179,7 +179,7 @@ export default function Home({ initialProperties = null }) {
                             {/* Location/Project */}
                             <div className="flex-[2] relative">
                                 <label htmlFor="q" className="sr-only">Search</label>
-                                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#D7242A]">
+                                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#1F6B4C]">
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                                 </div>
                                 <input
@@ -187,7 +187,7 @@ export default function Home({ initialProperties = null }) {
                                     name="q"
                                     type="text"
                                     placeholder="Enter City, Locality or Project Name"
-                                    className="w-full h-14 pl-12 pr-4 rounded-2xl bg-gray-50 border border-transparent focus:bg-white focus:border-[#D7242A] focus:ring-4 focus:ring-[#D7242A]/10 transition-all outline-none text-gray-900 font-medium placeholder-gray-400"
+                                    className="w-full h-14 pl-12 pr-4 rounded-2xl bg-gray-50 border border-transparent focus:bg-white focus:border-[#1F6B4C] focus:ring-4 focus:ring-[#1F6B4C]/10 transition-all outline-none text-gray-900 font-medium placeholder-gray-400"
                                 />
                             </div>
 
@@ -199,7 +199,7 @@ export default function Home({ initialProperties = null }) {
                                 <select
                                     id="type"
                                     name="type"
-                                    className="w-full h-14 pl-12 pr-4 rounded-2xl bg-gray-50 border border-transparent focus:bg-white focus:border-[#D7242A] focus:ring-4 focus:ring-[#D7242A]/10 transition-all outline-none text-gray-900 font-medium appearance-none cursor-pointer"
+                                    className="w-full h-14 pl-12 pr-4 rounded-2xl bg-gray-50 border border-transparent focus:bg-white focus:border-[#1F6B4C] focus:ring-4 focus:ring-[#1F6B4C]/10 transition-all outline-none text-gray-900 font-medium appearance-none cursor-pointer"
                                     defaultValue=""
                                 >
                                     <option value="" disabled>Property Type</option>
@@ -221,7 +221,7 @@ export default function Home({ initialProperties = null }) {
                                 <select
                                     id="max"
                                     name="max"
-                                    className="w-full h-14 pl-12 pr-4 rounded-2xl bg-gray-50 border border-transparent focus:bg-white focus:border-[#D7242A] focus:ring-4 focus:ring-[#D7242A]/10 transition-all outline-none text-gray-900 font-medium appearance-none cursor-pointer"
+                                    className="w-full h-14 pl-12 pr-4 rounded-2xl bg-gray-50 border border-transparent focus:bg-white focus:border-[#1F6B4C] focus:ring-4 focus:ring-[#1F6B4C]/10 transition-all outline-none text-gray-900 font-medium appearance-none cursor-pointer"
                                     defaultValue=""
                                 >
                                     <option value="" disabled>Max Budget</option>
@@ -237,7 +237,7 @@ export default function Home({ initialProperties = null }) {
 
                             <button
                                 type="submit"
-                                className="h-14 px-10 rounded-2xl bg-[#D7242A] text-white font-bold text-lg hover:bg-[#D7242A]/90 shadow-xl shadow-red-600/20 transition-all active:scale-95"
+                                className="h-14 px-10 rounded-2xl bg-[#1F6B4C] text-white font-bold text-lg hover:bg-[#1F6B4C]/90 shadow-xl shadow-red-600/20 transition-all active:scale-95"
                             >
                                 Search
                             </button>
@@ -251,7 +251,7 @@ export default function Home({ initialProperties = null }) {
                                     <Link
                                         key={chip}
                                         href={`/search?tab=${activeTab}&q=${encodeURIComponent(chip)}`}
-                                        className="px-4 py-2 rounded-xl text-sm font-semibold border border-gray-100 bg-gray-50 hover:bg-[#D7242A] hover:text-white hover:border-[#D7242A] transition-all whitespace-nowrap shadow-sm"
+                                        className="px-4 py-2 rounded-xl text-sm font-semibold border border-gray-100 bg-gray-50 hover:bg-[#1F6B4C] hover:text-white hover:border-[#1F6B4C] transition-all whitespace-nowrap shadow-sm"
                                     >
                                         {chip}
                                     </Link>
@@ -279,14 +279,14 @@ export default function Home({ initialProperties = null }) {
                                     href={`/search?tab=buy&q=${encodeURIComponent(city.name)}`}
                                     className="group flex flex-col items-center space-y-2 hover:scale-105 transition-all duration-200"
                                 >
-                                    <div className="w-20 h-20 rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow duration-200 ring-2 ring-gray-100 group-hover:ring-[#D7242A]/20">
+                                    <div className="w-20 h-20 rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow duration-200 ring-2 ring-gray-100 group-hover:ring-[#1F6B4C]/20">
                                         <img
                                             src={city.image}
                                             alt={city.name}
                                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                                         />
                                     </div>
-                                    <span className="text-sm font-medium text-gray-700 group-hover:text-[#D7242A] transition-colors duration-200">
+                                    <span className="text-sm font-medium text-gray-700 group-hover:text-[#1F6B4C] transition-colors duration-200">
                                         {city.name}
                                     </span>
                                 </Link>
@@ -301,7 +301,7 @@ export default function Home({ initialProperties = null }) {
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="flex items-baseline justify-between">
                         <h2 className="text-xl font-semibold">Featured Properties</h2>
-                        <Link href="/search" className="text-[#D7242A] text-sm hover:underline">
+                        <Link href="/search" className="text-[#1F6B4C] text-sm hover:underline">
                             View all
                         </Link>
                     </div>
@@ -342,7 +342,7 @@ export default function Home({ initialProperties = null }) {
                                                     For {property.mode}
                                                 </span>
                                                 {property.status === 'Ready to Move' && (
-                                                    <span className="inline-flex items-center px-2 py-1 text-xs font-bold rounded bg-[#D7242A] text-white shadow-sm uppercase">
+                                                    <span className="inline-flex items-center px-2 py-1 text-xs font-bold rounded bg-[#1F6B4C] text-white shadow-sm uppercase">
                                                         Ready
                                                     </span>
                                                 )}
@@ -350,13 +350,13 @@ export default function Home({ initialProperties = null }) {
                                         </Link>
                                         <div className="p-5">
                                             <Link href={generatePropertyUrl(property)}>
-                                                <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#D7242A] transition-colors line-clamp-1">{property.title}</h3>
+                                                <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#1F6B4C] transition-colors line-clamp-1">{property.title}</h3>
                                                 <p className="text-sm text-gray-600 flex items-center gap-1 mt-1">
                                                     <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                                                     {property.location}
                                                 </p>
                                                 <div className="mt-4 flex items-center justify-between">
-                                                    <p className="text-xl font-extrabold text-[#D7242A]">
+                                                    <p className="text-xl font-extrabold text-[#1F6B4C]">
                                                         {property.price ? formatPrice(property.price) : 'Price on Request'}
                                                     </p>
                                                     <div className="flex gap-2">
@@ -392,7 +392,7 @@ export default function Home({ initialProperties = null }) {
                                 <div className="mt-8 text-center">
                                     <button
                                         onClick={handleSeeMore}
-                                        className="px-6 py-3 bg-[#D7242A] text-white font-medium rounded-lg hover:bg-[#D7242A]/90 transition-colors"
+                                        className="px-6 py-3 bg-[#1F6B4C] text-white font-medium rounded-lg hover:bg-[#1F6B4C]/90 transition-colors"
                                     >
                                         See More Properties ({properties.length - visibleProperties} more)
                                     </button>
@@ -439,13 +439,13 @@ export default function Home({ initialProperties = null }) {
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="relative overflow-hidden rounded-3xl bg-gray-900 px-6 py-12 sm:px-12 sm:py-16 shadow-2xl">
                         {/* Decorative background */}
-                        <div className="absolute top-0 right-0 -translate-y-12 translate-x-12 w-64 h-64 bg-[#D7242A]/20 rounded-full blur-3xl"></div>
-                        <div className="absolute bottom-0 left-0 translate-y-12 -translate-x-12 w-64 h-64 bg-[#D7242A]/10 rounded-full blur-3xl"></div>
+                        <div className="absolute top-0 right-0 -translate-y-12 translate-x-12 w-64 h-64 bg-[#1F6B4C]/20 rounded-full blur-3xl"></div>
+                        <div className="absolute bottom-0 left-0 translate-y-12 -translate-x-12 w-64 h-64 bg-[#1F6B4C]/10 rounded-full blur-3xl"></div>
 
                         <div className="relative flex flex-col lg:flex-row items-center justify-between gap-10">
                             <div className="max-w-xl text-center lg:text-left">
                                 <h3 className="text-3xl sm:text-4xl font-extrabold text-white">
-                                    Looking for <span className="text-[#D7242A]">Expert Guidance?</span>
+                                    Looking for <span className="text-[#1F6B4C]">Expert Guidance?</span>
                                 </h3>
                                 <p className="mt-4 text-gray-300 text-lg">
                                     Our property experts will help you find the perfect home at the best price. Get a free consultation today.
@@ -462,12 +462,12 @@ export default function Home({ initialProperties = null }) {
                                         name="phone"
                                         type="tel"
                                         placeholder="Enter phone number"
-                                        className="h-14 w-full sm:w-72 px-6 rounded-xl bg-white text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-[#D7242A] outline-none"
+                                        className="h-14 w-full sm:w-72 px-6 rounded-xl bg-white text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-[#1F6B4C] outline-none"
                                         required
                                     />
                                     <button
                                         type="submit"
-                                        className="h-14 px-8 rounded-xl bg-[#D7242A] text-white font-bold text-lg hover:bg-[#D7242A]/90 transition-all shadow-lg hover:shadow-red-900/20"
+                                        className="h-14 px-8 rounded-xl bg-[#1F6B4C] text-white font-bold text-lg hover:bg-[#1F6B4C]/90 transition-all shadow-lg hover:shadow-red-900/20"
                                     >
                                         Get Call Back
                                     </button>
@@ -508,7 +508,7 @@ export default function Home({ initialProperties = null }) {
                         </p>
                         <button
                             onClick={handleCloseLeadSuccessModal}
-                            className="w-full px-6 py-3 bg-[#D7242A] text-white font-semibold rounded-lg hover:bg-[#D7242A]/90 transition-colors"
+                            className="w-full px-6 py-3 bg-[#1F6B4C] text-white font-semibold rounded-lg hover:bg-[#1F6B4C]/90 transition-colors"
                         >
                             Close
                         </button>

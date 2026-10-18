@@ -112,12 +112,12 @@ export default function BulkAssignModal({ onClose, onAssign }) {
         {/* Executive Header */}
         <div className="bg-gradient-to-r from-[#0B0F19] via-[#111827] to-[#1E293B] text-white p-5 sm:p-6 border-b border-slate-800 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#D7242A] to-[#99151A] text-white flex items-center justify-center shadow-lg shadow-[#D7242A]/20">
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#1F6B4C] to-[#0E3B29] text-white flex items-center justify-center shadow-lg shadow-[#1F6B4C]/20">
               <UserCheck className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#ff4d53] bg-[#D7242A]/20 px-2 py-0.5 rounded-full border border-[#D7242A]/30">
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#6EE7A1] bg-[#1F6B4C]/20 px-2 py-0.5 rounded-full border border-[#1F6B4C]/30">
                   CRM Workflow Engine
                 </span>
               </div>
@@ -162,7 +162,7 @@ export default function BulkAssignModal({ onClose, onAssign }) {
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <label className="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
-                <Layers className="w-3.5 h-3.5 text-[#D7242A]" />
+                <Layers className="w-3.5 h-3.5 text-[#1F6B4C]" />
                 <span>Quantity to Assign *</span>
               </label>
               <span className="text-[11px] text-slate-400">Max 500 leads / batch</span>
@@ -176,7 +176,7 @@ export default function BulkAssignModal({ onClose, onAssign }) {
                 max="500"
                 value={formData.count}
                 onChange={(e) => setFormData({ ...formData, count: e.target.value })}
-                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#D7242A] focus:border-transparent transition-all"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1F6B4C] focus:border-transparent transition-all"
                 placeholder="e.g. 100"
               />
             </div>
@@ -207,7 +207,7 @@ export default function BulkAssignModal({ onClose, onAssign }) {
           {/* Target Agent Selection */}
           <div className="space-y-2">
             <label className="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
-              <Users className="w-3.5 h-3.5 text-[#D7242A]" />
+              <Users className="w-3.5 h-3.5 text-[#1F6B4C]" />
               <span>Target Sales Advisor *</span>
             </label>
 
@@ -215,7 +215,7 @@ export default function BulkAssignModal({ onClose, onAssign }) {
               required
               value={formData.agentId}
               onChange={(e) => setFormData({ ...formData, agentId: e.target.value })}
-              className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-[#D7242A] focus:border-transparent transition-all"
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-[#1F6B4C] focus:border-transparent transition-all"
             >
               <option value="">-- Choose Sales Advisor --</option>
               {agents.map((agent) => (
@@ -255,7 +255,7 @@ export default function BulkAssignModal({ onClose, onAssign }) {
                 <select
                   value={formData.status}
                   onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-[#D7242A] focus:border-transparent"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-[#1F6B4C] focus:border-transparent"
                 >
                   <option value="all">All Available Stages</option>
                   <option value="new">New Leads Only</option>
@@ -277,7 +277,7 @@ export default function BulkAssignModal({ onClose, onAssign }) {
                     type="text"
                     value={formData.location}
                     onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#D7242A] focus:border-transparent"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1F6B4C] focus:border-transparent"
                     placeholder="e.g. Whitefield, Indiranagar"
                   />
                 </div>
@@ -307,7 +307,7 @@ export default function BulkAssignModal({ onClose, onAssign }) {
             <button
               type="submit"
               disabled={loading || agents.length === 0}
-              className="px-6 py-2.5 text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#D7242A] to-[#B01A20] hover:from-[#e0292f] hover:to-[#99151A] rounded-xl shadow-lg shadow-[#D7242A]/25 transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 cursor-pointer"
+              className="px-6 py-2.5 text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#1F6B4C] to-[#18593F] hover:from-[#1F6B4C] hover:to-[#0E3B29] rounded-xl shadow-lg shadow-[#1F6B4C]/25 transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 cursor-pointer"
             >
               {loading ? (
                 <>

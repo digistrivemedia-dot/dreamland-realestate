@@ -646,7 +646,7 @@ export default function PropertyDetails({ initialData = null }) {
     if (loading) {
         return (
             <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-                <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#D7242A]"></div>
+                <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#1F6B4C]"></div>
             </div>
         );
     }
@@ -655,14 +655,14 @@ export default function PropertyDetails({ initialData = null }) {
         return (
             <div className="flex flex-col items-center justify-center min-h-screen px-4 bg-gradient-to-br from-gray-50 to-gray-100">
                 <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md text-center">
-                    <div className="w-16 h-16 bg-[#D7242A]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg className="w-8 h-8 text-[#D7242A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-16 h-16 bg-[#1F6B4C]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg className="w-8 h-8 text-[#1F6B4C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
                     <h2 className="text-xl font-semibold text-gray-900 mb-2">Error</h2>
                     <p className="text-gray-600 mb-6">{error}</p>
-                    <Link href="/" className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-[#D7242A] hover:bg-[#D7242A]/90 transition-colors">
+                    <Link href="/" className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-[#1F6B4C] hover:bg-[#1F6B4C]/90 transition-colors">
                         Return to Home
                     </Link>
                 </div>
@@ -681,7 +681,7 @@ export default function PropertyDetails({ initialData = null }) {
                     </div>
                     <h2 className="text-xl font-semibold text-gray-900 mb-2">Property not found</h2>
                     <p className="text-gray-600 mb-6">We couldn&apos;t find the property you&apos;re looking for.</p>
-                    <Link href="/" className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-[#D7242A] hover:bg-[#D7242A]/90 transition-colors">
+                    <Link href="/" className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-[#1F6B4C] hover:bg-[#1F6B4C]/90 transition-colors">
                         Return to Home
                     </Link>
                 </div>
@@ -726,7 +726,7 @@ export default function PropertyDetails({ initialData = null }) {
                                     });
                                 }
                             }}
-                            className="cursor-pointer whitespace-nowrap rounded-full border border-transparent px-3 py-2 text-xs font-semibold tracking-wide text-[#5c4e43] transition duration-200 hover:border-[#D7242A]/15 hover:bg-white hover:text-[#D7242A] sm:text-sm"
+                            className="cursor-pointer whitespace-nowrap rounded-full border border-transparent px-3 py-2 text-xs font-semibold tracking-wide text-[#5c4e43] transition duration-200 hover:border-[#1F6B4C]/15 hover:bg-white hover:text-[#1F6B4C] sm:text-sm"
                         >
                             {label}
                         </button>
@@ -739,11 +739,11 @@ export default function PropertyDetails({ initialData = null }) {
                     <div className="w-full lg:w-[62%]">
                         <div className="mb-5 flex flex-wrap items-center gap-2.5 text-xs font-semibold tracking-[0.14em] text-[#6e5841] uppercase">
                             <span className="inline-flex items-center gap-2 rounded-full border border-[#e6d9c8] bg-white px-4 py-2">
-                                <BadgeCheck size={14} className="text-[#D7242A]" />
+                                <BadgeCheck size={14} className="text-[#1F6B4C]" />
                                 Verified Project
                             </span>
                             <span className="inline-flex items-center gap-2 rounded-full border border-[#e6d9c8] bg-white px-4 py-2">
-                                <ShieldCheck size={14} className="text-[#D7242A]" />
+                                <ShieldCheck size={14} className="text-[#1F6B4C]" />
                                 Zero Brokerage Assistance
                             </span>
                         </div>
@@ -757,18 +757,18 @@ export default function PropertyDetails({ initialData = null }) {
                             </h1>
                             <div className="mt-5 flex flex-wrap items-center gap-4 text-sm text-[#5d5045] sm:text-base">
                                 <span className="inline-flex items-center gap-2">
-                                    <MapPin size={16} className="text-[#D7242A]" />
+                                    <MapPin size={16} className="text-[#1F6B4C]" />
                                     {property.location}
                                 </span>
                                 {property.developer && (
                                     <span className="inline-flex items-center gap-2">
-                                        <Building2 size={16} className="text-[#D7242A]" />
+                                        <Building2 size={16} className="text-[#1F6B4C]" />
                                         By {property.developer}
                                     </span>
                                 )}
                                 {property.possessionDate && (
                                     <span className="inline-flex items-center gap-2">
-                                        <CalendarDays size={16} className="text-[#D7242A]" />
+                                        <CalendarDays size={16} className="text-[#1F6B4C]" />
                                         Possession by {property.possessionDate}
                                     </span>
                                 )}
@@ -781,7 +781,7 @@ export default function PropertyDetails({ initialData = null }) {
                         <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
                             {projectMetrics.map((metric) => (
                                 <div key={metric.label} className="rounded-2xl border border-[#eadfce] bg-white p-4 text-[#241d18] shadow-sm">
-                                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#fff1f1] text-[#D7242A]">
+                                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#fff1f1] text-[#1F6B4C]">
                                         {metric.icon}
                                     </div>
                                     <p className="text-[11px] uppercase tracking-[0.18em] text-[#8b7868]">{metric.label}</p>
@@ -793,7 +793,7 @@ export default function PropertyDetails({ initialData = null }) {
                         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                             <button
                                 onClick={scrollToSidebarForm}
-                                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#D7242A] px-6 py-4 text-sm font-semibold text-white shadow-[0_18px_40px_rgba(215,36,42,0.22)] transition hover:bg-[#bf1f24] sm:text-base"
+                                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#1F6B4C] px-6 py-4 text-sm font-semibold text-white shadow-[0_18px_40px_rgba(215,36,42,0.22)] transition hover:bg-[#18593F] sm:text-base"
                             >
                                 Book Free Site Visit
                                 <ArrowRight size={18} />
@@ -826,7 +826,7 @@ export default function PropertyDetails({ initialData = null }) {
                     <div className="w-full lg:w-[38%]">
                         <div className="lg:sticky lg:top-[5.5rem]">
                             <form id="sidebar-form" onSubmit={handleSidebarFormSubmit} className="overflow-hidden rounded-[2rem] border border-[#eadfce] bg-white shadow-[0_24px_80px_rgba(48,31,17,0.12)]">
-                                <div className="bg-[linear-gradient(135deg,#D7242A_0%,#a51b1f_100%)] px-4 py-3 text-center text-white">
+                                <div className="bg-[linear-gradient(135deg,#1F6B4C_0%,#18593F_100%)] px-4 py-3 text-center text-white">
                                     <p className="flex items-center justify-center gap-2 text-sm font-bold tracking-wide">
                                         <span className="relative flex h-2.5 w-2.5">
                                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
@@ -840,7 +840,7 @@ export default function PropertyDetails({ initialData = null }) {
                                     <div className="text-center">
                                         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#8f6c3e]">Conversion Form</p>
                                         <h2 className="mt-2 text-2xl font-extrabold leading-tight text-gray-900">
-                                            Book a <span className="text-[#D7242A]">Premium Site Visit</span>
+                                            Book a <span className="text-[#1F6B4C]">Premium Site Visit</span>
                                         </h2>
                                         <p className="mt-2 text-sm text-gray-500">
                                             Fill this once to get brochure help, price guidance, and a guided property tour.
@@ -885,7 +885,7 @@ export default function PropertyDetails({ initialData = null }) {
                                                 value={sidebarForm.name}
                                                 onChange={(e) => setSidebarForm({...sidebarForm, name: e.target.value})}
                                                 required
-                                                className="text-black w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3.5 outline-none transition-all placeholder-gray-400 focus:border-[#D7242A] focus:bg-white focus:ring-4 focus:ring-[#D7242A]/10"
+                                                className="text-black w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3.5 outline-none transition-all placeholder-gray-400 focus:border-[#1F6B4C] focus:bg-white focus:ring-4 focus:ring-[#1F6B4C]/10"
                                             />
                                         </div>
 
@@ -903,7 +903,7 @@ export default function PropertyDetails({ initialData = null }) {
                                                     }}
                                                     maxLength={10}
                                                     required
-                                                    className="text-black w-full rounded-xl border border-gray-200 bg-gray-50 py-3.5 pl-12 pr-4 outline-none transition-all placeholder-gray-400 focus:border-[#D7242A] focus:bg-white focus:ring-4 focus:ring-[#D7242A]/10"
+                                                    className="text-black w-full rounded-xl border border-gray-200 bg-gray-50 py-3.5 pl-12 pr-4 outline-none transition-all placeholder-gray-400 focus:border-[#1F6B4C] focus:bg-white focus:ring-4 focus:ring-[#1F6B4C]/10"
                                                 />
                                             </div>
                                         </div>
@@ -912,7 +912,7 @@ export default function PropertyDetails({ initialData = null }) {
                                     <button
                                         type="submit"
                                         disabled={isSubmittingLead}
-                                        className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#D7242A] py-4 text-lg font-extrabold text-white shadow-lg shadow-red-600/25 transition-all hover:bg-[#b91c21] disabled:cursor-not-allowed disabled:opacity-50"
+                                        className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#1F6B4C] py-4 text-lg font-extrabold text-white shadow-lg shadow-red-600/25 transition-all hover:bg-[#18593F] disabled:cursor-not-allowed disabled:opacity-50"
                                     >
                                         {isSubmittingLead ? (
                                             <>
@@ -988,7 +988,7 @@ export default function PropertyDetails({ initialData = null }) {
                                 <div className="mt-4 space-y-3">
                                     {quickFacts.length > 0 ? quickFacts.map((fact) => (
                                         <div key={fact} className="flex items-center gap-3 text-sm text-[#4f4339]">
-                                            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#D7242A] shadow-sm">
+                                            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#1F6B4C] shadow-sm">
                                                 <BadgeCheck size={14} />
                                             </span>
                                             <span>{fact}</span>
@@ -1022,7 +1022,7 @@ export default function PropertyDetails({ initialData = null }) {
                                 <div className="mt-4 flex flex-wrap gap-3">
                                     <button
                                         onClick={scrollToSidebarForm}
-                                        className="inline-flex items-center gap-2 rounded-full bg-[#D7242A] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#bf1f24]"
+                                        className="inline-flex items-center gap-2 rounded-full bg-[#1F6B4C] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#18593F]"
                                     >
                                         Schedule visit
                                         <ArrowRight size={16} />
@@ -1058,7 +1058,7 @@ export default function PropertyDetails({ initialData = null }) {
                                 value={sidebarForm.name}
                                 onChange={(e) => setSidebarForm({...sidebarForm, name: e.target.value})}
                                 required
-                                className="w-full rounded-2xl border border-white/12 bg-white/92 px-4 py-3 text-sm text-black outline-none transition-all placeholder-gray-400 focus:border-[#D7242A] focus:ring-4 focus:ring-[#D7242A]/10"
+                                className="w-full rounded-2xl border border-white/12 bg-white/92 px-4 py-3 text-sm text-black outline-none transition-all placeholder-gray-400 focus:border-[#1F6B4C] focus:ring-4 focus:ring-[#1F6B4C]/10"
                             />
                             <div className="relative">
                                 <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm font-medium text-gray-500">+91</span>
@@ -1072,13 +1072,13 @@ export default function PropertyDetails({ initialData = null }) {
                                             }}
                                     maxLength={10}
                                     required
-                                    className="w-full rounded-2xl border border-white/12 bg-white/92 py-3 pl-11 pr-4 text-sm text-black outline-none transition-all placeholder-gray-400 focus:border-[#D7242A] focus:ring-4 focus:ring-[#D7242A]/10"
+                                    className="w-full rounded-2xl border border-white/12 bg-white/92 py-3 pl-11 pr-4 text-sm text-black outline-none transition-all placeholder-gray-400 focus:border-[#1F6B4C] focus:ring-4 focus:ring-[#1F6B4C]/10"
                                 />
                             </div>
                             <button
                                 type="submit"
                                 disabled={isSubmittingLead}
-                                className="w-full rounded-2xl bg-[#D7242A] py-3 text-sm font-bold text-white shadow-lg shadow-red-600/20 transition-all hover:bg-[#b91c21] disabled:opacity-50"
+                                className="w-full rounded-2xl bg-[#1F6B4C] py-3 text-sm font-bold text-white shadow-lg shadow-red-600/20 transition-all hover:bg-[#18593F] disabled:opacity-50"
                             >
                                 {isSubmittingLead ? 'Booking...' : 'Book Free Site Visit →'}
                             </button>
@@ -1113,7 +1113,7 @@ export default function PropertyDetails({ initialData = null }) {
                                     <div className='flex justify-center mt-6'>
                                         <button
                                             onClick={() => setVisibleAmenities(prev => prev + 12)}
-                                            className='cursor-pointer px-6 py-2 bg-[#D7242A] text-white rounded-md hover:bg-[#b81f24] transition-colors font-medium'
+                                            className='cursor-pointer px-6 py-2 bg-[#1F6B4C] text-white rounded-md hover:bg-[#18593F] transition-colors font-medium'
                                         >
                                             Show More Amenities ({property.amenities.length - visibleAmenities})
                                         </button>
@@ -1126,7 +1126,7 @@ export default function PropertyDetails({ initialData = null }) {
                     </section>
 
                     {/* Mid-content CTA */}
-                    <div className="relative mt-12 overflow-hidden rounded-[1.8rem] bg-[linear-gradient(135deg,#D7242A_0%,#9f1b1f_52%,#5f171b_100%)] p-6 text-white shadow-[0_24px_60px_rgba(159,27,31,0.28)] sm:mt-16 sm:p-8">
+                    <div className="relative mt-12 overflow-hidden rounded-[1.8rem] bg-[linear-gradient(135deg,#1F6B4C_0%,#18593F_52%,#0E3B29_100%)] p-6 text-white shadow-[0_24px_60px_rgba(159,27,31,0.28)] sm:mt-16 sm:p-8">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
                         <div className="relative flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
                             <div className="flex-1 text-center sm:text-left">
@@ -1139,7 +1139,7 @@ export default function PropertyDetails({ initialData = null }) {
                                     e.preventDefault();
                                     scrollToSidebarForm();
                                 }}
-                                className="flex-shrink-0 bg-white text-[#D7242A] font-bold px-6 py-3 rounded-xl hover:bg-gray-100 transition-all shadow-lg text-sm sm:text-base"
+                                className="flex-shrink-0 bg-white text-[#1F6B4C] font-bold px-6 py-3 rounded-xl hover:bg-gray-100 transition-all shadow-lg text-sm sm:text-base"
                             >
                                 Book Free Site Visit
                             </a>
@@ -1219,7 +1219,7 @@ export default function PropertyDetails({ initialData = null }) {
                     {/* Location Map Section */}
                     <section id="location-map" className='mt-16 sm:mt-24 lg:mt-32'>
                         <div className="flex items-center gap-3 mb-6">
-                            <svg className="w-8 h-8 text-[#D7242A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-8 h-8 text-[#1F6B4C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
@@ -1296,7 +1296,7 @@ export default function PropertyDetails({ initialData = null }) {
                         
                         {loadingSimilar ? (
                             <div className="flex justify-center items-center py-12">
-                                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#D7242A]"></div>
+                                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#1F6B4C]"></div>
                             </div>
                         ) : similarProperties.length > 0 ? (
                             <div className="relative">
@@ -1355,7 +1355,7 @@ export default function PropertyDetails({ initialData = null }) {
 
                                                         {/* Property Details */}
                                                         <div className="p-2 sm:p-3 lg:p-5">
-                                                            <h3 className="font-semibold text-gray-900 text-sm sm:text-base lg:text-lg mb-1 sm:mb-2 lg:mb-3 line-clamp-2 group-hover:text-[#D7242A] transition-colors">
+                                                            <h3 className="font-semibold text-gray-900 text-sm sm:text-base lg:text-lg mb-1 sm:mb-2 lg:mb-3 line-clamp-2 group-hover:text-[#1F6B4C] transition-colors">
                                                                 {similarProperty.title}
                                                             </h3>
                                                             
@@ -1371,7 +1371,7 @@ export default function PropertyDetails({ initialData = null }) {
                                                                 <span className="bg-gray-100 px-2 py-1 sm:px-3 sm:py-2 rounded-lg font-medium text-gray-700">
                                                                     {similarProperty.bhk}
                                                                 </span>
-                                                                <span className="font-semibold text-[#D7242A] text-xs sm:text-sm lg:text-base">
+                                                                <span className="font-semibold text-[#1F6B4C] text-xs sm:text-sm lg:text-base">
                                                                     {similarProperty.price ? formatPrice(similarProperty.price) : 'Price on Request'}
                                                                 </span>
                                                             </div>
@@ -1968,7 +1968,7 @@ export default function PropertyDetails({ initialData = null }) {
                         </p>
                         <button
                             onClick={handleClosePriceSuccessModal}
-                            className="w-full px-6 py-3 bg-[#D7242A] text-white font-semibold rounded-lg hover:bg-[#D7242A]/90 transition-colors"
+                            className="w-full px-6 py-3 bg-[#1F6B4C] text-white font-semibold rounded-lg hover:bg-[#1F6B4C]/90 transition-colors"
                         >
                             Close
                         </button>
@@ -1992,7 +1992,7 @@ export default function PropertyDetails({ initialData = null }) {
                         </p>
                         <button
                             onClick={handleCloseBrochureSuccessModal}
-                            className="w-full px-6 py-3 bg-[#D7242A] text-white font-semibold rounded-lg hover:bg-[#D7242A]/90 transition-colors"
+                            className="w-full px-6 py-3 bg-[#1F6B4C] text-white font-semibold rounded-lg hover:bg-[#1F6B4C]/90 transition-colors"
                         >
                             Close
                         </button>
@@ -2016,7 +2016,7 @@ export default function PropertyDetails({ initialData = null }) {
                         </p>
                         <button
                             onClick={handleCloseSidebarSuccessModal}
-                            className="w-full px-6 py-3 bg-[#D7242A] text-white font-semibold rounded-lg hover:bg-[#D7242A]/90 transition-colors"
+                            className="w-full px-6 py-3 bg-[#1F6B4C] text-white font-semibold rounded-lg hover:bg-[#1F6B4C]/90 transition-colors"
                         >
                             Close
                         </button>
@@ -2025,7 +2025,7 @@ export default function PropertyDetails({ initialData = null }) {
             )}
 
             {/* Sticky Mobile CTA Bar */}
-            <div className="fixed inset-x-0 bottom-0 z-50 border-t border-[#D7242A]/15 bg-[#fffaf3]/95 px-4 pt-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] shadow-[0_-10px_30px_rgba(32,27,23,0.12)] backdrop-blur lg:hidden">
+            <div className="fixed inset-x-0 bottom-0 z-50 border-t border-[#1F6B4C]/15 bg-[#fffaf3]/95 px-4 pt-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] shadow-[0_-10px_30px_rgba(32,27,23,0.12)] backdrop-blur lg:hidden">
                     <div className="flex items-center gap-3">
                         <div className="flex-1 min-w-0">
                             <p className="truncate text-xs font-bold text-gray-900">{property.title}</p>
@@ -2034,7 +2034,7 @@ export default function PropertyDetails({ initialData = null }) {
                         <button
                             type="button"
                             onClick={() => setShowLeadModal(true)}
-                            className="flex flex-shrink-0 items-center gap-1.5 rounded-xl bg-[#D7242A] px-5 py-3 text-sm font-bold text-white shadow-lg shadow-red-600/25 transition-all hover:bg-[#b91c21]"
+                            className="flex flex-shrink-0 items-center gap-1.5 rounded-xl bg-[#1F6B4C] px-5 py-3 text-sm font-bold text-white shadow-lg shadow-red-600/25 transition-all hover:bg-[#18593F]"
                         >
                             Book Site Visit
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" /></svg>

@@ -142,7 +142,7 @@ export default function MapComponent({ properties, onPropertySelect, fitTrigger 
                 </div>
                 <div
                   style={{
-                    color: '#D7242A',
+                    color: '#1F6B4C',
                     fontWeight: '800',
                     fontSize: '15px',
                     marginBottom: '6px',
@@ -202,7 +202,7 @@ export default function MapComponent({ properties, onPropertySelect, fitTrigger 
                     textTransform: 'uppercase',
                     transition: 'all 0.2s ease',
                   }}
-                  onMouseOver={(e) => (e.currentTarget.style.background = '#D7242A')}
+                  onMouseOver={(e) => (e.currentTarget.style.background = '#1F6B4C')}
                   onMouseOut={(e) => (e.currentTarget.style.background = '#0B0F19')}
                 >
                   Inspect Listing
