@@ -228,7 +228,7 @@ export default function Home({ initialProperties = null }) {
                                     </button>
                                 </form>
 
-                                <div className="px-4 pb-4 flex items-center gap-2 overflow-x-auto no-scrollbar">
+                                <div className="px-4 pb-4 flex flex-wrap items-center gap-2">
                                     <span className="text-sm text-[#15241D]/45 whitespace-nowrap">Try:</span>
                                     {QUICK_FILTERS.map((chip) => (
                                         <Link
